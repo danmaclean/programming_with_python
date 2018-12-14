@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Beginning Python For Programming</title>
+  <meta name="description" content="A guide to beginning programming with Python">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Beginning Python For Programming" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="A guide to beginning programming with Python" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Beginning Python For Programming" />
+  
+  <meta name="twitter:description" content="A guide to beginning programming with Python" />
+  
+
+<meta name="author" content="Dan MacLean">
+
+
+<meta name="date" content="2018-12-14">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="making-choices-and-controlling-program-flow.html">
+<link rel="next" href="user-functions.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#installing-python-3-with-anaconda"><i class="fa fa-check"></i><b>1.1</b> Installing Python 3 with Anaconda</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#note-for-macos-users"><i class="fa fa-check"></i><b>1.1.1</b> Note for macOS users</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#note-for-windows-users"><i class="fa fa-check"></i><b>1.1.2</b> Note for Windows users</a></li>
+<li class="chapter" data-level="1.1.3" data-path="index.html"><a href="index.html#note-for-linux-users"><i class="fa fa-check"></i><b>1.1.3</b> Note for Linux Users</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#starting-a-jupyter-notebook"><i class="fa fa-check"></i><b>1.2</b> Starting a Jupyter Notebook</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#macos"><i class="fa fa-check"></i><b>1.2.1</b> macOS</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#windows"><i class="fa fa-check"></i><b>1.2.2</b> Windows</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#linux"><i class="fa fa-check"></i><b>1.2.3</b> Linux</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#installing-python-packages-with-conda"><i class="fa fa-check"></i><b>1.3</b> Installing Python Packages with <code>conda</code></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="motivation.html"><a href="motivation.html"><i class="fa fa-check"></i><b>2</b> Motivation</a></li>
+<li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> Working with Data</a><ul>
+<li class="chapter" data-level="3.1" data-path="data.html"><a href="data.html#using-variables-as-names-for-data"><i class="fa fa-check"></i><b>3.1</b> Using variables as names for data</a></li>
+<li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#functions-from-different-places"><i class="fa fa-check"></i><b>3.2</b> Functions from different places</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="data.html"><a href="data.html#built-in-functions-and-operators"><i class="fa fa-check"></i><b>3.2.1</b> Built-In Functions and Operators</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data.html"><a href="data.html#package-methods"><i class="fa fa-check"></i><b>3.2.2</b> Package Methods</a></li>
+<li class="chapter" data-level="3.2.3" data-path="data.html"><a href="data.html#object-methods"><i class="fa fa-check"></i><b>3.2.3</b> Object Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data.html"><a href="data.html#objects-and-types-in-python"><i class="fa fa-check"></i><b>3.3</b> Objects and types in Python</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="data.html"><a href="data.html#string-objects"><i class="fa fa-check"></i><b>3.3.1</b> String Objects</a></li>
+<li class="chapter" data-level="3.3.2" data-path="data.html"><a href="data.html#number-objects"><i class="fa fa-check"></i><b>3.3.2</b> Number Objects</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="data.html"><a href="data.html#quiz"><i class="fa fa-check"></i><b>3.4</b> Quiz</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>4</b> Data Structures</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-structures.html"><a href="data-structures.html#lists"><i class="fa fa-check"></i><b>4.1</b> Lists</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="data-structures.html"><a href="data-structures.html#list-use"><i class="fa fa-check"></i><b>4.1.1</b> List use</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="data-structures.html"><a href="data-structures.html#dictionaries"><i class="fa fa-check"></i><b>4.2</b> Dictionaries</a></li>
+<li class="chapter" data-level="4.3" data-path="data-structures.html"><a href="data-structures.html#quiz-1"><i class="fa fa-check"></i><b>4.3</b> Quiz</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="making-choices-and-controlling-program-flow.html"><a href="making-choices-and-controlling-program-flow.html"><i class="fa fa-check"></i><b>5</b> Making Choices and Controlling Program Flow</a><ul>
+<li class="chapter" data-level="5.1" data-path="making-choices-and-controlling-program-flow.html"><a href="making-choices-and-controlling-program-flow.html#conditionals"><i class="fa fa-check"></i><b>5.1</b> Conditionals</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="making-choices-and-controlling-program-flow.html"><a href="making-choices-and-controlling-program-flow.html#testing-equality"><i class="fa fa-check"></i><b>5.1.1</b> Testing equality</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="making-choices-and-controlling-program-flow.html"><a href="making-choices-and-controlling-program-flow.html#logical-operators"><i class="fa fa-check"></i><b>5.2</b> Logical operators</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="making-choices-and-controlling-program-flow.html"><a href="making-choices-and-controlling-program-flow.html#what-is-true-and-what-is-false"><i class="fa fa-check"></i><b>5.2.1</b> What is True and what is False</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="making-choices-and-controlling-program-flow.html"><a href="making-choices-and-controlling-program-flow.html#thats-not-not-what-i-meant"><i class="fa fa-check"></i><b>5.3</b> That’s Not Not What I Meant</a></li>
+<li class="chapter" data-level="5.4" data-path="making-choices-and-controlling-program-flow.html"><a href="making-choices-and-controlling-program-flow.html#quiz-2"><i class="fa fa-check"></i><b>5.4</b> Quiz</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="repeating-actions-with-loops.html"><a href="repeating-actions-with-loops.html"><i class="fa fa-check"></i><b>6</b> Repeating actions with Loops</a><ul>
+<li class="chapter" data-level="6.1" data-path="repeating-actions-with-loops.html"><a href="repeating-actions-with-loops.html#for-loops"><i class="fa fa-check"></i><b>6.1</b> For Loops</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="repeating-actions-with-loops.html"><a href="repeating-actions-with-loops.html#choosing-loop-variable-names"><i class="fa fa-check"></i><b>6.1.1</b> Choosing loop variable names</a></li>
+<li class="chapter" data-level="6.1.2" data-path="repeating-actions-with-loops.html"><a href="repeating-actions-with-loops.html#loop-variable-lifespan"><i class="fa fa-check"></i><b>6.1.2</b> Loop variable lifespan</a></li>
+<li class="chapter" data-level="6.1.3" data-path="repeating-actions-with-loops.html"><a href="repeating-actions-with-loops.html#looping-over-a-range-of-numbers"><i class="fa fa-check"></i><b>6.1.3</b> Looping over a range of numbers</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="repeating-actions-with-loops.html"><a href="repeating-actions-with-loops.html#while-loops"><i class="fa fa-check"></i><b>6.2</b> While Loops</a></li>
+<li class="chapter" data-level="6.3" data-path="repeating-actions-with-loops.html"><a href="repeating-actions-with-loops.html#quiz-3"><i class="fa fa-check"></i><b>6.3</b> Quiz</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="user-functions.html"><a href="user-functions.html"><i class="fa fa-check"></i><b>7</b> User Functions</a><ul>
+<li class="chapter" data-level="7.1" data-path="user-functions.html"><a href="user-functions.html#composing-functions"><i class="fa fa-check"></i><b>7.1</b> Composing Functions</a></li>
+<li class="chapter" data-level="7.2" data-path="user-functions.html"><a href="user-functions.html#variables-inside-and-outside-functions"><i class="fa fa-check"></i><b>7.2</b> Variables Inside and Outside Functions</a></li>
+<li class="chapter" data-level="7.3" data-path="user-functions.html"><a href="user-functions.html#quiz-4"><i class="fa fa-check"></i><b>7.3</b> Quiz</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="using-packages.html"><a href="using-packages.html"><i class="fa fa-check"></i><b>8</b> Using Packages</a><ul>
+<li class="chapter" data-level="8.1" data-path="using-packages.html"><a href="using-packages.html#using-and-installing-packages."><i class="fa fa-check"></i><b>8.1</b> Using and Installing Packages.</a></li>
+<li class="chapter" data-level="8.2" data-path="using-packages.html"><a href="using-packages.html#the-pyvcf-package"><i class="fa fa-check"></i><b>8.2</b> The PyVCF Package</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="using-packages.html"><a href="using-packages.html#vcf-files---a-brief-introduction"><i class="fa fa-check"></i><b>8.2.1</b> VCF files - a brief introduction</a></li>
+<li class="chapter" data-level="8.2.2" data-path="using-packages.html"><a href="using-packages.html#the-vcf.reader-object"><i class="fa fa-check"></i><b>8.2.2</b> The <code>vcf.Reader</code> object</a></li>
+<li class="chapter" data-level="8.2.3" data-path="using-packages.html"><a href="using-packages.html#the-vcf.record-object"><i class="fa fa-check"></i><b>8.2.3</b> The <code>vcf.Record</code> object</a></li>
+<li class="chapter" data-level="8.2.4" data-path="using-packages.html"><a href="using-packages.html#object-attributes"><i class="fa fa-check"></i><b>8.2.4</b> Object Attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="using-packages.html"><a href="using-packages.html#quiz-5"><i class="fa fa-check"></i><b>8.3</b> Quiz</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="putting-code-into-scripts.html"><a href="putting-code-into-scripts.html"><i class="fa fa-check"></i><b>9</b> Putting code into scripts</a><ul>
+<li class="chapter" data-level="9.1" data-path="putting-code-into-scripts.html"><a href="putting-code-into-scripts.html#the-script-header"><i class="fa fa-check"></i><b>9.1</b> The Script Header</a></li>
+<li class="chapter" data-level="9.2" data-path="putting-code-into-scripts.html"><a href="putting-code-into-scripts.html#the-filename-extension"><i class="fa fa-check"></i><b>9.2</b> The Filename Extension</a></li>
+<li class="chapter" data-level="9.3" data-path="putting-code-into-scripts.html"><a href="putting-code-into-scripts.html#running-a-python-script"><i class="fa fa-check"></i><b>9.3</b> Running a Python script</a></li>
+<li class="chapter" data-level="9.4" data-path="putting-code-into-scripts.html"><a href="putting-code-into-scripts.html#getting-options-from-the-command-line"><i class="fa fa-check"></i><b>9.4</b> Getting Options from the Command Line</a></li>
+<li class="chapter" data-level="9.5" data-path="putting-code-into-scripts.html"><a href="putting-code-into-scripts.html#quiz-6"><i class="fa fa-check"></i><b>9.5</b> Quiz</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="putting-it-all-together.html"><a href="putting-it-all-together.html"><i class="fa fa-check"></i><b>10</b> Putting It All Together</a><ul>
+<li class="chapter" data-level="10.1" data-path="putting-it-all-together.html"><a href="putting-it-all-together.html#a-challenge-in-python"><i class="fa fa-check"></i><b>10.1</b> A Challenge in Python</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Beginning Python For Programming</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="repeating-actions-with-loops" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> Repeating actions with Loops</h1>
+<p>To do that, we’ll have to teach the computer how to repeat things.</p>
+<p>An example task that we might want to repeat is printing each character in a
+word on a line of its own.</p>
+<p>We can access a character in a string using its index. For example, we can get the first
+character of the word <code>'lead'</code>, by using <code>word[0]</code>. One way to print each character is to use four <code>print</code> statements:</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb109-1" data-line-number="1">word <span class="op">=</span> <span class="st">&#39;lead&#39;</span></a>
+<a class="sourceLine" id="cb109-2" data-line-number="2"><span class="bu">print</span>(word[<span class="dv">0</span>])</a></code></pre></div>
+<pre><code>## l</code></pre>
+<div class="sourceCode" id="cb111"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb111-1" data-line-number="1"><span class="bu">print</span>(word[<span class="dv">1</span>])</a></code></pre></div>
+<pre><code>## e</code></pre>
+<div class="sourceCode" id="cb113"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb113-1" data-line-number="1"><span class="bu">print</span>(word[<span class="dv">2</span>])</a></code></pre></div>
+<pre><code>## a</code></pre>
+<div class="sourceCode" id="cb115"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb115-1" data-line-number="1"><span class="bu">print</span>(word[<span class="dv">3</span>])</a></code></pre></div>
+<pre><code>## d</code></pre>
+<p>This is a bad approach for two reasons:</p>
+<ol style="list-style-type: decimal">
+<li>It doesn’t scale: if we want to print the characters in a string that’s hundreds of letters long, we’d be better off just typing them in.</li>
+<li>It’s fragile: if we give it a longer string, it only prints part of the data, and if we give it a shorter one,it produces an error because we’re asking for characters that don’t exist.</li>
+</ol>
+<div class="sourceCode" id="cb117"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb117-1" data-line-number="1">word <span class="op">=</span> <span class="st">&#39;tin&#39;</span></a>
+<a class="sourceLine" id="cb117-2" data-line-number="2"><span class="bu">print</span>(word[<span class="dv">0</span>])</a>
+<a class="sourceLine" id="cb117-3" data-line-number="3"><span class="bu">print</span>(word[<span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb117-4" data-line-number="4"><span class="bu">print</span>(word[<span class="dv">2</span>])</a>
+<a class="sourceLine" id="cb117-5" data-line-number="5"><span class="bu">print</span>(word[<span class="dv">3</span>])</a></code></pre></div>
+<pre><code>---------------------------------------------------------------------------
+IndexError                                Traceback (most recent call last)
+&lt;ipython-input-3-7974b6cdaf14&gt; in &lt;module&gt;()
+      3 print(word[1])
+      4 print(word[2])
+----&gt; 5 print(word[3])
+
+IndexError: string index out of range</code></pre>
+<div id="for-loops" class="section level2">
+<h2><span class="header-section-number">6.1</span> For Loops</h2>
+<p>Instead we can use a loop - a construct that moves through a collection of data taking one bit at a time. Here’s a loop in action</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb119-1" data-line-number="1">word <span class="op">=</span> <span class="st">&#39;lead&#39;</span></a>
+<a class="sourceLine" id="cb119-2" data-line-number="2"><span class="cf">for</span> char <span class="kw">in</span> word:</a>
+<a class="sourceLine" id="cb119-3" data-line-number="3">    <span class="bu">print</span>(char)</a></code></pre></div>
+<pre><code>## l
+## e
+## a
+## d</code></pre>
+<p>This is shorter, certainly shorter than something that prints every character in a
+hundred-letter string and more robust as well. See how the same code works if we change the length of the word</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb121-1" data-line-number="1">word <span class="op">=</span> <span class="st">&#39;oxygen&#39;</span></a>
+<a class="sourceLine" id="cb121-2" data-line-number="2"><span class="cf">for</span> char <span class="kw">in</span> word:</a>
+<a class="sourceLine" id="cb121-3" data-line-number="3">    <span class="bu">print</span>(char)</a></code></pre></div>
+<pre><code>## o
+## x
+## y
+## g
+## e
+## n</code></pre>
+<p>The improved version uses a for loop to repeat code in this case <code>print()</code>, once for each thing in a sequence. The general form of a loop is:</p>
+<p>Using the oxygen example above, the loop might look like this:</p>
+<div class="figure">
+<img src="assets/loops_image.png" alt="loop_image" />
+<p class="caption">loop_image</p>
+</div>
+<p>where each character (<code>char</code>) in the variable <code>word</code> is looped through and printed one character after another. The numbers in the diagram denote which loop cycle the character was printed in (1 being the first loop, and 6 being the final loop).</p>
+<p>We can call the loop variable anything we like, but there must be a colon at the end of the line starting the loop, and we must indent anything we want to run inside the loop. Unlike many other languages, there is no command to signify the end of the loop body (e.g. <code>end for</code>); what is indented after the <code>for</code> statement belongs to the loop.</p>
+<div id="choosing-loop-variable-names" class="section level3">
+<h3><span class="header-section-number">6.1.1</span> Choosing loop variable names</h3>
+<p>In the example above, the loop variable was given the name <code>char</code> as a mnemonic; it is short for ‘character’. We can choose any name we want for variables. We might just as easily have chosen the name <code>banana</code> for the loop variable, as long as we use the same name when we invoke the variable inside</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb123-1" data-line-number="1">word <span class="op">=</span> <span class="st">&#39;oxygen&#39;</span></a>
+<a class="sourceLine" id="cb123-2" data-line-number="2"><span class="cf">for</span> banana <span class="kw">in</span> word:</a>
+<a class="sourceLine" id="cb123-3" data-line-number="3">    <span class="bu">print</span>(banana)</a></code></pre></div>
+<pre><code>## o
+## x
+## y
+## g
+## e
+## n</code></pre>
+<p>It is a good idea to choose variable names that are meaningful, otherwise it would be more difficult to understand what the loop is doing.</p>
+<p>Here’s another loop that repeatedly updates a variable:</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb125-1" data-line-number="1">length <span class="op">=</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb125-2" data-line-number="2"><span class="cf">for</span> vowel <span class="kw">in</span> <span class="st">&#39;aeiou&#39;</span>:</a>
+<a class="sourceLine" id="cb125-3" data-line-number="3">    length <span class="op">=</span> length <span class="op">+</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb125-4" data-line-number="4"><span class="bu">print</span>(<span class="st">&#39;There are&#39;</span>, length, <span class="st">&#39;vowels&#39;</span>)</a></code></pre></div>
+<pre><code>## There are 5 vowels</code></pre>
+<p>It’s worth tracing the execution of this little program step by step.Since there are five characters in <code>'aeiou'</code>,the statement on line 3 will be executed five times.The first time around,<code>length</code> is zero (the value assigned to it on line 1) and <code>vowel</code> is <code>'a'</code>.
+The statement adds 1 to the old value of <code>length</code>, producing 1, and updates <code>length</code> to refer to that new value.</p>
+<p>The next time around,<code>vowel</code> is <code>'e'</code> and <code>length</code> is 1, so <code>length</code> is updated to be 2.
+After three more updates, <code>length</code> is 5; since there is nothing left in <code>'aeiou'</code> for Python to process, the loop finishes and the <code>print</code> statement on line 4 tells us our final answer.</p>
+</div>
+<div id="loop-variable-lifespan" class="section level3">
+<h3><span class="header-section-number">6.1.2</span> Loop variable lifespan</h3>
+<p>Note that a loop variable is just a variable that’s being used to record progress in a loop. It still exists after the loop is over, and we can re-use variables previously defined as loop variables as well:</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb127-1" data-line-number="1">letter <span class="op">=</span> <span class="st">&#39;z&#39;</span></a>
+<a class="sourceLine" id="cb127-2" data-line-number="2"><span class="cf">for</span> letter <span class="kw">in</span> <span class="st">&#39;abc&#39;</span>:</a>
+<a class="sourceLine" id="cb127-3" data-line-number="3">    <span class="bu">print</span>(letter)</a></code></pre></div>
+<pre><code>## a
+## b
+## c</code></pre>
+<div class="sourceCode" id="cb129"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb129-1" data-line-number="1"><span class="bu">print</span>(<span class="st">&#39;after the loop, letter is&#39;</span>, letter)</a></code></pre></div>
+<pre><code>## after the loop, letter is c</code></pre>
+<p>Note also that finding the length of a string is such a common operation that Python actually has a built-in function to do it called <code>len</code>:</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb131-1" data-line-number="1"><span class="bu">print</span>(<span class="bu">len</span>(<span class="st">&#39;aeiou&#39;</span>))</a></code></pre></div>
+<pre><code>## 5</code></pre>
+</div>
+<div id="looping-over-a-range-of-numbers" class="section level3">
+<h3><span class="header-section-number">6.1.3</span> Looping over a range of numbers</h3>
+<p>What if we don’t want to do every item in a collection, or if we want to do something a set number of times? We can create a collection that has the things we need.</p>
+<p>Python has a built-in function called <code>range()</code> that creates a sequence of numbers. <code>range()</code> can accept 1, 2, or 3 parameters.</p>
+<ul>
+<li>If one parameter is given, <code>range</code> creates an array of that length, starting at zero and incrementing by 1. For example, <code>range(3)</code> produces the numbers <code>0, 1, 2</code>.</li>
+<li>If two parameters are given, <code>range</code> starts at the first and ends just before the second, incrementing by one. For example, <code>range(2, 5)</code> produces <code>2, 3, 4</code>.</li>
+<li>If <code>range</code> is given 3 parameters, it starts at the first one, ends just before the second one, and goes up in steps of the third one. For example <code>range(3, 10, 2)</code> produces <code>3, 5, 7, 9</code>.</li>
+</ul>
+</div>
+</div>
+<div id="while-loops" class="section level2">
+<h2><span class="header-section-number">6.2</span> While Loops</h2>
+<p>A different sort of loop is the <code>while</code> loop. This loop repeats <em>while</em> something is in some state - usually the <code>True</code> state.</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb133-1" data-line-number="1">i <span class="op">=</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb133-2" data-line-number="2"><span class="cf">while</span> i <span class="op">&lt;</span> <span class="dv">6</span>:</a>
+<a class="sourceLine" id="cb133-3" data-line-number="3">  <span class="bu">print</span>(i)</a>
+<a class="sourceLine" id="cb133-4" data-line-number="4">  i <span class="op">+=</span> <span class="dv">1</span></a></code></pre></div>
+<pre><code>## 1
+## 2
+## 3
+## 4
+## 5</code></pre>
+<p>The <code>while</code> loop is somewhat rare in Python, but does get used from time to time.</p>
+</div>
+<div id="quiz-3" class="section level2">
+<h2><span class="header-section-number">6.3</span> Quiz</h2>
+<ol style="list-style-type: decimal">
+<li>Using <code>range</code>, write a loop to print the first 3 natural numbers.</li>
+<li>Exponentiation is built into Python. Write a loop that calculates the same result as <code>5 ** 3</code> using multiplication (and without exponentiation).</li>
+</ol>
+<div class="sourceCode" id="cb135"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb135-1" data-line-number="1"><span class="bu">print</span>(<span class="dv">5</span> <span class="op">**</span> <span class="dv">3</span>)</a></code></pre></div>
+<pre><code>## 125</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Knowing that two strings can be concatenated using the <code>+</code> operator, write a loop that takes a string and produces a new string with the characters in reverse order, so <code>'Newton'</code> becomes <code>'notweN'</code>.</li>
+<li>The built-in function <code>enumerate()</code> takes a sequence (e.g. a list) and generates a new sequence of the same length. Each element of the new sequence is a pair composed of the index (0, 1, 2,…) and the value from the original sequence:</li>
+</ol>
+<div class="sourceCode" id="cb137"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb137-1" data-line-number="1">fruits <span class="op">=</span> [<span class="st">&#39;apple&#39;</span>, <span class="st">&#39;banana&#39;</span>, <span class="st">&#39;grapes&#39;</span>, <span class="st">&#39;pear&#39;</span>]</a>
+<a class="sourceLine" id="cb137-2" data-line-number="2"><span class="cf">for</span> position, name <span class="kw">in</span> <span class="bu">enumerate</span>(fruits):</a>
+<a class="sourceLine" id="cb137-3" data-line-number="3">  <span class="bu">print</span>(<span class="st">&quot;The &quot;</span>, position, <span class="st">&quot;fruit is &quot;</span>, name)</a></code></pre></div>
+<pre><code>## The  0 fruit is  apple
+## The  1 fruit is  banana
+## The  2 fruit is  grapes
+## The  3 fruit is  pear</code></pre>
+<p>The function <code>shuffle()</code> in the <code>random</code> package rearranges a list in place (meaning it changes the original object, so you don’t have to use a fresh variable name. Use the <code>enumerate()</code> and <code>random.shuffle()</code> to mix up the list below and work out where the digit 100 appears in the list.</p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb139-1" data-line-number="1">big_numbers <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1000</span>) )</a></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="making-choices-and-controlling-program-flow.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="user-functions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["programming_with_python.pdf", "programming_with_python.epub"],
+"toc": {
+"collapse": "subsection"
+},
+"highlight": "pygments"
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

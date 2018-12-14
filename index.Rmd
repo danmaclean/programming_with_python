@@ -1,0 +1,93 @@
+--- 
+title: "Beginning Python For Programming"
+author: "Dan MacLean"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "A guide to beginning programming with Python"
+---
+
+```{r}
+knitr::opts_chunk$set(engine.path = list(
+  python = '/Users/macleand/miniconda2/envs/programming_book/bin'
+))
+```
+# Prerequisites
+
+No specific knowledge is assumed for this book, though you do need to install some software.
+
+  1. Python 3 via Anaconda
+  2. A reasonably recent web-browser
+  3. The `PyVCF` and `biopython` python packages
+  4. The files [example.vcf](assets/example.vcf) and [SRR020192.fastq.gz](assets/SRR020192.fastq.gz)
+  5. A text-editor
+
+## Installing Python 3 with Anaconda
+
+Follow this link and install Python _3.x_ for your operating system. [https://www.anaconda.com/distribution/](https://www.anaconda.com/distribution/)
+
+### Note for macOS users
+
+Accept all of the defaults during installation
+
+Here is a video tutorial [https://www.youtube.com/watch?v=TcSAln46u9U](https://www.youtube.com/watch?v=TcSAln46u9U)
+
+### Note for Windows users
+
+Install Python 3 using all of the defaults for installation except make sure to check **Add Anaconda to my PATH environment variable**.
+
+Here is a video tutorial [https://www.youtube.com/watch?v=xxQ0mzZ8UvA](https://www.youtube.com/watch?v=xxQ0mzZ8UvA)
+
+### Note for Linux Users
+
+You'll need to be able to use the command-line to install with Anaconda. If you aren't comfortable with this, ask for assistance from the local support team.
+
+  1. Open [https://www.anaconda.com/download/#linux]() with your web browser.
+  2. Download the Python 3 installer for Linux.
+  3. Open a terminal window.
+  4.Type `bash Anaconda3-`and then press Tab. The name of the file you just downloaded should appear. If it does not, navigate to the folder where you downloaded the file, for example with: `cd Downloads`. Then, try again.
+  5. Press `enter`. You will follow the text-only prompts. To move through the text, press the `spacebar`. 
+  6. Type `yes` and press `enter` to approve the license. 
+  7. Press `enter` to approve the default location for the files. 
+  8. Type `yes` and press `enter` to prepend Anaconda to your `PATH` (this makes the Anaconda distribution the default Python).
+  9. Close the terminal window.
+
+## Starting a Jupyter Notebook
+
+### macOS
+  
+  1. Start the `Terminal` application in `Applications -> Utilities`
+  2. Type `jupyter notebook`, it should start in your web browser
+  
+### Windows
+
+  1. From the Start menu, search for and open `Anaconda 3` or `Jupyter Notebook`. You should be able to start a notebook directly by clicking the `Jupyter Notebook` icon.
+  
+### Linux
+
+  1. Open the terminal application. It is _usually_ in the task bar or dock 
+  2. Type `jupyter notebook`, it should start in your web browser
+  
+## Installing Python Packages with `conda`
+
+You can use `conda` to install new Python packages with `conda install <package_name>`.
+You can install the required packages with
+
+```
+conda install PyVCF
+conda install biopython
+```
+
+Accept all defaults when the system asks a question.
+
+## Installing a Text Editor
+
+A text editor is a program that deals with text but not in the same way as a word processor. Many such programs are available, try the options below
+
+  1. TextMate (macOS) [https://macromates.com/]()
+  2. Atom (macOS/Windows) [https://atom.io/]()
+  3. Notepad++ (Windows) [https://notepad-plus-plus.org/]()
+  
