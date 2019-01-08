@@ -1,5 +1,14 @@
 # Putting code into scripts
 
+1. Questions:
+  * How do I write my code into a script that can be run again?
+2. Objectives:
+  * Learn the conventions for creating script files.
+  * Get parameters from the command line and use them in scripts.
+3. Keypoints:
+  * Scripts are files that contain programs of Python code.
+
+
 Scripts are files full of code that has been put together in order to do a particular task. The idea being that the code will get re-run many times and not just as a one off. 
 
 Building a script is usually pretty easy - just type the code in to a text file. 
@@ -23,7 +32,7 @@ This is a Unix/Linux convention that affects how those systems interpret the fil
 
 ## The Filename Extension
 
-By convention, Python scripts end in the extension, `.py`.
+By convention, Python script filess end in the extension, `.py`.
 
 
 So if we have the following in a file called `hello_world.py`, we have a Python script.

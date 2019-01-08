@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Beginning Python For Programming</title>
+  <title>Beginning Programming with Python</title>
   <meta name="description" content="A guide to beginning programming with Python">
   <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
-  <meta property="og:title" content="Beginning Python For Programming" />
+  <meta property="og:title" content="Beginning Programming with Python" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Beginning Python For Programming" />
+  <meta name="twitter:title" content="Beginning Programming with Python" />
   
   <meta name="twitter:description" content="A guide to beginning programming with Python" />
   
@@ -25,15 +25,15 @@
 <meta name="author" content="Dan MacLean">
 
 
-<meta name="date" content="2018-12-14">
+<meta name="date" content="2019-01-08">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="data.html">
+<link rel="prev" href="putting-code-into-scripts.html">
+<link rel="next" href="acknowledgements.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -126,7 +126,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">Beginning Programming with Python</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a><ul>
@@ -141,11 +141,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#linux"><i class="fa fa-check"></i><b>1.2.3</b> Linux</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#installing-python-packages-with-conda"><i class="fa fa-check"></i><b>1.3</b> Installing Python Packages with <code>conda</code></a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#installing-a-text-editor"><i class="fa fa-check"></i><b>1.4</b> Installing a Text Editor</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="motivation.html"><a href="motivation.html"><i class="fa fa-check"></i><b>2</b> Motivation</a></li>
 <li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> Working with Data</a><ul>
 <li class="chapter" data-level="3.1" data-path="data.html"><a href="data.html#using-variables-as-names-for-data"><i class="fa fa-check"></i><b>3.1</b> Using variables as names for data</a></li>
-<li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#functions-from-different-places"><i class="fa fa-check"></i><b>3.2</b> Functions from different places</a><ul>
+<li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#python-has-three-main-types-of-function."><i class="fa fa-check"></i><b>3.2</b> Python has three main types of function.</a><ul>
 <li class="chapter" data-level="3.2.1" data-path="data.html"><a href="data.html#built-in-functions-and-operators"><i class="fa fa-check"></i><b>3.2.1</b> Built-In Functions and Operators</a></li>
 <li class="chapter" data-level="3.2.2" data-path="data.html"><a href="data.html#package-methods"><i class="fa fa-check"></i><b>3.2.2</b> Package Methods</a></li>
 <li class="chapter" data-level="3.2.3" data-path="data.html"><a href="data.html#object-methods"><i class="fa fa-check"></i><b>3.2.3</b> Object Methods</a></li>
@@ -159,25 +160,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>4</b> Data Structures</a><ul>
 <li class="chapter" data-level="4.1" data-path="data-structures.html"><a href="data-structures.html#lists"><i class="fa fa-check"></i><b>4.1</b> Lists</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="data-structures.html"><a href="data-structures.html#list-use"><i class="fa fa-check"></i><b>4.1.1</b> List use</a></li>
+<li class="chapter" data-level="4.1.2" data-path="data-structures.html"><a href="data-structures.html#list-methods"><i class="fa fa-check"></i><b>4.1.2</b> List methods</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="data-structures.html"><a href="data-structures.html#dictionaries"><i class="fa fa-check"></i><b>4.2</b> Dictionaries</a></li>
 <li class="chapter" data-level="4.3" data-path="data-structures.html"><a href="data-structures.html#quiz-1"><i class="fa fa-check"></i><b>4.3</b> Quiz</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="making-choices-and-controlling-program-flow.html"><a href="making-choices-and-controlling-program-flow.html"><i class="fa fa-check"></i><b>5</b> Making Choices and Controlling Program Flow</a><ul>
-<li class="chapter" data-level="5.1" data-path="making-choices-and-controlling-program-flow.html"><a href="making-choices-and-controlling-program-flow.html#conditionals"><i class="fa fa-check"></i><b>5.1</b> Conditionals</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="making-choices-and-controlling-program-flow.html"><a href="making-choices-and-controlling-program-flow.html#testing-equality"><i class="fa fa-check"></i><b>5.1.1</b> Testing equality</a></li>
+<li class="chapter" data-level="5.1" data-path="making-choices-and-controlling-program-flow.html"><a href="making-choices-and-controlling-program-flow.html#conditionals"><i class="fa fa-check"></i><b>5.1</b> Conditionals</a></li>
+<li class="chapter" data-level="5.2" data-path="making-choices-and-controlling-program-flow.html"><a href="making-choices-and-controlling-program-flow.html#indentation-in-python"><i class="fa fa-check"></i><b>5.2</b> Indentation in Python</a></li>
+<li class="chapter" data-level="5.3" data-path="making-choices-and-controlling-program-flow.html"><a href="making-choices-and-controlling-program-flow.html#more-ifs"><i class="fa fa-check"></i><b>5.3</b> More <code>if</code>s</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="making-choices-and-controlling-program-flow.html"><a href="making-choices-and-controlling-program-flow.html#testing-equality"><i class="fa fa-check"></i><b>5.3.1</b> Testing equality</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="making-choices-and-controlling-program-flow.html"><a href="making-choices-and-controlling-program-flow.html#logical-operators"><i class="fa fa-check"></i><b>5.2</b> Logical operators</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="making-choices-and-controlling-program-flow.html"><a href="making-choices-and-controlling-program-flow.html#what-is-true-and-what-is-false"><i class="fa fa-check"></i><b>5.2.1</b> What is True and what is False</a></li>
+<li class="chapter" data-level="5.4" data-path="making-choices-and-controlling-program-flow.html"><a href="making-choices-and-controlling-program-flow.html#logical-operators"><i class="fa fa-check"></i><b>5.4</b> Logical operators</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="making-choices-and-controlling-program-flow.html"><a href="making-choices-and-controlling-program-flow.html#what-is-true-and-what-is-false"><i class="fa fa-check"></i><b>5.4.1</b> What is True and what is False</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="making-choices-and-controlling-program-flow.html"><a href="making-choices-and-controlling-program-flow.html#thats-not-not-what-i-meant"><i class="fa fa-check"></i><b>5.3</b> That’s Not Not What I Meant</a></li>
-<li class="chapter" data-level="5.4" data-path="making-choices-and-controlling-program-flow.html"><a href="making-choices-and-controlling-program-flow.html#quiz-2"><i class="fa fa-check"></i><b>5.4</b> Quiz</a></li>
+<li class="chapter" data-level="5.5" data-path="making-choices-and-controlling-program-flow.html"><a href="making-choices-and-controlling-program-flow.html#thats-not-not-what-i-meant"><i class="fa fa-check"></i><b>5.5</b> That’s Not Not What I Meant</a></li>
+<li class="chapter" data-level="5.6" data-path="making-choices-and-controlling-program-flow.html"><a href="making-choices-and-controlling-program-flow.html#quiz-2"><i class="fa fa-check"></i><b>5.6</b> Quiz</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="repeating-actions-with-loops.html"><a href="repeating-actions-with-loops.html"><i class="fa fa-check"></i><b>6</b> Repeating actions with Loops</a><ul>
 <li class="chapter" data-level="6.1" data-path="repeating-actions-with-loops.html"><a href="repeating-actions-with-loops.html#for-loops"><i class="fa fa-check"></i><b>6.1</b> For Loops</a><ul>
 <li class="chapter" data-level="6.1.1" data-path="repeating-actions-with-loops.html"><a href="repeating-actions-with-loops.html#choosing-loop-variable-names"><i class="fa fa-check"></i><b>6.1.1</b> Choosing loop variable names</a></li>
 <li class="chapter" data-level="6.1.2" data-path="repeating-actions-with-loops.html"><a href="repeating-actions-with-loops.html#loop-variable-lifespan"><i class="fa fa-check"></i><b>6.1.2</b> Loop variable lifespan</a></li>
-<li class="chapter" data-level="6.1.3" data-path="repeating-actions-with-loops.html"><a href="repeating-actions-with-loops.html#looping-over-a-range-of-numbers"><i class="fa fa-check"></i><b>6.1.3</b> Looping over a range of numbers</a></li>
+<li class="chapter" data-level="6.1.3" data-path="repeating-actions-with-loops.html"><a href="repeating-actions-with-loops.html#looping-over-a-list"><i class="fa fa-check"></i><b>6.1.3</b> Looping over a list</a></li>
+<li class="chapter" data-level="6.1.4" data-path="repeating-actions-with-loops.html"><a href="repeating-actions-with-loops.html#looping-over-a-range-of-numbers"><i class="fa fa-check"></i><b>6.1.4</b> Looping over a range of numbers</a></li>
+<li class="chapter" data-level="6.1.5" data-path="repeating-actions-with-loops.html"><a href="repeating-actions-with-loops.html#looping-over-a-dictionary"><i class="fa fa-check"></i><b>6.1.5</b> Looping over a dictionary</a></li>
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="repeating-actions-with-loops.html"><a href="repeating-actions-with-loops.html#while-loops"><i class="fa fa-check"></i><b>6.2</b> While Loops</a></li>
 <li class="chapter" data-level="6.3" data-path="repeating-actions-with-loops.html"><a href="repeating-actions-with-loops.html#quiz-3"><i class="fa fa-check"></i><b>6.3</b> Quiz</a></li>
@@ -185,17 +191,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="user-functions.html"><a href="user-functions.html"><i class="fa fa-check"></i><b>7</b> User Functions</a><ul>
 <li class="chapter" data-level="7.1" data-path="user-functions.html"><a href="user-functions.html#composing-functions"><i class="fa fa-check"></i><b>7.1</b> Composing Functions</a></li>
 <li class="chapter" data-level="7.2" data-path="user-functions.html"><a href="user-functions.html#variables-inside-and-outside-functions"><i class="fa fa-check"></i><b>7.2</b> Variables Inside and Outside Functions</a></li>
-<li class="chapter" data-level="7.3" data-path="user-functions.html"><a href="user-functions.html#quiz-4"><i class="fa fa-check"></i><b>7.3</b> Quiz</a></li>
+<li class="chapter" data-level="7.3" data-path="user-functions.html"><a href="user-functions.html#designing-programs-to-use-functions"><i class="fa fa-check"></i><b>7.3</b> Designing Programs to use functions</a></li>
+<li class="chapter" data-level="7.4" data-path="user-functions.html"><a href="user-functions.html#quiz-4"><i class="fa fa-check"></i><b>7.4</b> Quiz</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="using-packages.html"><a href="using-packages.html"><i class="fa fa-check"></i><b>8</b> Using Packages</a><ul>
-<li class="chapter" data-level="8.1" data-path="using-packages.html"><a href="using-packages.html#using-and-installing-packages."><i class="fa fa-check"></i><b>8.1</b> Using and Installing Packages.</a></li>
-<li class="chapter" data-level="8.2" data-path="using-packages.html"><a href="using-packages.html#the-pyvcf-package"><i class="fa fa-check"></i><b>8.2</b> The PyVCF Package</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="using-packages.html"><a href="using-packages.html#vcf-files---a-brief-introduction"><i class="fa fa-check"></i><b>8.2.1</b> VCF files - a brief introduction</a></li>
-<li class="chapter" data-level="8.2.2" data-path="using-packages.html"><a href="using-packages.html#the-vcf.reader-object"><i class="fa fa-check"></i><b>8.2.2</b> The <code>vcf.Reader</code> object</a></li>
-<li class="chapter" data-level="8.2.3" data-path="using-packages.html"><a href="using-packages.html#the-vcf.record-object"><i class="fa fa-check"></i><b>8.2.3</b> The <code>vcf.Record</code> object</a></li>
-<li class="chapter" data-level="8.2.4" data-path="using-packages.html"><a href="using-packages.html#object-attributes"><i class="fa fa-check"></i><b>8.2.4</b> Object Attributes</a></li>
+<li class="chapter" data-level="8" data-path="working-with-python-packages.html"><a href="working-with-python-packages.html"><i class="fa fa-check"></i><b>8</b> Working with Python Packages</a><ul>
+<li class="chapter" data-level="8.1" data-path="working-with-python-packages.html"><a href="working-with-python-packages.html#using-and-installing-packages."><i class="fa fa-check"></i><b>8.1</b> Using and Installing Packages.</a></li>
+<li class="chapter" data-level="8.2" data-path="working-with-python-packages.html"><a href="working-with-python-packages.html#the-pyvcf-package"><i class="fa fa-check"></i><b>8.2</b> The PyVCF Package</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="working-with-python-packages.html"><a href="working-with-python-packages.html#vcf-files---a-brief-introduction"><i class="fa fa-check"></i><b>8.2.1</b> VCF files - a brief introduction</a></li>
+<li class="chapter" data-level="8.2.2" data-path="working-with-python-packages.html"><a href="working-with-python-packages.html#the-vcf.reader-object"><i class="fa fa-check"></i><b>8.2.2</b> The <code>vcf.Reader</code> object</a></li>
+<li class="chapter" data-level="8.2.3" data-path="working-with-python-packages.html"><a href="working-with-python-packages.html#the-vcf.record-object"><i class="fa fa-check"></i><b>8.2.3</b> The <code>vcf.Record</code> object</a></li>
+<li class="chapter" data-level="8.2.4" data-path="working-with-python-packages.html"><a href="working-with-python-packages.html#object-attributes"><i class="fa fa-check"></i><b>8.2.4</b> Object Attributes</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="using-packages.html"><a href="using-packages.html#quiz-5"><i class="fa fa-check"></i><b>8.3</b> Quiz</a></li>
+<li class="chapter" data-level="8.3" data-path="working-with-python-packages.html"><a href="working-with-python-packages.html#quiz-5"><i class="fa fa-check"></i><b>8.3</b> Quiz</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="putting-code-into-scripts.html"><a href="putting-code-into-scripts.html"><i class="fa fa-check"></i><b>9</b> Putting code into scripts</a><ul>
 <li class="chapter" data-level="9.1" data-path="putting-code-into-scripts.html"><a href="putting-code-into-scripts.html#the-script-header"><i class="fa fa-check"></i><b>9.1</b> The Script Header</a></li>
@@ -207,6 +214,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10" data-path="putting-it-all-together.html"><a href="putting-it-all-together.html"><i class="fa fa-check"></i><b>10</b> Putting It All Together</a><ul>
 <li class="chapter" data-level="10.1" data-path="putting-it-all-together.html"><a href="putting-it-all-together.html#a-challenge-in-python"><i class="fa fa-check"></i><b>10.1</b> A Challenge in Python</a></li>
 </ul></li>
+<li class="chapter" data-level="11" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i><b>11</b> Acknowledgements</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -219,7 +227,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Beginning Python For Programming</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Beginning Programming with Python</a>
           </h1>
         </div>
 
@@ -227,22 +235,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="motivation" class="section level1">
-<h1><span class="header-section-number">Chapter 2</span> Motivation</h1>
-<p>Programming is a pretty weird skill. It boils down to shouting at a computer to make it do stuff for you. So why would you want to learn to do it? Well, there are plenty of reasons, some good and some bad. Some good ones that apply to working in biology and bioinformatics are time-saving, turning your computer from a limited ‘appliance’ to a general ‘power tool’ for your research and because it’s a skill that can help you develop a more precise, disciplined and abstract way of thinking.</p>
-<p>The main obstacle that most people encounter when learning to program is the surprisingly wide range of facts that you need to know in order to achieve something. This can make it</p>
-<p>The aim of this course is to introduce you to just enough of these facts and tricks to enable you to do useful stuff with programming. The things you’ll learn here will seem quite abstract and disconnected at first but hopefully by the end of the course you’ll be able to string them together to make something useful - and understand what’s going on.</p>
-<p>In this course, we’ll use Python 3 as our programming language - it’s a widely used very powerful but (all things considered) user-friendly language that suits beginners and experts alike (well, as well as any programming language can suit human users).</p>
-<p>We’ll use the bare-bones of Python 3, it is a very broad language with a lot of functionality, a lot of it in optional packages that you can install at will. We’ll only touch the surface of what you can do - but what we learn will be foundation enough to build pretty much anything on.</p>
+<div id="putting-it-all-together" class="section level1">
+<h1><span class="header-section-number">Section 10</span> Putting It All Together</h1>
+<div id="a-challenge-in-python" class="section level2">
+<h2><span class="header-section-number">10.1</span> A Challenge in Python</h2>
+<p>This file <a href="">ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR020/SRR020192/SRR020192.fastq.gz</a> contains next generation sequencing reads in <code>fastq</code> format.</p>
+<p>Write a Python script that use the BioPython package to</p>
+<ol style="list-style-type: decimal">
+<li>Count the reads in the <code>fastq</code> file</li>
+<li>Filter out low-quality reads from the <code>fastq</code> file</li>
+<li>Calculate how many reads are retained</li>
+<li>Use at least one user-defined function</li>
+</ol>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="putting-code-into-scripts.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="acknowledgements.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

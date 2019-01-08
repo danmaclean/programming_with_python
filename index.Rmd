@@ -1,5 +1,5 @@
 --- 
-title: "Beginning Python For Programming"
+title: "Beginning Programming with Python"
 author: "Dan MacLean"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -10,7 +10,7 @@ link-citations: yes
 description: "A guide to beginning programming with Python"
 ---
 
-```{r}
+```{r, echo=FALSE}
 knitr::opts_chunk$set(engine.path = list(
   python = '/Users/macleand/miniconda2/envs/programming_book/bin'
 ))
@@ -73,11 +73,12 @@ You'll need to be able to use the command-line to install with Anaconda. If you 
   
 ## Installing Python Packages with `conda`
 
-You can use `conda` to install new Python packages with `conda install <package_name>`.
-You can install the required packages with
+You can use `conda` to install new Python packages using the Terminal by typing `conda install <package_name>`.
+
+You can install the required packages with the following commands:
 
 ```
-conda install PyVCF
+conda install pyvcf
 conda install biopython
 ```
 
@@ -85,7 +86,7 @@ Accept all defaults when the system asks a question.
 
 ## Installing a Text Editor
 
-A text editor is a program that deals with text but not in the same way as a word processor. Many such programs are available, try the options below
+A text editor is a program that deals with text in a way that is appropriate to writing programs. It is quite different to a word processor. Many such programs are available, try the options below:
 
   1. TextMate (macOS) [https://macromates.com/]()
   2. Atom (macOS/Windows) [https://atom.io/]()

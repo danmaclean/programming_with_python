@@ -24,7 +24,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
 \hypersetup{unicode=true,
-            pdftitle={Beginning Python For Programming},
+            pdftitle={Beginning Programming with Python},
             pdfauthor={Dan MacLean},
             pdfborder={0 0 0},
             breaklinks=true}
@@ -117,7 +117,7 @@
 
 \setlength{\droptitle}{-2em}
 
-  \title{Beginning Python For Programming}
+  \title{Beginning Programming with Python}
     \pretitle{\vspace{\droptitle}\centering\huge}
   \posttitle{\par}
     \author{Dan MacLean}
@@ -125,9 +125,62 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2018-12-14}
+    \date{2019-01-08}
 
 \usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{quotchap}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsthm}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
+\setmainfont[UprightFeatures={SmallCapsFont=AlegreyaSC-Regular}]{Alegreya}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\topfraction}{0.8}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\floatpagefraction}{0.75}
+\let\oldhref\href
+\renewcommand{\href}[2]{#2\footnote{\url{#1}}}
+
+\newenvironment{task}
+{ \begin{tcolorbox}[title=For you to do,title filled] }
+{  \end{tcolorbox} }
+
+\newenvironment{reader}
+{ \begin{tcolorbox}[colbacktitle=red!50!white,
+title=huh?,coltitle=white,
+fonttitle=\bfseries] }
+{  \end{tcolorbox} }
+
+\newenvironment{roundup}
+{ \begin{tcolorbox}[colbacktitle=yellow!50!white,title=Round Up,coltitle=black, title filled] }
+{  \end{tcolorbox} }
+
+\newenvironment{myquote}
+{\begin{large}
+\begin{itshape}
+\begin{minipage}{6cm}
+}
+{
+\begin{vspace}{15mm}
+\end{vspace}
+\end{minipage}
+\end{itshape}
+\end{large} 
+}
+
+
+%\newenvironment{headquote}
+%{ 
+%\renewcommand{\footnotesize}{\Large}
+%\begin{savequote}[100mm] 
+%}
+%{  \end{savequote} }
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -143,6 +196,7 @@
 \theoremstyle{remark}
 \newtheorem*{remark}{Remark}
 \newtheorem*{solution}{Solution}
+\let\BeginKnitrBlock\begin \let\EndKnitrBlock\end
 \begin{document}
 \maketitle
 
@@ -150,14 +204,6 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{knitr}\OperatorTok{::}\NormalTok{opts_chunk}\OperatorTok{$}\KeywordTok{set}\NormalTok{(}\DataTypeTok{engine.path =} \KeywordTok{list}\NormalTok{(}
-  \DataTypeTok{python =} \StringTok{'/Users/macleand/miniconda2/envs/programming_book/bin'}
-\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-
 \hypertarget{prerequisites}{%
 \chapter{Prerequisites}\label{prerequisites}}
 
@@ -174,8 +220,10 @@ install some software.
 \item
   The \texttt{PyVCF} and \texttt{biopython} python packages
 \item
-  The file \href{assets/example.vcf}{example.vcf} and
+  The files \href{assets/example.vcf}{example.vcf} and
   \href{assets/SRR020192.fastq.gz}{SRR020192.fastq.gz}
+\item
+  A text-editor
 \end{enumerate}
 
 \hypertarget{installing-python-3-with-anaconda}{%
@@ -283,16 +331,36 @@ Notebook}\label{starting-a-jupyter-notebook}}
 \section{\texorpdfstring{Installing Python Packages with
 \texttt{conda}}{Installing Python Packages with conda}}\label{installing-python-packages-with-conda}}
 
-You can use \texttt{conda} to install new Python packages with
-\texttt{conda\ install\ \textless{}package\_name\textgreater{}}. You can
-install the required packages with
+You can use \texttt{conda} to install new Python packages using the
+Terminal by typing
+\texttt{conda\ install\ \textless{}package\_name\textgreater{}}.
+
+You can install the required packages with the following commands:
 
 \begin{verbatim}
-conda install PyVCF
+conda install pyvcf
 conda install biopython
 \end{verbatim}
 
 Accept all defaults when the system asks a question.
+
+\hypertarget{installing-a-text-editor}{%
+\section{Installing a Text Editor}\label{installing-a-text-editor}}
+
+A text editor is a program that deals with text in a way that is
+appropriate to writing programs. It is quite different to a word
+processor. Many such programs are available, try the options below:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  TextMate (macOS) \href{}{https://macromates.com/}
+\item
+  Atom (macOS/Windows) \href{}{https://atom.io/}
+\item
+  Notepad++ (Windows) \href{}{https://notepad-plus-plus.org/}
+\end{enumerate}
 
 \hypertarget{motivation}{%
 \chapter{Motivation}\label{motivation}}
@@ -307,25 +375,32 @@ help you develop a more precise, disciplined and abstract way of
 thinking.
 
 The main obstacle that most people encounter when learning to program is
-the surprisingly wide range of facts that you need to know in order to
-achieve something. This can make it
+the surprisingly wide range of concepts and implementations of concepts
+that you need to know in order to achieve something. This can make it
+intimidating and tedious for those starting out.
 
-The aim of this course is to introduce you to just enough of these facts
-and tricks to enable you to do useful stuff with programming. The things
-you'll learn here will seem quite abstract and disconnected at first but
-hopefully by the end of the course you'll be able to string them
-together to make something useful - and understand what's going on.
+The aim of this course is to introduce you to just enough of these to
+enable you to do useful stuff with Python. The things you'll learn here
+will seem quite abstract and disconnected at first but hopefully by the
+end of the course you'll be able to string them together to make
+something useful - and understand what's going on.
 
-In this course, we'll use Python 3 as our programming language - it's a
-widely used very powerful but (all things considered) user-friendly
-language that suits beginners and experts alike (well, as well as any
-programming language can suit human users).
+In this course, we'll use Python 3 - a widely used very powerful but
+(all things considered) user-friendly language that suits beginners and
+experts alike.
 
 We'll use the bare-bones of Python 3, it is a very broad language with a
 lot of functionality, a lot of it in optional packages that you can
-install at will. We'll only touch the surface of what you can do - but
-what we learn will be foundation enough to build pretty much anything
-on.
+install whenever you need them. We'll only touch the surface of what is
+possible - but what we learn will be foundation enough to build pretty
+much anything on.
+
+By the end of this course you'll have seen and used enough Python to be
+able to go forward and be able to start to tackle any sort of
+programming challenge. You'll still need your problem solving skills,
+tenacity and determination to do that, but at least you'll know Python.
+
+Happy Programming!
 
 \hypertarget{data}{%
 \chapter{Working with Data}\label{data}}
@@ -374,7 +449,7 @@ on.
 \item
   variables are handy names for data objects
 \item
-  variables are used in functions
+  data objects are used by functions
 \item
   functions can be stored in packages
 \item
@@ -385,8 +460,11 @@ In any Python program we will have some data and some objective to
 achieve - something to do with that data. Python provides many data
 types and many ways of working with that data.
 
-Let's see the simplest example of this, let's take a string (a text
-carrying data type) and use it in a function.
+Manipulating data is done with functions. Data is stored in objects. In
+this section we'll look at functions and objects and their interaction.
+
+Let's see the simplest example of this workflow, let's take a string (a
+text carrying object data type) and use it in a function.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -398,27 +476,31 @@ carrying data type) and use it in a function.
 ## Hello, world!
 \end{verbatim}
 
-In this example is the text \texttt{"Hello,\ World!"}, is being given to
+In this example the string \texttt{"Hello,\ World!"}, is being given to
 the \texttt{print()} function. Functions are bits of code that do stuff
-to data. The \texttt{print()} function just prints the data you pass it
-to the screen. We pass data to functions by putting the data in the
-brackets after the function name.
+to data. The \texttt{print()} function just prints the data that you
+pass it to the screen. We pass data to functions by putting the data in
+the brackets after the function name.
 
-\texttt{print()} just tries to print the data you give it to the screen.
+\BeginKnitrBlock{reader}
+Data is a very big word in programming, it carries a lot of meaning. It
+can mean very small bits of stuff, like a single text character, or huge
+amounts of stuff, like the images collected by the Hubble telescope.
+It's all the same to the computer and programming language.
+\EndKnitrBlock{reader}
 
 \hypertarget{using-variables-as-names-for-data}{%
 \section{Using variables as names for
 data}\label{using-variables-as-names-for-data}}
 
-We don't usually use data as directly as this. Instead we use a name
-that refers to a piece of data - a variable. Variables are just names
-that represent a bit of data. It's called a variable because the data
-the variable is associated with can change. We assign a name to data by
-using the assignment symbol the \texttt{=} sign. The data associated
-with a variable can be changed by re-assignment. allowing us to reuse
-the name.
+We don't usually use data directly. Instead we use a name that refers to
+a piece of data - a variable. Variables are just names that represent a
+bit of data. It's called a variable because the data the variable is
+associated with can change. We assign a name to data by using the
+assignment symbol the \texttt{=} sign. The data associated with a
+variable can be changed by re-assignment, allowing us to reuse the name.
 
-We can use variables as if they were the data they point to
+We can use variables as if they are the data they point to
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -467,21 +549,25 @@ affect another
 ## 143.0
 \end{verbatim}
 
-\hypertarget{functions-from-different-places}{%
-\section{Functions from different
-places}\label{functions-from-different-places}}
+\hypertarget{python-has-three-main-types-of-function.}{%
+\section{Python has three main types of
+function.}\label{python-has-three-main-types-of-function.}}
 
-We can work on data objects in Python using three different types of
-function
+Python is \textbf{full} of functions. So many in fact that coming up
+with names can be a problem! This is a serious issue as you have to
+refer to functions by name. To resolve this problem Python keeps its
+functions in different places in its library, and the way we call the
+function changes depending on where the function `lives'. There are
+three basic function types:
 
 \begin{itemize}
 \tightlist
 \item
-  Object Methods
-\item
   Built-In Functions and Operators
 \item
   Package Functions
+\item
+  Object Methods
 \end{itemize}
 
 \hypertarget{built-in-functions-and-operators}{%
@@ -553,6 +639,10 @@ to operate on. For instance, we can add strings?!
 ## HelloWorld!
 \end{verbatim}
 
+This is supposed to be a way of making the language more intuitive and
+readable at the user end of things. Most times you see operators, they
+should be pretty obvious.
+
 \hypertarget{package-methods}{%
 \subsection{Package Methods}\label{package-methods}}
 
@@ -586,15 +676,18 @@ numpy function \texttt{arange()} which gives us a list of numbers.
 \hypertarget{object-methods}{%
 \subsection{Object Methods}\label{object-methods}}
 
-Python's data are represented in the computer in things called objects.
-An object is basically a bit of data with some functions attached. So
-that each piece of data comes with the code to manipulate it. These
+Lumps of data are represented in the computer in things called objects.
+An object is basically a bit of data with some functions attached. This
+means each piece of data comes with the code to manipulate it. These
 attached functions are called \texttt{methods}.
 
-We access data's methods using the \texttt{.} syntax, so you have
-\texttt{variable\_name.method()}, read this as you telling the variable
-to do \texttt{method()} to itself, so a text containing variable
-\texttt{x} used with \texttt{.capitalize()} comes to
+We access data's methods using the \texttt{.} syntax again, so this time
+you have \texttt{variable\_name.method()}, read this as you telling the
+object the variable points at to do \texttt{method()} to itself. This is
+simpler than it sounds.
+
+Consider a variable \texttt{x} pointing to a string object. We might use
+it with \texttt{.capitalize()} as follows
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -626,6 +719,9 @@ Python just throws an error. Basically this error is saying that
 \texttt{int} (integer, a number object ) doesn't have a method called
 \texttt{capitalize}.
 
+Loosely, methods are functions that only apply to particular object
+types.
+
 We need to know what methods an object has before we can work on them.
 We can find this by reading the documentation for the object type. And
 Python will give us the type with the \texttt{type()} function
@@ -647,9 +743,20 @@ easiest place to find the Python documentation is online. Googling
 which shows us all the String methods. This works well for finding all
 methods for objects of other types.
 
+\BeginKnitrBlock{roundup}
+We have discussed three types of function. The basic type is Python's
+built in functions, these are available anywhere in a Python program.
+The second, Package functions must be imported with package and accessed
+using the package name and dot. The third is the method which is a
+function tied to an object and is accessed using the variable name and
+the dot.
+\EndKnitrBlock{roundup}
+
 \hypertarget{objects-and-types-in-python}{%
 \section{Objects and types in
 Python}\label{objects-and-types-in-python}}
+
+Let's examine some object types.
 
 Python knows many types of object, most things are an object of some
 type. Three common object types are:
@@ -667,11 +774,9 @@ type. Three common object types are:
 \hypertarget{string-objects}{%
 \subsection{String Objects}\label{string-objects}}
 
-The term 'strings` is computer jargon for text data, usually a single
-lump of text data treated as a whole.
-
-And to create a strings we simply have to add single or double quotes
-around some text, for example:
+The term `string' is computer jargon for text data, usually a single
+lump of text data treated as a whole. To create a strings we simply have
+to add single or double quotes around some text, for example:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -696,7 +801,8 @@ number.
 \end{verbatim}
 
 Here the \texttt{*} operator has modified itself to work on a string and
-repeated the string!
+repeated the string! Usually though the program will crash out, giving
+an operator the wrong data will confuse the program.
 
 \hypertarget{indexing-a-string-slicing}{%
 \subsubsection{Indexing a string
@@ -774,62 +880,17 @@ execute:
 \end{Highlighting}
 \end{Shaded}
 
-The difference is important. Operations with integers return only
-integers.
+The difference is important in some cases. You can convert type
+explicitly using the \texttt{int()} and \texttt{float()} functions.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\BuiltInTok{print}\NormalTok{( }\DecValTok{10} \OperatorTok{/} \DecValTok{3}\NormalTok{ )}
+\BuiltInTok{print}\NormalTok{( }\BuiltInTok{float}\NormalTok{(}\DecValTok{1}\NormalTok{) }\OperatorTok{+} \DecValTok{3}\NormalTok{ )}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## 3.3333333333333335
-\end{verbatim}
-
-Operations with floating points return floating points
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\BuiltInTok{print}\NormalTok{( }\FloatTok{10.0} \OperatorTok{/} \FloatTok{3.0}\NormalTok{ )}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## 3.3333333333333335
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\BuiltInTok{print}\NormalTok{( }\DecValTok{10} \OperatorTok{/} \FloatTok{3.0}\NormalTok{ )}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## 3.3333333333333335
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\BuiltInTok{print}\NormalTok{( }\FloatTok{10.0} \OperatorTok{/} \DecValTok{3}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## 3.3333333333333335
-\end{verbatim}
-
-You can convert type explicitly using the \texttt{int()} and
-\texttt{float()} functions.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\BuiltInTok{print}\NormalTok{( }\BuiltInTok{float}\NormalTok{(}\DecValTok{10}\NormalTok{) }\OperatorTok{/} \DecValTok{3}\NormalTok{ )}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## 3.3333333333333335
+## 4.0
 \end{verbatim}
 
 \begin{Shaded}
@@ -880,8 +941,7 @@ You can convert type explicitly using the \texttt{int()} and
 \setcounter{enumi}{2}
 \tightlist
 \item
-  Recall that a section of string is called a
-  \href{\%7B\%7B\%20page.root\%20\%7D\%7D/reference/\#slice}{slice}.
+  Recall that a section of string is called a slice.
 \end{enumerate}
 
 \begin{verbatim}
@@ -953,7 +1013,7 @@ then fixing the capitalization from there.
 \begin{itemize}
 \tightlist
 \item
-  How do I arrange and process lots of data in Python?
+  How do I arrange and process lots of items of data in Python?
 \end{itemize}
 
 \begin{enumerate}
@@ -968,8 +1028,6 @@ then fixing the capitalization from there.
 \tightlist
 \item
   Create and work with \texttt{lists} and \texttt{dicts}
-\item
-  Using loops and conditionals to make decisions
 \end{itemize}
 
 \begin{enumerate}
@@ -983,25 +1041,22 @@ then fixing the capitalization from there.
 \begin{itemize}
 \tightlist
 \item
-  variables are handy names for data objects
+  A list is a collection object that is a linear collection of other
+  objects
 \item
-  variables are used in functions
-\item
-  functions can be stored in packages
-\item
-  methods available depend on the object we're talking about
+  A dict is a collection object that is a group of key objects that
+  point to values
 \end{itemize}
+
+Data structures are collection types that group lots of data into a
+single object and make working with lots of data easier. Python has some
+built in data structures we can use.
 
 \hypertarget{lists}{%
 \section{Lists}\label{lists}}
 
-Like most programming languages Python has some built in data structures
-that we can use.
-
-Data structures are collection types that group lots of data into a
-single object and make working with lots of data easier. The simplest
-data structure is a \texttt{list}. We can create a list simply by
-enclosing our data in square brackets.
+The simplest data structure is a \texttt{list}. We can create a list
+simply by enclosing our data in square brackets.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1029,8 +1084,8 @@ function. Recall the \texttt{numpy} function we used earlier.
 ## [ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14]
 \end{verbatim}
 
-\hypertarget{list-use}{%
-\subsection{List use}\label{list-use}}
+Here we get a list of integers. The point being it is now a collection
+of data that we can refer to as a single entity.
 
 Lists can mix up any sort of data type,
 
@@ -1058,6 +1113,9 @@ including other lists.
 ## [[1, 2, 3], ['a', 'b', 'c']]
 \end{verbatim}
 
+\hypertarget{list-use}{%
+\subsection{List use}\label{list-use}}
+
 List elements can be accessed using indexing, like with strings.
 
 \begin{Shaded}
@@ -1072,12 +1130,12 @@ List elements can be accessed using indexing, like with strings.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\BuiltInTok{print}\NormalTok{( numbers_and_letters[}\DecValTok{2}\NormalTok{:}\DecValTok{3}\NormalTok{] )}
+\BuiltInTok{print}\NormalTok{( numbers_and_letters[}\DecValTok{2}\NormalTok{:}\DecValTok{4}\NormalTok{] )}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## ['three']
+## ['three', 'IV']
 \end{verbatim}
 
 Indexing an element returns the whole element - so if that element
@@ -1093,7 +1151,8 @@ happens to be a list itself - you get a whole list back
 ## ['a', 'b', 'c']
 \end{verbatim}
 
-To get at a single element you must use double square brackets.
+To get at a single element in this case you must use multiple sets of
+square brackets, one for each list.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1114,6 +1173,31 @@ To get at a single element you must use double square brackets.
 \begin{verbatim}
 ## a
 \end{verbatim}
+
+\hypertarget{list-methods}{%
+\subsection{List methods}\label{list-methods}}
+
+Much of what you'll want to do with a list is accomplished with methods.
+Sticking something on the end is done with \texttt{.append()}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{numbers_and_letters.append(}\StringTok{"ninety"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{( numbers_and_letters )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1, 2, 'three', 'IV', 5.0, 'ninety']
+\end{verbatim}
+
+\BeginKnitrBlock{reader}
+In the example above we didn't need to save this back to a variable.
+Note that this isn't a mistake. This method modified the object
+\texttt{in-place}. Some methods will do this, and at this stage which is
+which is going to seem somewhat arbitrary. The documentation will
+explain which do and don't.
+\EndKnitrBlock{reader}
 
 \hypertarget{dictionaries}{%
 \section{Dictionaries}\label{dictionaries}}
@@ -1137,9 +1221,11 @@ using the curly brackets and the \texttt{key/value} pairs
 ## {'key1': 'value1', 'key2': 'value2'}
 \end{verbatim}
 
-Note the order in the dictionary isn't preserved. We can use the square
-brackets to get a single value, but as a dictionary has no order or
-index, we must use the key.
+Note the order in the dictionary isn't preserved. The information is
+stored according to an internal algorithm, not the order the informaion
+is added. We can use the square brackets to get a single value, but as a
+dictionary has no order and therefore no numeric index, we must use the
+key as the index.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1177,8 +1263,7 @@ TypeError: unhashable type: 'list'
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Given the list below, use slicing to access only the last four
-  entries.
+  Given the list below, use slicing to access only the last 2 entries.
 \end{enumerate}
 
 \begin{Shaded}
@@ -1194,7 +1279,9 @@ TypeError: unhashable type: 'list'
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{1}
-\tightlist
+\item
+  Modify \texttt{list\_for\_slicing} using the \texttt{.reverse()}
+  method. Verify that it is reversed as you expected.
 \item
   Can you work out how to correct the wrong data in the dictionary
   below? Try to think of a way that \emph{doesn't} involve re-writing
@@ -1213,7 +1300,7 @@ TypeError: unhashable type: 'list'
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{2}
+\setcounter{enumi}{3}
 \tightlist
 \item
   Add in the missing season.
@@ -1222,6 +1309,52 @@ TypeError: unhashable type: 'list'
 \hypertarget{making-choices-and-controlling-program-flow}{%
 \chapter{Making Choices and Controlling Program
 Flow}\label{making-choices-and-controlling-program-flow}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Questions:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  How do we get Python to make choices?
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Objectives:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Use and understand \texttt{if} and \texttt{else}
+\item
+  Use and understand boolean condition operators
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Keypoints:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Conditions let us test a value and run different bits of code
+  dependently
+\item
+  Whitespace is an important structuring element in Python code.
+\end{itemize}
 
 How can we use Python to automatically recognize differences in data
 such that it can change what code is run depending on the data and take
@@ -1262,6 +1395,65 @@ The diagram below shows how this choice is being made.
 \includegraphics{assets/python-flowchart-conditional.png}
 \caption{Executing a Conditional}
 \end{figure}
+
+\hypertarget{indentation-in-python}{%
+\section{Indentation in Python}\label{indentation-in-python}}
+
+The layout of code in Python is actually pretty important. The
+whitespace is structural and the amount of it tells us something about
+where we are in a program. Whitespace is particularly important in
+\texttt{if} . By convention the indent under each new \texttt{if} or
+\texttt{else} should be four spaces.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ x }\OperatorTok{>}\NormalTok{ y:}
+\NormalTok{    do_something()}
+\end{Highlighting}
+\end{Shaded}
+
+An \texttt{if} within an \texttt{if} needs further indentation - it must
+also be four spaces further in, so a total of eight spaces.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ x }\OperatorTok{>} \DecValTok{100}\NormalTok{:}
+    \BuiltInTok{print}\NormalTok{(}\StringTok{"bigger than 100"}\NormalTok{)}
+    \ControlFlowTok{if}\NormalTok{ x  }\OperatorTok{<} \DecValTok{120}\NormalTok{:}
+        \BuiltInTok{print}\NormalTok{(}\StringTok{"but smaller than 120"}\NormalTok{)}
+    \ControlFlowTok{else}\NormalTok{:}
+        \BuiltInTok{print}\NormalTok{(}\StringTok{"and bigger than 120"}\NormalTok{)}
+\ControlFlowTok{else}\NormalTok{:}
+    \BuiltInTok{print}\NormalTok{(}\StringTok{"x is too small"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+This rule propagates, so a third level would need twelve spaces etc.
+
+Note how the code above is structured now. Code at the same indentation
+is in the same group of code - at the same level. We can easily see
+which \texttt{if} and \texttt{else} go together as pairs. This is the
+point of using whitespace like this - it gives us clean and visually
+consistent programs which the designers of Python value.
+
+A common gotcha is that you always have to undo the indent at the end of
+the block. The first bit of the rest of the code must always be fully at
+the left of the page or Python will interpret the code incorrectly.
+
+These indentation rules apply in other places in Python code and we'll
+come across them in due course.
+
+\BeginKnitrBlock{reader}
+You are probably thinking that this is a bit of pain. Having to type in
+so many spaces is a bit tedious. For this reason, most text editors will
+allow you to use the \texttt{tab} key to enter four spaces instead of a
+genuine \texttt{tab}. They'll also show the spaces indented as little
+dots. Try playing about with the preferences in your text editor if you
+can't see this.
+\EndKnitrBlock{reader}
+
+\hypertarget{more-ifs}{%
+\section{\texorpdfstring{More \texttt{if}s}{More ifs}}\label{more-ifs}}
 
 Conditional statements don't have to include an \texttt{else}. If there
 isn't one, Python simply does nothing if the test is false:
@@ -1323,8 +1515,8 @@ assign values.
 \section{Logical operators}\label{logical-operators}}
 
 Python has all the standard logical operators that let us combine tests.
-Most commonly there is \texttt{and} and \texttt{or}. \texttt{and} is
-only true if both parts are true:
+Most commonly there is \texttt{and} and \texttt{or}. An \texttt{and}
+operator is only true if both parts are true:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1356,17 +1548,14 @@ while \texttt{or} is true if at least one part is true:
 \subsection{What is True and what is
 False}\label{what-is-true-and-what-is-false}}
 
-True and \texttt{False} \texttt{True} and \texttt{False} are special
-words in Python called \texttt{booleans}, which represent truth values.
-A statement such as \texttt{1\ \textless{}\ 0} returns the value
-\texttt{False}, while \texttt{-1\ \textless{}\ 0} returns the value
-\texttt{True}.
+\texttt{True} and \texttt{False} are special words in Python called
+\texttt{booleans}, which represent truth values. A statement such as
+\texttt{1\ \textless{}\ 0} returns the value \texttt{False}, while
+\texttt{-1\ \textless{}\ 0} returns the value \texttt{True}.
 
 \texttt{True} and \texttt{False} booleans are not the only values in
 Python that are true and false. In fact, \emph{any} value can be used in
-an \texttt{if} or \texttt{elif}. After reading and running the code
-below, explain what the rule is for which values are considered true and
-which are considered false.
+an \texttt{if} or \texttt{elif}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1407,14 +1596,14 @@ which are considered false.
 ## one is true
 \end{verbatim}
 
+It may seem strange to set things up this way, but in Python in practice
+it allows for some nice and easy to read and write constructions.
+
 \hypertarget{thats-not-not-what-i-meant}{%
 \section{That's Not Not What I Meant}\label{thats-not-not-what-i-meant}}
 
 Sometimes it is useful to check whether some condition is not true. The
-Boolean operator \texttt{not} can do this explicitly. After reading and
-running the code below, write some \texttt{if} statements that use
-\texttt{not} to test the rule that you formulated in the previous
-challenge.
+Boolean operator \texttt{not} can do this explicitly.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1548,6 +1737,52 @@ Why did you pick this answer?
 \chapter{Repeating actions with
 Loops}\label{repeating-actions-with-loops}}
 
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Questions:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  How can we repeat code an arbitrary number of times?
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Objectives:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Understand the \texttt{for} loop and the \texttt{while} loop
+\item
+  Looping a specified number of times and with a range of numbers using
+  \texttt{range()}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Keypoints
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{for} loops repeat code for each element in a collection
+\item
+  \texttt{while} loops repeat code until a condition changes
+\end{itemize}
+
 To do that, we'll have to teach the computer how to repeat things.
 
 An example task that we might want to repeat is printing each character
@@ -1606,9 +1841,8 @@ This is a bad approach for two reasons:
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  It doesn't scale: if we want to print the characters in a string
-  that's hundreds of letters long, we'd be better off just typing them
-  in.
+  It doesn't scale: if we want to print the characters in a string thats
+  hundreds of letters long, we'd be better off just typing them in.
 \item
   It's fragile: if we give it a longer string, it only prints part of
   the data, and if we give it a shorter one,it produces an error because
@@ -1658,8 +1892,10 @@ of data taking one bit at a time. Here's a loop in action
 \end{verbatim}
 
 This is shorter, certainly shorter than something that prints every
-character in a hundred-letter string and more robust as well. See how
-the same code works if we change the length of the word
+character in a hundred-letter string and more robust as well. Note the
+indentation rules apply in the \texttt{for} loop.
+
+Also, see how the same code works if we change the length of the word
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1750,12 +1986,13 @@ Here's another loop that repeatedly updates a variable:
 
 It's worth tracing the execution of this little program step by
 step.Since there are five characters in
-\texttt{\textquotesingle{}aeiou\textquotesingle{}},the statement on line
-3 will be executed five times.The first time around,\texttt{length} is
-zero (the value assigned to it on line 1) and \texttt{vowel} is
-\texttt{\textquotesingle{}a\textquotesingle{}}. The statement adds 1 to
-the old value of \texttt{length}, producing 1, and updates
-\texttt{length} to refer to that new value.
+\texttt{\textquotesingle{}aeiou\textquotesingle{}}, the statement on
+line 3 will be executed five times. The first time
+around,\texttt{length} is zero (the value assigned to it on line 1) and
+\texttt{vowel} is \texttt{\textquotesingle{}a\textquotesingle{}}.
+
+The statement adds 1 to the old value of \texttt{length}, producing 1,
+and updates \texttt{length} to refer to that new value.
 
 The next time around,\texttt{vowel} is
 \texttt{\textquotesingle{}e\textquotesingle{}} and \texttt{length} is 1,
@@ -1770,7 +2007,7 @@ tells us our final answer.
 
 Note that a loop variable is just a variable that's being used to record
 progress in a loop. It still exists after the loop is over, and we can
-re-use variables previously defined as loop variables as well:
+re-use variables that were previously defined as loop variables:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1796,6 +2033,9 @@ re-use variables previously defined as loop variables as well:
 ## after the loop, letter is c
 \end{verbatim}
 
+This means your loop variable should ideally not be something you intend
+to use elsewhere.
+
 Note also that finding the length of a string is such a common operation
 that Python actually has a built-in function to do it called
 \texttt{len}:
@@ -1808,6 +2048,27 @@ that Python actually has a built-in function to do it called
 
 \begin{verbatim}
 ## 5
+\end{verbatim}
+
+\hypertarget{looping-over-a-list}{%
+\subsection{Looping over a list}\label{looping-over-a-list}}
+
+Looping over a Python list is very common. The syntax is identical.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{numbers_and_letters }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{, }\StringTok{'three'}\NormalTok{, }\StringTok{'IV'}\NormalTok{, }\FloatTok{5.0}\NormalTok{ ]}
+\ControlFlowTok{for}\NormalTok{ item }\KeywordTok{in}\NormalTok{ numbers_and_letters:}
+    \BuiltInTok{print}\NormalTok{(item)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 1
+## 2
+## three
+## IV
+## 5.0
 \end{verbatim}
 
 \hypertarget{looping-over-a-range-of-numbers}{%
@@ -1837,6 +2098,67 @@ sequence of numbers. \texttt{range()} can accept 1, 2, or 3 parameters.
   one. For example \texttt{range(3,\ 10,\ 2)} produces
   \texttt{3,\ 5,\ 7,\ 9}.
 \end{itemize}
+
+\hypertarget{looping-over-a-dictionary}{%
+\subsection{Looping over a dictionary}\label{looping-over-a-dictionary}}
+
+You can loop over the keys in the dictionary in the same way as for the
+list, explicitly accessing the value using the key.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{d }\OperatorTok{=}\NormalTok{ \{}\StringTok{'x'}\NormalTok{: }\DecValTok{1}\NormalTok{, }\StringTok{'y'}\NormalTok{: }\DecValTok{2}\NormalTok{, }\StringTok{'z'}\NormalTok{: }\DecValTok{3}\NormalTok{\} }
+\ControlFlowTok{for}\NormalTok{ key }\KeywordTok{in}\NormalTok{ d:}
+    \BuiltInTok{print}\NormalTok{(key, }\StringTok{'has value'}\NormalTok{, d[key])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## x has value 1
+## y has value 2
+## z has value 3
+\end{verbatim}
+
+Note that as dicts are intrinsically disordered, unlike lists the order
+they will be accessed in this way is arbitrary. If you care about order
+you can make a list of the keys using the \texttt{keys()} method and
+loop over that instead. Here we make a list of keys and sort it, then
+loop over the sorted key. Note the difference in the result to that
+above.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{d }\OperatorTok{=}\NormalTok{ \{}\StringTok{'x'}\NormalTok{: }\DecValTok{1}\NormalTok{, }\StringTok{'y'}\NormalTok{: }\DecValTok{2}\NormalTok{, }\StringTok{'z'}\NormalTok{: }\DecValTok{3}\NormalTok{\} }
+\NormalTok{frozen_keys }\OperatorTok{=} \BuiltInTok{sorted}\NormalTok{(d.keys())}
+\ControlFlowTok{for}\NormalTok{ key }\KeywordTok{in}\NormalTok{ frozen_keys:}
+    \BuiltInTok{print}\NormalTok{(key, }\StringTok{'has value'}\NormalTok{, d[key])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## x has value 1
+## y has value 2
+## z has value 3
+\end{verbatim}
+
+Python can also be made to give you the key - value pairs if you want
+them, so you don't need to explicitly get the value each time. For this
+we use the \texttt{.items()} method and two loop variables. The first
+loop variable gets the key, the second the value.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{d }\OperatorTok{=}\NormalTok{ \{}\StringTok{'x'}\NormalTok{: }\DecValTok{1}\NormalTok{, }\StringTok{'y'}\NormalTok{: }\DecValTok{2}\NormalTok{, }\StringTok{'z'}\NormalTok{: }\DecValTok{3}\NormalTok{\} }
+\ControlFlowTok{for}\NormalTok{ key, value }\KeywordTok{in}\NormalTok{ d.items():}
+    \BuiltInTok{print}\NormalTok{(key, }\StringTok{'has value'}\NormalTok{, value)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## x has value 1
+## y has value 2
+## z has value 3
+\end{verbatim}
 
 \hypertarget{while-loops}{%
 \section{While Loops}\label{while-loops}}
@@ -1870,14 +2192,13 @@ from time to time.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\tightlist
 \item
-  Using \texttt{range}, write a loop to print the first 3 natural
-  numbers.
+  Using \texttt{range}, write a loop to print the first 3 positive
+  integers.
 \item
-  Exponentiation is built into Python. Write a loop that calculates the
-  same result as \texttt{5\ **\ 3} using multiplication (and without
-  exponentiation).
+  Exponentiation is built into Python, \(3 ^ 2\) would be
+  \texttt{3\ **\ 2}. Write a loop that calculates the same result as
+  \texttt{5\ **\ 3} using multiplication (and without exponentiation).
 \end{enumerate}
 
 \begin{Shaded}
@@ -1893,7 +2214,6 @@ from time to time.
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{2}
-\tightlist
 \item
   Knowing that two strings can be concatenated using the \texttt{+}
   operator, write a loop that takes a string and produces a new string
@@ -1937,11 +2257,31 @@ below and work out where the digit 100 appears in the list.
 \hypertarget{user-functions}{%
 \chapter{User Functions}\label{user-functions}}
 
-We'd like a way to package our code so that it is easier to reuse, and
-Python provides for this by letting us define things called `functions'
-a shorthand way of re-executing longer pieces of code. Let's start by
-defining a function \texttt{fahr\_to\_celsius} that converts
-temperatures from Fahrenheit to Celsius:
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Questions: How can I re-use bits of my own code?
+\item
+  Objectives: Create and use our own functions Compose our own functions
+  from other functions we made
+\item
+  Keypoints: Functions help us keep our programs concise and compact
+  Functions make coding much easier by reducing debugging and allowing
+  us to re-use code we've already written
+\end{enumerate}
+
+In order to write concise readable and bug-free programs its a good idea
+to do as little coding as possible in a program. To this end we follow a
+principle called DRY - don't repeat yourself! Meaning that we don't
+re-write code that does the same stuff in mulitple places in a program,
+we put it in one place and refer to it from there. So we'd like a way to
+package our code so that it is easier to reuse and Python provides for
+this by letting us define our own functions. In use these work just like
+all the other functions we've already seen.
+
+Let's start by defining a function \texttt{fahr\_to\_celsius} that
+converts temperatures from Fahrenheit to Celsius:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1957,16 +2297,18 @@ temperatures from Fahrenheit to Celsius:
 \end{figure}
 
 The function definition opens with the keyword \texttt{def} followed by
-the name of the function (\texttt{fahr\_to\_celsius}) and a
-parenthesized list of parameter names (\texttt{temp}). The body of the
-function, the statements that are executed when it runs is indented
-below the definition line. The body concludes with a \texttt{return}
-keyword followed by the return value.
+the name of the function (\texttt{fahr\_to\_celsius}) and a list of
+parameter names in brackets (\texttt{temp}). The parameter names are
+actually variables that carry the data given in the function call. The
+body of the function, the statements that are executed when it runs is
+indented below the definition line. The body concludes with a
+\texttt{return} keyword followed by the return value, the thing the
+function sends back to whatever called it.
 
 When we call the function, the values we pass to it are assigned to
-those variables so that we can use them inside the function. Inside the
-function, we use a return statement to send a result back to whoever
-asked for it.
+those parameter variables so that we can use them inside the function.
+Inside the function, we use a return statement to send a result back to
+the code that asked for it.
 
 Let's try running our function.
 
@@ -2080,6 +2422,21 @@ run
 
 \texttt{k} is 0 because the \texttt{k} inside the function \texttt{f2k}
 doesn't know about the \texttt{k} defined outside the function.
+
+\hypertarget{designing-programs-to-use-functions}{%
+\section{Designing Programs to use
+functions}\label{designing-programs-to-use-functions}}
+
+It's a good programming strategy to think about building functions into
+programs. Try to look for places where you're doing the same set of
+commands over again - that would be a prime target for turning into a
+function. Think also about places where you could just refer to an
+operation by name - something like: \texttt{count\_gc} for example. If
+you spot places like this its a good idea to put the code into a
+function since it will make your program more readable. When you find
+you're re-using the same functions in mulitple programs, then you're
+ready to start putting them in external files and re-using them from
+there.
 
 \hypertarget{quiz-4}{%
 \section{Quiz}\label{quiz-4}}
@@ -2204,22 +2561,75 @@ Why did you pick this answer?
   \texttt{7\ 7}
 \end{enumerate}
 
-\hypertarget{using-packages}{%
-\chapter{Using Packages}\label{using-packages}}
+\hypertarget{working-with-python-packages}{%
+\chapter{Working with Python
+Packages}\label{working-with-python-packages}}
 
-Packages are an important part of the Python `eco-system' that let us
-use a wide variety of code written by other people. Good packages
-provide functions, objects and methods that make working in a particular
-problem domain a lot easier.
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Questions:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  How can I use the wide range of code that other people have already
+  written?
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Objectives:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Install and Import packages using package managers
+\item
+  Use PyVCF - a genomics related package
+\item
+  Examine objects from this package
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Keypoints:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Packages that come from external sources need to be installed
+\item
+  There are many, many packages
+\item
+  Packages provide methods and objects of varying types
+\item
+  Good package use relies on good package documentation
+\end{itemize}
+
+Packages are an important part of the Python `ecosystem' that let us use
+a wide variety of code written by other people. Good packages provide
+functions, objects and methods that make working in a particular problem
+domain a lot easier.
 
 \hypertarget{using-and-installing-packages.}{%
 \section{Using and Installing
 Packages.}\label{using-and-installing-packages.}}
 
 We've already seen how to load in packages using the \texttt{import}
-statement. Here we load the \texttt{sys} package which has methods for
-working with the underlying system - the \texttt{platform} is the name
-of the operating system this code is running on.
+statement. Here we load the builit-in \texttt{sys} package which has
+methods for working with the underlying system - the \texttt{platform}
+is the name of the operating system this code is running on.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2232,14 +2642,14 @@ of the operating system this code is running on.
 ## darwin
 \end{verbatim}
 
-Some packages come as standard when Python is installed, some come from
-external sources and must be installed individually. There are multiple
-methods of installing packages. Assuming you set up Python using
-Anaconda for this book then you can use \texttt{conda} itself. Another
-more general way of installing packages is from PyPI, the Python Package
-Index.
+Some packages, like \texttt{sys} come as standard when Python is
+installed, some come from external sources and must be installed
+individually. There are multiple methods of installing packages.
+Assuming you set up Python using Anaconda for this book then you can use
+\texttt{conda} itself. Another more general way of installing packages
+is from PyPI, the Python Package Index.
 
-None of these are done from within Python itself, and must be done from
+None of these are done from within Python itself, they must be done from
 the regular command-line. The general form is:
 
 \begin{Shaded}
@@ -2262,9 +2672,9 @@ such files and the record they contain.
 introduction}\label{vcf-files---a-brief-introduction}}
 
 A VCF file is a column format file where each row represents a SNP/Indel
-record and the columns represent the variables of things like
-Chromosome, Position, Reference Genome Allele, Alternative Genome Allele
-etc. Here's what one record looks like.
+record and the columns represent things describing it like Chromosome,
+Position, Reference Genome Allele, Alternative Genome Allele etc. Here's
+what one record looks like, split over a few lines.
 
 \begin{longtable}[]{@{}ccccccc@{}}
 \caption{Table continues below}\tabularnewline
@@ -2374,7 +2784,7 @@ NA00003\strut
 \end{longtable}
 
 There's a lot of information in that one record, and each file has many
-tens of thousands of records! !e wouldn't want to try and process tens
+tens of thousands of records! We wouldn't want to try and process tens
 of thousands manually. Let's look at loading in a file and looping
 through each record using the \texttt{PyVCF} package.
 
@@ -2422,7 +2832,9 @@ object we created in a loop
 ## <class 'vcf.model._Record'>
 \end{verbatim}
 
-This does the code loop for every record in the file.
+This does the code loop for every record in the file. And note how
+\texttt{print()} gives only a rough printout of the object, not every
+bit of information.
 
 \hypertarget{the-vcf.record-object}{%
 \subsection{\texorpdfstring{The \texttt{vcf.Record}
@@ -2438,8 +2850,10 @@ properties called attributes.
 \hypertarget{object-attributes}{%
 \subsection{Object Attributes}\label{object-attributes}}
 
-Attributes of an object are different from functions of an object in
-that they tend to be things that just are rather than things that are
+As well as methods, objects have things called attributes.
+
+Attributes of an object are different from methods of an object in that
+they tend to be things that just are rather than things that are
 computed. So a hypothetical \texttt{shape} object representing a
 geometric shape might have an attribute called \texttt{sides}. This
 wouldn't need recomputing as it would be the same everytime.
@@ -2542,6 +2956,49 @@ unfortunately.
 \hypertarget{putting-code-into-scripts}{%
 \chapter{Putting code into scripts}\label{putting-code-into-scripts}}
 
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Questions:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  How do I write my code into a script that can be run again?
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Objectives:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Learn the conventions for creating script files.
+\item
+  Get parameters from the command line and use them in scripts.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Keypoints:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Scripts are files that contain programs of Python code.
+\end{itemize}
+
 Scripts are files full of code that has been put together in order to do
 a particular task. The idea being that the code will get re-run many
 times and not just as a one off.
@@ -2579,7 +3036,7 @@ the file. Leave it in for convention's sake.
 \hypertarget{the-filename-extension}{%
 \section{The Filename Extension}\label{the-filename-extension}}
 
-By convention, Python scripts end in the extension, \texttt{.py}.
+By convention, Python script filess end in the extension, \texttt{.py}.
 
 So if we have the following in a file called \texttt{hello\_world.py},
 we have a Python script.
@@ -2706,7 +3163,8 @@ Write a Python script that use the BioPython package to
   Use at least one user-defined function
 \end{enumerate}
 
-Acknowledgements
+\hypertarget{acknowledgements}{%
+\chapter{Acknowledgements}\label{acknowledgements}}
 
 Some of the quizzes and examples in this book particularly those in
 Chapters 3 to 7 are taken from the Software Carpentry lesson on

@@ -1,5 +1,18 @@
 book_filename: "programming_with_python"
 delete_merged_file: true
-language:
-  ui:
-    chapter_name: "Chapter "
+chapter_name: "Section "
+output_dir: docs
+rmd_files: [
+  "index.Rmd", 
+  "01-motivation.Rmd", 
+  "02-working_with_data.Rmd", 
+  "03-data_structures.Rmd",
+  "04-conditionals.Rmd",
+  "05-loops.Rmd",
+  "06-functions.Rmd",
+  "07-packages.Rmd",
+  "08-scripts.Rmd",
+  "09-final_challenge.Rmd",
+  "10-acknowledgements.Rmd"
+]
+clean: [packages.bib]

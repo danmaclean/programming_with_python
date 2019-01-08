@@ -1,19 +1,31 @@
-# Using Packages
+# Working with Python Packages
 
-Packages are an important part of the Python 'eco-system' that let us use a wide variety of code written by other people. Good packages provide functions, objects and methods that make working in a particular problem domain a lot easier. 
+1. Questions:
+  * How can I use the wide range of code that other people have already written?
+2. Objectives:
+  * Install and Import packages using package managers
+  * Use PyVCF - a genomics related package
+  * Examine objects from this package
+3. Keypoints:
+  * Packages that come from external sources need to be installed
+  * There are many, many packages
+  * Packages provide methods and objects of varying types
+  * Good package use relies on good package documentation
+
+Packages are an important part of the Python 'ecosystem' that let us use a wide variety of code written by other people. Good packages provide functions, objects and methods that make working in a particular problem domain a lot easier. 
 
 ## Using and Installing Packages.
 
-We've already seen how to load in packages using the `import` statement. Here we load the `sys` package which has methods for working with the underlying system - the `platform` is the name of the operating system this code is running on.
+We've already seen how to load in packages using the `import` statement. Here we load the builit-in `sys` package which has methods for working with the underlying system - the `platform` is the name of the operating system this code is running on.
 
 ```{python, highlight = TRUE}
 import sys
 print( sys.platform )
 ```
 
-Some packages come as standard when Python is installed, some come from external sources and must be installed individually. There are multiple methods of installing packages. Assuming you set up Python using Anaconda for this book then you can use `conda` itself. Another more general way of installing packages is from PyPI, the Python Package Index.
+Some packages, like `sys` come as standard when Python is installed, some come from external sources and must be installed individually. There are multiple methods of installing packages. Assuming you set up Python using Anaconda for this book then you can use `conda` itself. Another more general way of installing packages is from PyPI, the Python Package Index.
 
-None of these are done from within Python itself, and must be done from the regular command-line. The general form is:
+None of these are done from within Python itself, they must be done from the regular command-line. The general form is:
 
 ```{bash, eval = FALSE}
 conda install package_name
@@ -26,7 +38,7 @@ VCF files (variant call format) are files that describe SNPs and small indels in
 
 ### VCF files - a brief introduction
 
-A VCF file is a column format file where each row represents a SNP/Indel record and the columns represent the variables of things like Chromosome, Position, Reference Genome Allele, Alternative Genome Allele etc. Here's what one record looks like.
+A VCF file is a column format file where each row represents a SNP/Indel record and the columns represent things describing it like Chromosome, Position, Reference Genome Allele, Alternative Genome Allele etc. Here's what one record looks like, split over a few lines.
 
 ```{r, echo = FALSE}
 library(pander)
@@ -39,7 +51,7 @@ colnames(m) <- cols
 
 pander( m )
 ```
-There's a lot of information in that one record, and each file has many tens of thousands of records!  !e wouldn't want to try and process tens of thousands manually. Let's look at loading in a file and looping through each record using the `PyVCF` package.
+There's a lot of information in that one record, and each file has many tens of thousands of records!  We wouldn't want to try and process tens of thousands manually. Let's look at loading in a file and looping through each record using the `PyVCF` package.
 
 We've already seen that packages have functions we can call, and that doing so can sometimes return objects of new types. We'll use that pattern now to start processing a VCF file.
 
@@ -60,7 +72,7 @@ for record in vcf_reader:
   print(type(record))
 ```
 
-This does the code loop for every record in the file.
+This does the code loop for every record in the file. And note how `print()` gives only a rough printout of the object, not every bit of information.
 
 ### The `vcf.Record` object
 
@@ -68,9 +80,11 @@ Every time we loop we get a new `vcf.Record` object. This is a special sort of o
 
 ### Object Attributes
 
-Attributes of an object are different from functions of an object in that they tend to be things that just are rather than things that are computed. So a hypothetical `shape` object representing a geometric shape might have an attribute called `sides`. This wouldn't need recomputing as it would be the same everytime.
+As well as methods, objects have things called attributes.
 
-Attributes are easy to spot as they use the `object` dot `.` syntax, omitting the brackets at the end of the attribute name. Let's examine that using the `.POS` attribute. 
+Attributes of an object are different from methods of an object in that they tend to be things that just are rather than things that are computed. So a hypothetical `shape` object representing a geometric shape might have an attribute called `sides`. This wouldn't need recomputing as it would be the same everytime.
+
+Attributes are easy to spot as they use the `object` dot `.` syntax, omitting the brackets at the end of the attribute name. Let's examine that using the `.POS` attribute.
 
 ```{python, highlight = TRUE}
 vcf_reader = vcf.Reader(open('/Users/macleand/Desktop/example.vcf', 'r'))

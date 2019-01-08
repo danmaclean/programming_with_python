@@ -8,27 +8,34 @@
   - Using package functions and object methods
 3. Keypoints:
   - variables are handy names for data objects
-  - variables and functions give new data
+  - data objects are used by functions
   - functions can be stored in packages
   - methods available depend on the object we're talking about
 
 In any Python program we will have some data and some objective to achieve - something to do with that data. Python provides many data types and many ways of working with that data. 
 
-Let's see the simplest example of this, let's take a string (a text carrying data type) and use it in a function.
+Manipulating data is done with functions. Data is stored in objects. In this section we'll look at functions and objects and their interaction.
+
+Let's see the simplest example of this workflow, let's take a string (a text carrying object data type) and use it in a function.
 
 ```{python,  highlight=TRUE}
 print("Hello, world!")
 ```
 
-In this example is the text `"Hello, World!"`, is being given to the `print()` function. Functions are bits of code that do stuff to data. The `print()` function just prints the data you pass it to the screen. We pass data to functions by putting the data in the brackets after the function name. 
+In this example the string `"Hello, World!"`, is being given to the `print()` function. Functions are bits of code that do stuff to data. The `print()` function just prints the data that you pass it to the screen. We pass data to functions by putting the data in the brackets after the function name. 
 
-`print()` just tries to print the data you give it to the screen. 
+
+```{block2, type='reader'}
+
+Data is a very big word in programming, it carries a lot of meaning. It can mean very small bits of stuff, like a single text character, or huge amounts of stuff, like the images collected by the Hubble telescope. It's all the same to the computer and programming language. 
+
+```
 
 ## Using variables as names for data
 
-We don't usually use data as directly as this. Instead we use a name that refers to a piece of data - a variable.  Variables are just names that represent a bit of data. It's called a variable because the data the variable is associated with can change.  We assign a name to data by using the assignment symbol the `=` sign. The data associated with a variable can be changed by re-assignment. allowing us to reuse the name.
+We don't usually use data directly. Instead we use a name that refers to a piece of data - a variable.  Variables are just names that represent a bit of data. It's called a variable because the data the variable is associated with can change.  We assign a name to data by using the assignment symbol the `=` sign. The data associated with a variable can be changed by re-assignment, allowing us to reuse the name.
 
-We can use variables as if they were the data they point to
+We can use variables as if they are the data they point to
 
 ```{python, highlight = TRUE}
 x = "Hello, world!"
@@ -53,13 +60,13 @@ print(weight_pounds)
 
 ```
 
-## Functions from different places
+## Python has three main types of function.
 
-We can work on data objects in Python using three different types of function
-
-  * Object Methods
+Python is **full** of functions. So many in fact that coming up with names can be a problem! This is a serious issue as you have to refer to functions by name. To resolve this problem Python keeps its functions in different places in its library, and the way we call the function changes depending on where the function 'lives'. There are three basic function types:
+  
   * Built-In Functions and Operators
   * Package Functions
+  * Object Methods
 
 ### Built-In Functions and Operators
 
@@ -83,6 +90,7 @@ Some operators change what they do depending on the things you ask them to opera
 print( "Hello" + "World!")
 
 ```
+This is supposed to be a way of making the language more intuitive and readable at the user end of things. Most times you see operators, they should be pretty obvious.
 
 ### Package Methods
 
@@ -103,9 +111,11 @@ print( numbers )
 
 ### Object Methods
 
-Python's data are represented in the computer in things called objects. An object is basically a bit of data with some functions attached. So that each piece of data comes with the code to manipulate it. These attached functions are called `methods`.
+Lumps of data are represented in the computer in things called objects. An object is basically a bit of data with some functions attached. This means each piece of data comes with the code to manipulate it. These attached functions are called `methods`.
 
-We access data's methods using the `.` syntax, so you have `variable_name.method()`, read this as you telling the variable to do `method()` to itself, so a text containing variable `x` used with `.capitalize()` comes to
+We access data's methods using the `.` syntax again, so this time you have `variable_name.method()`, read this as you telling the object the variable points at to do `method()` to itself. This is simpler than it sounds. 
+
+Consider a variable `x` pointing to a string object. We might use it with `.capitalize()` as follows
 
 ```{python, highlight = TRUE}
 
@@ -132,6 +142,8 @@ Error in py_run_string_impl(code, local, convert) :
 
 Python just throws an error. Basically this error is saying that `int` (integer, a number object ) doesn't have a method called `capitalize`. 
 
+Loosely, methods are functions that only apply to particular object types. 
+
 We need to know what methods an object has before we can work on them. We can find this by reading the documentation for the object type. And Python will give us the type with the `type()` function
 
 ```{python, highlight = TRUE}
@@ -141,9 +153,15 @@ print( type(x) )
 We can see that `x` contains a `str` - a string. The easiest place to find the Python documentation is online. Googling `Python 3 str` shows us this page [https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str](), which shows us all the String methods. This works well for finding all methods for objects of other types.
 
 
+```{block2, type = "roundup"}
+
+We have discussed three types of function. The basic type is Python's built in functions, these are available anywhere in a Python program. The second, Package functions must be imported with package and accessed using the package name and dot. The third is the method which is a function tied to an object and is accessed using the variable name and the dot. 
+
+```
 
 ## Objects and types in Python
 
+Let's examine some object types.
 
 Python knows many types of object, most things are an object of some type. Three common object types are:
 
@@ -153,9 +171,7 @@ Python knows many types of object, most things are an object of some type. Three
 
 ### String Objects
 
-The term 'strings` is computer jargon  for text data, usually a single lump of text data treated as a whole.
-
-And to create a strings we simply have to add single or double quotes around some text, for example:
+The term 'string' is computer jargon for text data, usually a single lump of text data treated as a whole. To create a strings we simply have to add single or double quotes around some text, for example:
 
 ```{python, highlight = TRUE}
 weight_kg_text = 'weight in kilograms'
@@ -169,8 +185,7 @@ phone_number = "01818118181"
 print( phone_number * 2 )
 ```
 
-Here the `*` operator has modified itself to work on a string and repeated the string!
-
+Here the `*` operator has modified itself to work on a string and repeated the string! Usually though the program will crash out, giving an operator the wrong data will confuse the program. 
 
 #### Indexing a string (Slicing)
 
@@ -212,26 +227,12 @@ To create a variable with a floating point value, we can execute:
 weight_kg = 65.0
 ```
 
-The difference is important. Operations with integers return only integers.
-
-```{python, highlight = TRUE}
-print( 10 / 3 )
-```
-
-Operations with floating points return floating points
-
-```{python, highlight = TRUE}
-print( 10.0 / 3.0 )
-print( 10 / 3.0 )
-print( 10.0 / 3)
-
-```
-
+The difference is important in some cases.
 You can convert type explicitly using the `int()` and `float()` functions.
 
 ```{python, highlight = TRUE }
 
-print( float(10) / 3 )
+print( float(1) + 3 )
 print( int( 10.0 / 3.0 ) )
 
 ```
@@ -254,7 +255,7 @@ print( int( 10.0 / 3.0 ) )
  print(third, fourth)
 ```
 
-3. Recall that a section of string is called a [slice]({{ page.root }}/reference/#slice).
+3. Recall that a section of string is called a slice.
 ```
  element = 'oxygen'
  print('first three characters:', element[0:3])

@@ -1,8 +1,17 @@
 # User Functions
 
+1. Questions:
+  How can I re-use bits of my own code?
+2. Objectives:
+  Create and use our own functions
+  Compose our own functions from other functions we made
+3. Keypoints:
+  Functions help us keep our programs concise and compact
+  Functions make coding much easier by reducing debugging and allowing us to re-use code we've already written
 
+In order to write concise readable and bug-free programs its a good idea to do as little coding as possible in a program. To this end we follow a principle called DRY - don't repeat yourself! Meaning that we don't re-write code that does the same stuff in mulitple places in a program, we put it in one place and refer to it from there. So we'd like a way to package our code so that it is easier to reuse and Python provides for this by letting us define our own functions. In use these work just like all the other functions we've already seen.  
 
-We'd like a way to package our code so that it is easier to reuse, and Python provides for this by letting us define things called 'functions' a shorthand way of re-executing longer pieces of code. Let's start by defining a function `fahr_to_celsius` that converts temperatures from Fahrenheit to Celsius:
+Let's start by defining a function `fahr_to_celsius` that converts temperatures from Fahrenheit to Celsius:
 
 ```{python, highlight = TRUE}
 def fahr_to_celsius(temp):
@@ -13,9 +22,9 @@ def fahr_to_celsius(temp):
 
 
 The function definition opens with the keyword `def` followed by the
-name of the function (`fahr_to_celsius`) and a parenthesized list of parameter names (`temp`). The body of the function, the statements that are executed when it runs is indented below the definition line.  The body concludes with a `return` keyword followed by the return value.
+name of the function (`fahr_to_celsius`) and a list of parameter names in brackets (`temp`). The parameter names are actually variables that carry the data given in the function call.  The body of the function, the statements that are executed when it runs is indented below the definition line. The body concludes with a `return` keyword followed by the return value, the thing the function sends back to whatever called it.
 
-When we call the function, the values we pass to it are assigned to those variables so that we can use them inside the function. Inside the function, we use a return statement to send a result back to whoever asked for it.
+When we call the function, the values we pass to it are assigned to those parameter variables so that we can use them inside the function. Inside the function, we use a return statement to send a result back to the code that asked for it.
 
 Let's try running our function.
 
@@ -89,6 +98,11 @@ print(k)
 ```
 
 `k` is 0 because the `k` inside the function `f2k` doesn't know about the `k` defined outside the function.
+
+
+## Designing Programs to use functions
+
+It's a good programming strategy to think about building functions into programs. Try to look for places where you're doing the same set of commands over again - that would be a prime target for turning into a function. Think also about places where you could just refer to an operation by name - something like: `count_gc` for example. If you spot places like this its a good idea to put the code into a function since it will make your program more readable. When you find you're re-using the same functions in mulitple programs, then you're ready to start putting them in external files and re-using them from there.
 
 
 ## Quiz

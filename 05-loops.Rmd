@@ -1,6 +1,13 @@
 # Repeating actions with Loops
 
-
+1. Questions:
+  * How can we repeat code an arbitrary number of times?
+2. Objectives:
+  * Understand the `for` loop and the `while` loop
+  * Looping a specified number of times and with a range of numbers using `range()`
+3. Keypoints
+  * `for` loops repeat code for each element in a collection
+  * `while` loops repeat code until a condition changes
 
 To do that, we'll have to teach the computer how to repeat things.
 
@@ -20,7 +27,7 @@ print(word[3])
 
 This is a bad approach for two reasons:
 
-  1.  It doesn't scale: if we want to print the characters in a string that's hundreds of letters long, we'd be better off just typing them in.
+  1.  It doesn't scale: if we want to print the characters in a string thats hundreds of letters long, we'd be better off just typing them in.
   2.  It's fragile: if we give it a longer string, it only prints part of the data, and if we give it a shorter one,it produces an error because we're asking for characters that don't exist.
 
 ```{python, highlight = TRUE, eval = FALSE}
@@ -53,7 +60,9 @@ for char in word:
 ```
 
 This is shorter, certainly shorter than something that prints every character in a
-hundred-letter string and more robust as well. See how the same code works if we change the length of the word
+hundred-letter string and more robust as well. Note the indentation rules apply in the `for` loop. 
+
+Also, see how the same code works if we change the length of the word
 
 ```{python, highlight = TRUE}
 word = 'oxygen'
@@ -97,7 +106,8 @@ print('There are', length, 'vowels')
 ```
 
 
-It's worth tracing the execution of this little program step by step.Since there are five characters in `'aeiou'`,the statement on line 3 will be executed five times.The first time around,`length` is zero (the value assigned to it on line 1) and `vowel` is `'a'`.
+It's worth tracing the execution of this little program step by step.Since there are five characters in `'aeiou'`, the statement on line 3 will be executed five times. The first time around,`length` is zero (the value assigned to it on line 1) and `vowel` is `'a'`.
+
 The statement adds 1 to the old value of `length`, producing 1, and updates `length` to refer to that new value.
 
 The next time around,`vowel` is `'e'` and `length` is 1, so `length` is updated to be 2.
@@ -105,7 +115,7 @@ After three more updates, `length` is 5; since there is nothing left in `'aeiou'
 
 ### Loop variable lifespan
 
-Note that a loop variable is just a variable that's being used to record progress in a loop. It still exists after the loop is over, and we can re-use variables previously defined as loop variables as well:
+Note that a loop variable is just a variable that's being used to record progress in a loop. It still exists after the loop is over, and we can re-use variables that were previously defined as loop variables:
 
 ```{python, highlight = TRUE}
 letter = 'z'
@@ -114,10 +124,24 @@ for letter in 'abc':
 print('after the loop, letter is', letter)
 ```
 
+This means your loop variable should ideally not be something you intend to use elsewhere.
+
 Note also that finding the length of a string is such a common operation that Python actually has a built-in function to do it called `len`:
 
 ```{python, highlight = TRUE}
 print(len('aeiou'))
+```
+
+### Looping over a list
+
+Looping over a Python list is very common. The syntax is identical.
+
+```{python, highlight = TRUE}
+numbers_and_letters = [1,2, 'three', 'IV', 5.0 ]
+
+for item in numbers_and_letters:
+    print(item)
+
 ```
 
 ### Looping over a range of numbers
@@ -129,6 +153,40 @@ Python has a built-in function called `range()` that creates a sequence of numbe
   * If one parameter is given, `range` creates an array of that length, starting at zero and incrementing by 1. For example, `range(3)` produces the numbers `0, 1, 2`.
   * If two parameters are given, `range` starts at the first and ends just before the second, incrementing by one. For example, `range(2, 5)` produces `2, 3, 4`.
   * If `range` is given 3 parameters, it starts at the first one, ends just before the second one, and goes up in steps of the third one. For example `range(3, 10, 2)` produces `3, 5, 7, 9`.
+
+### Looping over a dictionary
+
+You can loop over the keys in the dictionary in the same way as for the list, explicitly accessing the value using the key.
+
+```{python, highlight = TRUE}
+d = {'x': 1, 'y': 2, 'z': 3} 
+
+for key in d:
+    print(key, 'has value', d[key])
+
+```
+
+Note that as dicts are intrinsically disordered, unlike lists the order they will be accessed in this way is arbitrary. If you care about order you can make a list of the keys using the `keys()` method and loop over that instead. Here we make a list of keys and sort it, then loop over the sorted key. Note the difference in the result to that above. 
+
+```{python, "keys", highlight = TRUE}
+d = {'x': 1, 'y': 2, 'z': 3} 
+
+frozen_keys = sorted(d.keys())
+
+for key in frozen_keys:
+    print(key, 'has value', d[key])
+
+```
+
+Python can also be made to give you the key - value pairs if you want them, so you don't need to explicitly get the value each time. For this we use the `.items()` method and two loop variables. The first loop variable gets the key, the second the value.
+
+```{python, highlight = TRUE}
+d = {'x': 1, 'y': 2, 'z': 3} 
+
+for key, value in d.items():
+    print(key, 'has value', value)
+
+```
 
 ## While Loops
 
@@ -145,12 +203,14 @@ The `while` loop is somewhat rare in Python, but does get used from time to time
 
 ## Quiz
 
-1. Using `range`, write a loop to print the first 3 natural numbers.
-2. Exponentiation is built into Python. Write a loop that calculates the same result as `5 ** 3` using multiplication (and without exponentiation).
+1. Using `range`, write a loop to print the first 3 positive integers.
+
+2. Exponentiation is built into Python, $3 ^ 2$ would be `3 ** 2`.  Write a loop that calculates the same result as `5 ** 3` using multiplication (and without exponentiation).
 ```{python, highlight = TRUE}
 print(5 ** 3)
 ```
 3. Knowing that two strings can be concatenated using the `+` operator, write a loop that takes a string and produces a new string with the characters in reverse order, so `'Newton'` becomes `'notweN'`.
+
 4. The built-in function `enumerate()` takes a sequence (e.g. a list) and generates a new sequence of the same length. Each element of the new sequence is a pair composed of the index (0, 1, 2,...) and the value from the original sequence:
 
 ```{python, highlight = TRUE}
@@ -158,6 +218,7 @@ fruits = ['apple', 'banana', 'grapes', 'pear']
 for position, name in enumerate(fruits):
   print("The ", position, "fruit is ", name)
 ```
+
 The function `shuffle()` in the `random` package rearranges a list in place (meaning it changes the original object, so you don't have to use a fresh variable name. Use the `enumerate()` and `random.shuffle()` to mix up the list below and work out where the digit 100 appears in the list.
 
 ```{python, highlight = TRUE}

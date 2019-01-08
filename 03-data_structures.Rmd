@@ -1,25 +1,18 @@
 # Data Structures
 
-
-
-
 1. Questions:
-  - How do I arrange and process lots of data in Python?
+  - How do I arrange and process lots of items of data in Python?
 2. Objectives:
   - Create and work with `lists` and `dicts`
-  - Using loops and conditionals to make decisions
 3. Keypoints:
-  - variables are handy names for data objects
-  - variables are used in functions
-  - functions can be stored in packages
-  - methods available depend on the object we're talking about
+  - A list is a collection object that is a linear collection of other objects
+  - A dict is a collection object that is a group of key objects that point to values
 
+Data structures are collection types that group lots of data into a single object and make working with lots of data easier. Python has some built in data structures we can use.
 
 ## Lists
 
-Like most programming languages Python has some built in data structures that we can use.
-
-Data structures are collection types that group lots of data into a single object and make working with lots of data easier. The simplest data structure is a `list`. We can create a list simply by enclosing our data in square brackets.
+The simplest data structure is a `list`. We can create a list simply by enclosing our data in square brackets.
 
 ```{python, highlight = TRUE}
 my_list = [1,3,5,7]
@@ -34,8 +27,7 @@ numbers = numpy.arange(15)
 
 print( numbers )
 ```
-
-### List use
+Here we get a list of integers. The point being it is now a collection of data that we can refer to as a single entity.
 
 Lists can mix up any sort of data type,
 
@@ -56,12 +48,14 @@ print( list_of_lists )
 
 ```
 
+### List use
+
 List elements can be accessed using indexing, like with strings.
 
 ```{python, highlight = TRUE}
 print( numbers_and_letters[0] )
-print( numbers_and_letters[2:3] )
-````
+print( numbers_and_letters[2:4] )
+```
 
 Indexing an element returns the whole element - so if that element happens to be a list itself - you get a whole list back
 
@@ -69,11 +63,26 @@ Indexing an element returns the whole element - so if that element happens to be
 print( list_of_lists[1] )
 ```
 
-To get at a single element you must use double square brackets.
+To get at a single element in this case you must use multiple sets of square brackets, one for each list.
 
 ```{python, highlight = TRUE}
 print( list_of_lists[0][1] )
 print( list_of_lists[1][0] )
+```
+
+### List methods
+
+Much of what you'll want to do with a list is accomplished with methods. Sticking something on the end is done with `.append()`
+
+```{python, highlight = TRUE}
+numbers_and_letters.append("ninety")
+print( numbers_and_letters )
+```
+
+```{block2, type="reader"}
+
+In the example above we didn't need to save this back to a variable. Note that this isn't a mistake. This method modified the object `in-place`. Some methods will do this, and at this stage which is which is going to seem somewhat arbitrary. The documentation will explain which do and don't.
+
 ```
 
 ## Dictionaries
@@ -91,7 +100,7 @@ my_dict = {
 print( my_dict )
 ```
 
-Note the order in the dictionary isn't preserved. We can use the square brackets to get a single value, but as a dictionary has no order or index, we must use the key.
+Note the order in the dictionary isn't preserved. The information is stored according to an internal algorithm, not the order the informaion is added. We can use the square brackets to get a single value, but as a dictionary has no order and therefore no numeric index, we must use the key as the index. 
 
 ```{python, highlight = TRUE}
 
@@ -114,7 +123,7 @@ TypeError: unhashable type: 'list'
 
 ## Quiz
 
-1. Given the list below, use slicing to access only the last four entries.
+1. Given the list below, use slicing to access only the last 2 entries.
 
 ```{python, highlight = TRUE, eval = FALSE}
 list_for_slicing = [["fluorine", "F"], 
@@ -124,7 +133,9 @@ list_for_slicing = [["fluorine", "F"],
                     ["astatine", "At"]]
 ```
 
-2. Can you work out how to correct the wrong data in the dictionary below? Try to think of a way that _doesn't_ involve re-writing the whole dictionary. Hint: can you assign straight to a key?
+2. Modify `list_for_slicing` using the `.reverse()` method. Verify that it is reversed as you expected.
+
+3. Can you work out how to correct the wrong data in the dictionary below? Try to think of a way that _doesn't_ involve re-writing the whole dictionary. Hint: can you assign straight to a key?
 
 ```{python, highlight = TRUE}
 seasons = {
@@ -134,4 +145,4 @@ seasons = {
 }
 ```
 
-3. Add in the missing season.
+4. Add in the missing season.
