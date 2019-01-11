@@ -85,7 +85,7 @@ In the example above we didn't need to save this back to a variable. Note that t
 
 ```
 
-## Dictionaries
+## Dictionaries are unordered collections
 
 Another very common data structure is a dictionary. A dictionary is a data structure that has many unique `keys`, each of which refers to a bit of other data called a `value`. We can construct them using the curly brackets and the `key/value` pairs
 
@@ -121,7 +121,7 @@ Traceback (most recent call last):
 TypeError: unhashable type: 'list'
 ```
 
-## Dictionary Methods
+### Dictionary Methods
 
 As with lists there are methods on Python Dictionaries. Here's a useful list [https://www.w3schools.com/python/python_ref_dictionary.asp](https://www.w3schools.com/python/python_ref_dictionary.asp). These are mostly related to getting items on and off the list, we'll see some when we use dictionaries in loops later.
 
