@@ -11,7 +11,7 @@
 
 How can we use Python to automatically recognize differences in data such that it can change what code is run depending on the data and take a different action for each? In this chapter, we'll learn how to write code that runs only when certain conditions are true.
 
-## Conditionals
+## Conditionals check values and adjust which code is run
 
 We can ask Python to take different actions, depending on a condition, with an `if` statement:
 
@@ -23,13 +23,13 @@ else:
     print('not greater')
 ```
 
-The second line of this code uses the keyword `if` to tell Python that we want to make a choice. If the test that follows the `if` statement is true, the body of the `if` (i.e., the lines indented underneath it) are executed. If the test is false, the body of the `else` is executed instead. Only one or the other is ever executed:
+The second line of this code uses the keyword `if` to tell Python that we want to make a choice. If the test that follows the `if` keyword is true, the body of the `if` (i.e., the lines indented underneath it) are executed. If the test is false, the body of the `else` is executed instead. Only one or the other is ever executed:
 
 The diagram below shows how this choice is being made.
 
 ![Executing a Conditional](assets/python-flowchart-conditional.png)
 
-## Indentation in Python
+## Indentation in Python is Pretty Important
 
 The layout of code in Python is actually pretty important. The whitespace is structural and the amount of it tells us something about where we are in a program. Whitespace is particularly important in `if` . By convention the indent under each new `if` or `else` should be four spaces. 
 
@@ -101,7 +101,7 @@ Note that the `if` and `elif` bits are mutually exclusive. Only one of them ever
 
 Note that to test for equality we use a double equals sign `==` rather than a single equals sign `=` which is already used to assign values.
 
-## Logical operators
+## Logical operators in tests
 
 Python has all the standard logical operators that let us combine tests. Most commonly there is `and` and `or`.  An `and` operator is only true if both parts are true:
 
@@ -144,7 +144,7 @@ It may seem strange to set things up this way, but in Python in practice it allo
 
 
 
-## That's Not Not What I Meant
+## That's not not what I meant
 
 Sometimes it is useful to check whether some condition is not true. The Boolean operator `not` can do this explicitly. 
 

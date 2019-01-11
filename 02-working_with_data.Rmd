@@ -60,7 +60,7 @@ print(weight_pounds)
 
 ```
 
-## Python has three main types of function.
+## Python has three main types of function
 
 Python is **full** of functions. So many in fact that coming up with names can be a problem! This is a serious issue as you have to refer to functions by name. To resolve this problem Python keeps its functions in different places in its library, and the way we call the function changes depending on where the function 'lives'. There are three basic function types:
   
@@ -92,7 +92,7 @@ print( "Hello" + "World!")
 ```
 This is supposed to be a way of making the language more intuitive and readable at the user end of things. Most times you see operators, they should be pretty obvious.
 
-### Package Methods
+### Functions from packages
 
 Another source of functions is external packages - extensions to Python for use in particular problem domains. We can load in a package using `import`. Let's import the `numpy` numerical Python package that provides functions for doing fast, large scale numerical analysis. 
 
@@ -255,7 +255,7 @@ print( int( 10.0 / 3.0 ) )
  print(third, fourth)
 ```
 
-3. Recall that a section of string is called a slice.
+3. Recall that a section of a string is called a slice. Work on the slices below. 
 ```
  element = 'oxygen'
  print('first three characters:', element[0:3])

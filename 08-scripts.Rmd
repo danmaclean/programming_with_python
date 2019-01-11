@@ -20,7 +20,7 @@ You'll need a text editor, a program that deals with text but not in the same wa
   3. Notepad++ (Windows) [https://notepad-plus-plus.org/]()
   
 
-## The Script Header
+## The script header
 
 Most Python scripts have this on the first line
 
@@ -30,7 +30,7 @@ Most Python scripts have this on the first line
 
 This is a Unix/Linux convention that affects how those systems interpret the file. Leave it in for convention's sake.
 
-## The Filename Extension
+## The filename extension
 
 By convention, Python script filess end in the extension, `.py`.
 
@@ -44,7 +44,7 @@ print("Hello, World!")
 
 ```
 
-## Running a Python script
+## Running a python script from the command line
 
 Once created, the script itself is run from the `python` command on the command line. `python` is just a regular program that accepts a python script filename as its argument and runs the code in the script.
 

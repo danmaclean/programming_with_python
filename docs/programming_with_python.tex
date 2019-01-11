@@ -125,7 +125,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2019-01-08}
+    \date{2019-01-11}
 
 \usepackage{booktabs}
 \usepackage{tcolorbox}
@@ -207,8 +207,9 @@ fonttitle=\bfseries] }
 \hypertarget{prerequisites}{%
 \chapter{Prerequisites}\label{prerequisites}}
 
-No specific knowledge is assumed for this book, though you do need to
-install some software.
+No specific Python knowledge is assumed for this book, though you do
+need to install some software. Most of it can be done using your
+computer's graphical interface.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -367,8 +368,8 @@ processor. Many such programs are available, try the options below:
 
 Programming is a pretty weird skill. It boils down to shouting at a
 computer to make it do stuff for you. So why would you want to learn to
-do it? Well, there are plenty of reasons, some good and some bad. Some
-good ones that apply to working in biology and bioinformatics are
+do it? There are plenty of reasons, some good and some bad. Some good
+ones that apply to working in biology and bioinformatics are
 time-saving, turning your computer from a limited `appliance' to a
 general `power tool' for your research and because it's a skill that can
 help you develop a more precise, disciplined and abstract way of
@@ -389,16 +390,17 @@ In this course, we'll use Python 3 - a widely used very powerful but
 (all things considered) user-friendly language that suits beginners and
 experts alike.
 
-We'll use the bare-bones of Python 3, it is a very broad language with a
-lot of functionality, a lot of it in optional packages that you can
-install whenever you need them. We'll only touch the surface of what is
-possible - but what we learn will be foundation enough to build pretty
-much anything on.
+We'll use the bare-bones of Python 3. Python is a very broad language
+with a lot of functionality, a lot of it in optional packages that you
+can install whenever you need them. We'll only touch the surface of what
+is possible - but what we learn will be foundation enough to build
+pretty much anything on.
 
 By the end of this course you'll have seen and used enough Python to be
 able to go forward and be able to start to tackle any sort of
 programming challenge. You'll still need your problem solving skills,
-tenacity and determination to do that, but at least you'll know Python.
+tenacity and determination to do tackle your future challenges, but at
+least you'll know Python.
 
 Happy Programming!
 
@@ -549,9 +551,9 @@ affect another
 ## 143.0
 \end{verbatim}
 
-\hypertarget{python-has-three-main-types-of-function.}{%
+\hypertarget{python-has-three-main-types-of-function}{%
 \section{Python has three main types of
-function.}\label{python-has-three-main-types-of-function.}}
+function}\label{python-has-three-main-types-of-function}}
 
 Python is \textbf{full} of functions. So many in fact that coming up
 with names can be a problem! This is a serious issue as you have to
@@ -643,8 +645,8 @@ This is supposed to be a way of making the language more intuitive and
 readable at the user end of things. Most times you see operators, they
 should be pretty obvious.
 
-\hypertarget{package-methods}{%
-\subsection{Package Methods}\label{package-methods}}
+\hypertarget{functions-from-packages}{%
+\subsection{Functions from packages}\label{functions-from-packages}}
 
 Another source of functions is external packages - extensions to Python
 for use in particular problem domains. We can load in a package using
@@ -941,7 +943,8 @@ explicitly using the \texttt{int()} and \texttt{float()} functions.
 \setcounter{enumi}{2}
 \tightlist
 \item
-  Recall that a section of string is called a slice.
+  Recall that a section of a string is called a slice. Work on the
+  slices below.
 \end{enumerate}
 
 \begin{verbatim}
@@ -1050,10 +1053,14 @@ then fixing the capitalization from there.
 
 Data structures are collection types that group lots of data into a
 single object and make working with lots of data easier. Python has some
-built in data structures we can use.
+built in data structures we can use. In this section we'll look at using
+some of the most common and fundamental ones. As you gain exeperience
+with Python, you'll find that many other more complex data structures
+are made out of these.
 
-\hypertarget{lists}{%
-\section{Lists}\label{lists}}
+\hypertarget{lists-are-ordered-linear-collections-of-items}{%
+\section{Lists are ordered linear collections of
+items}\label{lists-are-ordered-linear-collections-of-items}}
 
 The simplest data structure is a \texttt{list}. We can create a list
 simply by enclosing our data in square brackets.
@@ -1177,8 +1184,12 @@ square brackets, one for each list.
 \hypertarget{list-methods}{%
 \subsection{List methods}\label{list-methods}}
 
-Much of what you'll want to do with a list is accomplished with methods.
-Sticking something on the end is done with \texttt{.append()}
+As they're still a regular Python object, just like strings or they have
+lots of methods. Much of what you'll want to do with a list is
+accomplished with methods. Again, there are many - here's a list of
+useful ones \url{https://www.w3schools.com/python/python_ref_list.asp}.
+As a single example from the list, let's look at \texttt{.append()},
+which is used to stick something on the right hand side of the list.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1195,8 +1206,8 @@ Sticking something on the end is done with \texttt{.append()}
 In the example above we didn't need to save this back to a variable.
 Note that this isn't a mistake. This method modified the object
 \texttt{in-place}. Some methods will do this, and at this stage which is
-which is going to seem somewhat arbitrary. The documentation will
-explain which do and don't.
+which is going to seem somewhat arbitrary. The documentation (or
+experimentation) will explain which do and don't.
 \EndKnitrBlock{reader}
 
 \hypertarget{dictionaries}{%
@@ -1255,6 +1266,14 @@ Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: unhashable type: 'list'
 \end{verbatim}
+
+\hypertarget{dictionary-methods}{%
+\section{Dictionary Methods}\label{dictionary-methods}}
+
+As with lists there are methods on Python Dictionaries. Here's a useful
+list \url{https://www.w3schools.com/python/python_ref_dictionary.asp}.
+These are mostly related to getting items on and off the list, we'll see
+some when we use dictionaries in loops later.
 
 \hypertarget{quiz-1}{%
 \section{Quiz}\label{quiz-1}}
@@ -1361,8 +1380,9 @@ such that it can change what code is run depending on the data and take
 a different action for each? In this chapter, we'll learn how to write
 code that runs only when certain conditions are true.
 
-\hypertarget{conditionals}{%
-\section{Conditionals}\label{conditionals}}
+\hypertarget{conditionals-check-values-and-adjust-which-code-is-run}{%
+\section{Conditionals check values and adjust which code is
+run}\label{conditionals-check-values-and-adjust-which-code-is-run}}
 
 We can ask Python to take different actions, depending on a condition,
 with an \texttt{if} statement:
@@ -1383,7 +1403,7 @@ with an \texttt{if} statement:
 
 The second line of this code uses the keyword \texttt{if} to tell Python
 that we want to make a choice. If the test that follows the \texttt{if}
-statement is true, the body of the \texttt{if} (i.e., the lines indented
+keyword is true, the body of the \texttt{if} (i.e., the lines indented
 underneath it) are executed. If the test is false, the body of the
 \texttt{else} is executed instead. Only one or the other is ever
 executed:
@@ -1396,8 +1416,9 @@ The diagram below shows how this choice is being made.
 \caption{Executing a Conditional}
 \end{figure}
 
-\hypertarget{indentation-in-python}{%
-\section{Indentation in Python}\label{indentation-in-python}}
+\hypertarget{indentation-in-python-is-pretty-important}{%
+\section{Indentation in Python is Pretty
+Important}\label{indentation-in-python-is-pretty-important}}
 
 The layout of code in Python is actually pretty important. The
 whitespace is structural and the amount of it tells us something about
@@ -1511,8 +1532,8 @@ Note that to test for equality we use a double equals sign \texttt{==}
 rather than a single equals sign \texttt{=} which is already used to
 assign values.
 
-\hypertarget{logical-operators}{%
-\section{Logical operators}\label{logical-operators}}
+\hypertarget{logical-operators-in-tests}{%
+\section{Logical operators in tests}\label{logical-operators-in-tests}}
 
 Python has all the standard logical operators that let us combine tests.
 Most commonly there is \texttt{and} and \texttt{or}. An \texttt{and}
@@ -1600,7 +1621,7 @@ It may seem strange to set things up this way, but in Python in practice
 it allows for some nice and easy to read and write constructions.
 
 \hypertarget{thats-not-not-what-i-meant}{%
-\section{That's Not Not What I Meant}\label{thats-not-not-what-i-meant}}
+\section{That's not not what I meant}\label{thats-not-not-what-i-meant}}
 
 Sometimes it is useful to check whether some condition is not true. The
 Boolean operator \texttt{not} can do this explicitly.
@@ -2261,27 +2282,65 @@ below and work out where the digit 100 appears in the list.
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Questions: How can I re-use bits of my own code?
+  Questions:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
 \item
-  Objectives: Create and use our own functions Compose our own functions
-  from other functions we made
+  How can I re-use bits of my own code?
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
 \item
-  Keypoints: Functions help us keep our programs concise and compact
+  Objectives:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Create and use our own functions
+\item
+  Compose our own functions from other functions we made
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Keypoints:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Functions help us keep our programs concise and compact
+\item
   Functions make coding much easier by reducing debugging and allowing
   us to re-use code we've already written
-\end{enumerate}
+\end{itemize}
 
 In order to write concise readable and bug-free programs its a good idea
 to do as little coding as possible in a program. To this end we follow a
 principle called DRY - don't repeat yourself! Meaning that we don't
 re-write code that does the same stuff in mulitple places in a program,
-we put it in one place and refer to it from there. So we'd like a way to
-package our code so that it is easier to reuse and Python provides for
-this by letting us define our own functions. In use these work just like
-all the other functions we've already seen.
+we put it in one place and refer to it from there. This is the basis of
+good programming
 
-Let's start by defining a function \texttt{fahr\_to\_celsius} that
-converts temperatures from Fahrenheit to Celsius:
+\hypertarget{building-your-own-function}{%
+\section{Building your own function}\label{building-your-own-function}}
+
+So we'd like a way to package our code so that it is easier to reuse and
+Python provides for this by letting us define our own functions. In use
+these work just like all the other functions we've already seen.
+
+Let's look at a user function by defining a function
+\texttt{fahr\_to\_celsius} that converts temperatures from Fahrenheit to
+Celsius:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2348,7 +2407,7 @@ We've successfully called the function that we defined, and we have
 access to the value that we returned.
 
 \hypertarget{composing-functions}{%
-\section{Composing Functions}\label{composing-functions}}
+\section{Composing functions}\label{composing-functions}}
 
 Now that we've seen how to turn Fahrenheit into Celsius, we can also
 write the function to turn Celsius into Kelvin:
@@ -2388,7 +2447,7 @@ basic operations, then combine them in ever-large chunks to get the
 effect we want.
 
 \hypertarget{variables-inside-and-outside-functions}{%
-\section{Variables Inside and Outside
+\section{Variables inside and outside
 Functions}\label{variables-inside-and-outside-functions}}
 
 The function is insulated from the rest of the program. Things that
@@ -2424,7 +2483,7 @@ run
 doesn't know about the \texttt{k} defined outside the function.
 
 \hypertarget{designing-programs-to-use-functions}{%
-\section{Designing Programs to use
+\section{Designing programs to use
 functions}\label{designing-programs-to-use-functions}}
 
 It's a good programming strategy to think about building functions into
@@ -3022,7 +3081,7 @@ options below
 \end{enumerate}
 
 \hypertarget{the-script-header}{%
-\section{The Script Header}\label{the-script-header}}
+\section{The script header}\label{the-script-header}}
 
 Most Python scripts have this on the first line
 
@@ -3034,7 +3093,7 @@ This is a Unix/Linux convention that affects how those systems interpret
 the file. Leave it in for convention's sake.
 
 \hypertarget{the-filename-extension}{%
-\section{The Filename Extension}\label{the-filename-extension}}
+\section{The filename extension}\label{the-filename-extension}}
 
 By convention, Python script filess end in the extension, \texttt{.py}.
 
@@ -3047,8 +3106,9 @@ we have a Python script.
 print("Hello, World!")
 \end{verbatim}
 
-\hypertarget{running-a-python-script}{%
-\section{Running a Python script}\label{running-a-python-script}}
+\hypertarget{running-a-python-script-from-the-command-line}{%
+\section{Running a python script from the command
+line}\label{running-a-python-script-from-the-command-line}}
 
 Once created, the script itself is run from the \texttt{python} command
 on the command line. \texttt{python} is just a regular program that

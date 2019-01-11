@@ -1,17 +1,22 @@
 # User Functions
 
 1. Questions:
-  How can I re-use bits of my own code?
+  * How can I re-use bits of my own code?
 2. Objectives:
-  Create and use our own functions
-  Compose our own functions from other functions we made
+  * Create and use our own functions
+  * Compose our own functions from other functions we made
 3. Keypoints:
-  Functions help us keep our programs concise and compact
-  Functions make coding much easier by reducing debugging and allowing us to re-use code we've already written
+  * Functions help us keep our programs concise and compact
+  * Functions make coding much easier by reducing debugging and allowing us to re-use code we've already written
 
-In order to write concise readable and bug-free programs its a good idea to do as little coding as possible in a program. To this end we follow a principle called DRY - don't repeat yourself! Meaning that we don't re-write code that does the same stuff in mulitple places in a program, we put it in one place and refer to it from there. So we'd like a way to package our code so that it is easier to reuse and Python provides for this by letting us define our own functions. In use these work just like all the other functions we've already seen.  
+In order to write concise readable and bug-free programs its a good idea to do as little coding as possible in a program. To this end we follow a principle called DRY - don't repeat yourself! Meaning that we don't re-write code that does the same stuff in mulitple places in a program, we put it in one place and refer to it from there. This is the basis of good programming
 
-Let's start by defining a function `fahr_to_celsius` that converts temperatures from Fahrenheit to Celsius:
+
+## Building your own function
+
+So we'd like a way to package our code so that it is easier to reuse and Python provides for this by letting us define our own functions. In use these work just like all the other functions we've already seen.  
+
+Let's look at a user function by defining a function `fahr_to_celsius` that converts temperatures from Fahrenheit to Celsius:
 
 ```{python, highlight = TRUE}
 def fahr_to_celsius(temp):
@@ -44,7 +49,7 @@ We've successfully called the function that we defined,
 and we have access to the value that we returned.
 
 
-## Composing Functions
+## Composing functions
 
 Now that we've seen how to turn Fahrenheit into Celsius,
 we can also write the function to turn Celsius into Kelvin:
@@ -71,7 +76,7 @@ print('boiling point of water in Kelvin:', fahr_to_kelvin(212.0))
 
 This is our first taste of how larger programs are built, we define basic operations, then combine them in ever-large chunks to get the effect we want.
 
-## Variables Inside and Outside Functions
+## Variables inside and outside Functions
 
 The function is insulated from the rest of the program. Things that happen in there don't affect what goes on elsewhere. Meaning we can re-use variable names inside the function that we used elsewhere without polluting them. Look what happens when the following piece of code is run
 
@@ -100,7 +105,7 @@ print(k)
 `k` is 0 because the `k` inside the function `f2k` doesn't know about the `k` defined outside the function.
 
 
-## Designing Programs to use functions
+## Designing programs to use functions
 
 It's a good programming strategy to think about building functions into programs. Try to look for places where you're doing the same set of commands over again - that would be a prime target for turning into a function. Think also about places where you could just refer to an operation by name - something like: `count_gc` for example. If you spot places like this its a good idea to put the code into a function since it will make your program more readable. When you find you're re-using the same functions in mulitple programs, then you're ready to start putting them in external files and re-using them from there.
 

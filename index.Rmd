@@ -17,7 +17,7 @@ knitr::opts_chunk$set(engine.path = list(
 ```
 # Prerequisites
 
-No specific knowledge is assumed for this book, though you do need to install some software.
+No specific Python knowledge is assumed for this book, though you do need to install some software. Most of it can be done using your computer's graphical interface.
 
   1. Python 3 via Anaconda
   2. A reasonably recent web-browser

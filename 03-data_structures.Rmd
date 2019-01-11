@@ -8,9 +8,9 @@
   - A list is a collection object that is a linear collection of other objects
   - A dict is a collection object that is a group of key objects that point to values
 
-Data structures are collection types that group lots of data into a single object and make working with lots of data easier. Python has some built in data structures we can use.
+Data structures are collection types that group lots of data into a single object and make working with lots of data easier. Python has some built in data structures we can use. In this section we'll look at using some of the most common and fundamental ones. As you gain exeperience with Python, you'll find that many other more complex data structures are made out of these.
 
-## Lists
+## Lists are ordered linear collections of items
 
 The simplest data structure is a `list`. We can create a list simply by enclosing our data in square brackets.
 
@@ -72,7 +72,7 @@ print( list_of_lists[1][0] )
 
 ### List methods
 
-Much of what you'll want to do with a list is accomplished with methods. Sticking something on the end is done with `.append()`
+As they're still a regular Python object, just like strings or they have lots of methods. Much of what you'll want to do with a list is accomplished with methods. Again, there are many - here's a list of useful ones [https://www.w3schools.com/python/python_ref_list.asp](https://www.w3schools.com/python/python_ref_list.asp). As a single example from the list, let's look at `.append()`, which is used to stick something on the right hand side of the list. 
 
 ```{python, highlight = TRUE}
 numbers_and_letters.append("ninety")
@@ -81,7 +81,7 @@ print( numbers_and_letters )
 
 ```{block2, type="reader"}
 
-In the example above we didn't need to save this back to a variable. Note that this isn't a mistake. This method modified the object `in-place`. Some methods will do this, and at this stage which is which is going to seem somewhat arbitrary. The documentation will explain which do and don't.
+In the example above we didn't need to save this back to a variable. Note that this isn't a mistake. This method modified the object `in-place`. Some methods will do this, and at this stage which is which is going to seem somewhat arbitrary. The documentation (or experimentation) will explain which do and don't.
 
 ```
 
@@ -120,6 +120,10 @@ Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: unhashable type: 'list'
 ```
+
+## Dictionary Methods
+
+As with lists there are methods on Python Dictionaries. Here's a useful list [https://www.w3schools.com/python/python_ref_dictionary.asp](https://www.w3schools.com/python/python_ref_dictionary.asp). These are mostly related to getting items on and off the list, we'll see some when we use dictionaries in loops later.
 
 ## Quiz
 

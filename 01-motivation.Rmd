@@ -1,6 +1,6 @@
 # Motivation {#motivation}
 
-Programming is a pretty weird skill. It boils down to shouting at a computer to make it do stuff for you. So why would you want to learn to do it? Well, there are plenty of reasons, some good and some bad. Some good ones that apply to working in biology and bioinformatics are time-saving, turning your computer from a limited 'appliance' to a general 'power tool' for your research and because it's a skill that can help you develop a more precise, disciplined and abstract way of thinking.
+Programming is a pretty weird skill. It boils down to shouting at a computer to make it do stuff for you. So why would you want to learn to do it? There are plenty of reasons, some good and some bad. Some good ones that apply to working in biology and bioinformatics are time-saving, turning your computer from a limited 'appliance' to a general 'power tool' for your research and because it's a skill that can help you develop a more precise, disciplined and abstract way of thinking.
 
 The main obstacle that most people encounter when learning to program is the surprisingly wide range of concepts and implementations of concepts that you need to know in order to achieve something. This can make it intimidating and tedious for those starting out. 
 
@@ -8,8 +8,8 @@ The aim of this course is to introduce you to just enough of these to enable you
 
 In this course, we'll use Python 3 - a widely used very powerful but (all things considered) user-friendly language that suits beginners and experts alike.
 
-We'll use the bare-bones of Python 3, it is a very broad language with a lot of functionality, a lot of it in optional packages that you can install whenever you need them. We'll only touch the surface of what is possible - but what we learn will be foundation enough to build pretty much anything on.
+We'll use the bare-bones of Python 3. Python is a very broad language with a lot of functionality, a lot of it in optional packages that you can install whenever you need them. We'll only touch the surface of what is possible - but what we learn will be foundation enough to build pretty much anything on.
 
-By the end of this course you'll have seen and used enough Python to be able to go forward and be able to start to tackle any sort of programming challenge. You'll still need your problem solving skills, tenacity and determination to do that, but at least you'll know Python.
+By the end of this course you'll have seen and used enough Python to be able to go forward and be able to start to tackle any sort of programming challenge. You'll still need your problem solving skills, tenacity and determination to do tackle your future challenges, but at least you'll know Python.
 
 Happy Programming!
