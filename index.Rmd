@@ -88,7 +88,7 @@ Accept all defaults when the system asks a question.
 
 A text editor is a program that deals with text in a way that is appropriate to writing programs. It is quite different to a word processor. Many such programs are available, try the options below:
 
-  1. TextMate (macOS) [https://macromates.com/]()
-  2. Atom (macOS/Windows) [https://atom.io/]()
-  3. Notepad++ (Windows) [https://notepad-plus-plus.org/]()
+  1. TextMate (macOS) [https://macromates.com/](https://macromates.com/)
+  2. Atom (macOS/Windows) [https://atom.io/](https://atom.io/)
+  3. Notepad++ (Windows) [https://notepad-plus-plus.org/](https://notepad-plus-plus.org/)
   
