@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-0.9.387">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Beginning Programming with Python - 6&nbsp; Working with Python Packages</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<link href="./08-scripts.html" rel="next">
+<link href="./06-functions.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link id="quarto-text-highlighting-styles" href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Working with Python Packages</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Beginning Programming with Python</a> 
+        <div class="sidebar-tools-main">
+    <a href="./Beginning-Programming-with-Python.pdf" title="Download PDF" class="sidebar-tool px-1"><i class="bi bi-file-pdf"></i></a>
+    <a href="" title="Share" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+            <i class="bi bi-bi-twitter pe-1"></i>
+          Twitter
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+            <i class="bi bi-bi-facebook pe-1"></i>
+          Facebook
+          </a>
+        </li>
+    </ul>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Motivation</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-working_with_data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Working with Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-data_structures.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Structures</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-conditionals.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Making Choices and Controlling Program Flow</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-loops.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Repeating actions with Loops</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">User Functions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-packages.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Working with Python Packages</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-scripts.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Putting code into scripts</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-final_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Putting It All Together</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Appendices</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Installing what you need</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-acknowledgements.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Acknowledgements</span></a>
+  </div>
+</li>
+    </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#using-and-installing-packages." id="toc-using-and-installing-packages." class="nav-link active" data-scroll-target="#using-and-installing-packages."> <span class="header-section-number">6.1</span> Using and Installing Packages.</a></li>
+  <li><a href="#the-vcfpy-package" id="toc-the-vcfpy-package" class="nav-link" data-scroll-target="#the-vcfpy-package"> <span class="header-section-number">6.2</span> The vcfpy Package</a>
+  <ul class="collapse">
+  <li><a href="#vcf-files---a-brief-introduction" id="toc-vcf-files---a-brief-introduction" class="nav-link" data-scroll-target="#vcf-files---a-brief-introduction"> <span class="header-section-number">6.2.1</span> VCF files - a brief introduction</a></li>
+  <li><a href="#the-vcf.reader-object" id="toc-the-vcf.reader-object" class="nav-link" data-scroll-target="#the-vcf.reader-object"> <span class="header-section-number">6.2.2</span> The <code>vcf.Reader</code> object</a></li>
+  <li><a href="#the-vcf.record-object" id="toc-the-vcf.record-object" class="nav-link" data-scroll-target="#the-vcf.record-object"> <span class="header-section-number">6.2.3</span> The <code>vcf.Record</code> object</a></li>
+  <li><a href="#object-attributes" id="toc-object-attributes" class="nav-link" data-scroll-target="#object-attributes"> <span class="header-section-number">6.2.4</span> Object Attributes</a></li>
+  </ul></li>
+  <li><a href="#quiz" id="toc-quiz" class="nav-link" data-scroll-target="#quiz"> <span class="header-section-number">6.3</span> Quiz</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Working with Python Packages</span></h1>
+</div>
+
+
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<ol type="1">
+<li>Questions:</li>
+</ol>
+<ul>
+<li>How can I use the wide range of code that other people have already written?</li>
+</ul>
+<ol start="2" type="1">
+<li>Objectives:</li>
+</ol>
+<ul>
+<li>Install and Import packages using package managers</li>
+<li>Use vcfpy - a genomics related package</li>
+<li>Examine objects from this package</li>
+</ul>
+<ol start="3" type="1">
+<li>Keypoints:</li>
+</ol>
+<ul>
+<li>Packages that come from external sources need to be installed</li>
+<li>There are many, many packages</li>
+<li>Packages provide methods and objects of varying types</li>
+<li>Good package use relies on good package documentation</li>
+</ul>
+<p>Packages are an important part of the Python ‘ecosystem’ that let us use a wide variety of code written by other people. Good packages provide functions, objects and methods that make working in a particular problem domain a lot easier.</p>
+<section id="using-and-installing-packages." class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="using-and-installing-packages."><span class="header-section-number">6.1</span> Using and Installing Packages.</h2>
+<p>We’ve already seen how to load in packages using the <code>import</code> statement. Here we load the builit-in <code>sys</code> package which has methods for working with the underlying system - the <code>platform</code> is the name of the operating system this code is running on.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( sys.platform )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>darwin</code></pre>
+</div>
+</div>
+<p>Some packages, like <code>sys</code> come as standard when Python is installed, some come from external sources and must be installed individually. There are multiple methods of installing packages. Assuming you set up Python using Anaconda for this book then you can use <code>conda</code> itself. Another more general way of installing packages is from PyPI, the Python Package Index.</p>
+<p>None of these are done from within Python itself, they must be done from the regular command-line. The general form is:</p>
+<pre><code>conda install package_name
+pip install package_name</code></pre>
+</section>
+<section id="the-vcfpy-package" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="the-vcfpy-package"><span class="header-section-number">6.2</span> The vcfpy Package</h2>
+<p>VCF files (variant call format) are files that describe SNPs and small indels in alignments from high-throughput sequencing data. The <code>vcfpy</code> package provides a lot of functionality for working with such files and the record they contain.</p>
+<section id="vcf-files---a-brief-introduction" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="vcf-files---a-brief-introduction"><span class="header-section-number">6.2.1</span> VCF files - a brief introduction</h3>
+<p>A VCF file is a column format file where each row represents a SNP/Indel record and the columns represent things describing it like Chromosome, Position, Reference Genome Allele, Alternative Genome Allele etc. Here’s what one record looks like, split over a few lines.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<caption>Table continues below</caption>
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 16%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">CHROM</th>
+<th style="text-align: center;">POS</th>
+<th style="text-align: center;">ID</th>
+<th style="text-align: center;">REF</th>
+<th style="text-align: center;">ALT</th>
+<th style="text-align: center;">QUAL</th>
+<th style="text-align: center;">FILTER</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">14370</td>
+<td style="text-align: center;">rs6054257</td>
+<td style="text-align: center;">G</td>
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">29</td>
+<td style="text-align: center;">PASS</td>
+</tr>
+</tbody>
+</table>
+<table class="table table-sm table-striped">
+<caption>Table continues below</caption>
+<colgroup>
+<col style="width: 35%">
+<col style="width: 18%">
+<col style="width: 22%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">INFO</th>
+<th style="text-align: center;">FORMAT</th>
+<th style="text-align: center;">NA00001</th>
+<th style="text-align: center;">NA00002</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">NS=3;DP=14;AF=0.5;DB;H2</td>
+<td style="text-align: center;">GT:GQ:DP:HQ</td>
+<td style="text-align: center;">0|0:48:1:51,51</td>
+<td style="text-align: center;">1|0:48:8:51,51</td>
+</tr>
+</tbody>
+</table>
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">NA00003</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1/1:43:5:.,.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>There’s a lot of information in that one record, and each file has many tens of thousands of records! We wouldn’t want to try and process tens of thousands manually. Let’s look at loading in a file and looping through each record using the <code>vcfpy</code> package.</p>
+<p>We’ve already seen that packages have functions we can call, and that doing so can sometimes return objects of new types. We’ll use that pattern now to start processing a VCF file.</p>
+</section>
+<section id="the-vcf.reader-object" class="level3" data-number="6.2.2">
+<h3 data-number="6.2.2" class="anchored" data-anchor-id="the-vcf.reader-object"><span class="header-section-number">6.2.2</span> The <code>vcf.Reader</code> object</h3>
+<p>The first package function we’ll need to use is <code>vcf.Reader</code> which opens and connects to a file but doesn’t do anything with it. It gives us a reader object we can use to access the file. We just need the file name that we wish to open.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> vcfpy</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>vcf_reader <span class="op">=</span> vcfpy.Reader(<span class="bu">open</span>(<span class="st">'/Users/macleand/Desktop/example.vcf'</span>, <span class="st">'r'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+
+</div>
+<p>Now we can go ahead and extract the VCF records by using the reader object we created in a loop</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> record <span class="kw">in</span> vcf_reader:</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>( record )</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="bu">type</span>(record))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Record('20', 14370, ['rs6054257'], 'G', [Substitution(type_='SNV', value='A')], 29, ['PASS'], {'NS': 3, 'DP': 14, 'AF': [0.5], 'DB': True, 'H2': True}, ['GT', 'GQ', 'DP', 'HQ'], [Call('NA00001', {'GT': '0|0', 'GQ': 48, 'DP': 1, 'HQ': [51, 51]}), Call('NA00002', {'GT': '1|0', 'GQ': 48, 'DP': 8, 'HQ': [51, 51]}), Call('NA00003', {'GT': '1/1', 'GQ': 43, 'DP': 5, 'HQ': [None, None]})])
+&lt;class 'vcfpy.record.Record'&gt;
+Record('20', 17330, [], 'T', [Substitution(type_='SNV', value='A')], 3, ['q10'], {'NS': 3, 'DP': 11, 'AF': [0.017]}, ['GT', 'GQ', 'DP', 'HQ'], [Call('NA00001', {'GT': '0|0', 'GQ': 49, 'DP': 3, 'HQ': [58, 50]}), Call('NA00002', {'GT': '0|1', 'GQ': 3, 'DP': 5, 'HQ': [65, 3]}), Call('NA00003', {'GT': '0/0', 'GQ': 41, 'DP': 3})])
+&lt;class 'vcfpy.record.Record'&gt;
+Record('20', 1110696, ['rs6040355'], 'A', [Substitution(type_='SNV', value='G'), Substitution(type_='SNV', value='T')], 67, ['PASS'], {'NS': 2, 'DP': 10, 'AF': [0.333, 0.667], 'AA': 'T', 'DB': True}, ['GT', 'GQ', 'DP', 'HQ'], [Call('NA00001', {'GT': '1|2', 'GQ': 21, 'DP': 6, 'HQ': [23, 27]}), Call('NA00002', {'GT': '2|1', 'GQ': 2, 'DP': 0, 'HQ': [18, 2]}), Call('NA00003', {'GT': '2/2', 'GQ': 35, 'DP': 4})])
+&lt;class 'vcfpy.record.Record'&gt;
+Record('20', 1230237, [], 'T', [], 47, ['PASS'], {'NS': 3, 'DP': 13, 'AA': 'T'}, ['GT', 'GQ', 'DP', 'HQ'], [Call('NA00001', {'GT': '0|0', 'GQ': 54, 'DP': 7, 'HQ': [56, 60]}), Call('NA00002', {'GT': '0|0', 'GQ': 48, 'DP': 4, 'HQ': [51, 51]}), Call('NA00003', {'GT': '0/0', 'GQ': 61, 'DP': 2})])
+&lt;class 'vcfpy.record.Record'&gt;
+Record('20', 1234567, ['microsat1'], 'GTCT', [Substitution(type_='DEL', value='G'), Substitution(type_='INDEL', value='GTACT')], 50, ['PASS'], {'NS': 3, 'DP': 9, 'AA': 'G'}, ['GT', 'GQ', 'DP'], [Call('NA00001', {'GT': '0/1', 'GQ': 35, 'DP': 4}), Call('NA00002', {'GT': '0/2', 'GQ': 17, 'DP': 2}), Call('NA00003', {'GT': '1/1', 'GQ': 40, 'DP': 3})])
+&lt;class 'vcfpy.record.Record'&gt;</code></pre>
+</div>
+</div>
+<p>This does the code loop for every record in the file. And note how <code>print()</code> gives only a rough printout of the object, not every bit of information.</p>
+</section>
+<section id="the-vcf.record-object" class="level3" data-number="6.2.3">
+<h3 data-number="6.2.3" class="anchored" data-anchor-id="the-vcf.record-object"><span class="header-section-number">6.2.3</span> The <code>vcf.Record</code> object</h3>
+<p>Every time we loop we get a new <code>vcf.Record</code> object. This is a special sort of object provided by the <code>vcfpy</code> package that represents the VCF record. We already saw how objects have methods - special functions that apply straight to the data in that object. <code>PyVCF</code> is no exception. As well as methods, objects can have properties called attributes.</p>
+</section>
+<section id="object-attributes" class="level3" data-number="6.2.4">
+<h3 data-number="6.2.4" class="anchored" data-anchor-id="object-attributes"><span class="header-section-number">6.2.4</span> Object Attributes</h3>
+<p>As well as methods, objects have things called attributes.</p>
+<p>Attributes of an object are different from methods of an object in that they tend to be things that just are rather than things that are computed. So a hypothetical <code>shape</code> object representing a geometric shape might have an attribute called <code>sides</code>. This wouldn’t need recomputing as it would be the same every time.</p>
+<p>Attributes are easy to spot as they use the <code>object</code> dot <code>.</code> syntax, omitting the brackets at the end of the attribute name. Let’s examine that using the <code>.POS</code> attribute.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>vcf_reader <span class="op">=</span> vcfpy.Reader(<span class="bu">open</span>(<span class="st">'/Users/macleand/Desktop/example.vcf'</span>, <span class="st">'r'</span>))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> record <span class="kw">in</span> vcf_reader:</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>( record.POS )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>14370
+17330
+1110696
+1230237
+1234567</code></pre>
+</div>
+</div>
+<p>Here we can see that we get the position of each SNP/Indel in the chromosome from <code>.POS</code>. Note that we had to redo the vcf_reader creation - this is because the <code>vcf.Reader</code> object has in a sense “got to the end” of the data the first time we used it. It needs re-winding to the start and one way to do that is to recreate it and thereby reset it.</p>
+<section id="finding-the-methods-and-attributes-an-object-has" class="level4" data-number="6.2.4.1">
+<h4 data-number="6.2.4.1" class="anchored" data-anchor-id="finding-the-methods-and-attributes-an-object-has"><span class="header-section-number">6.2.4.1</span> Finding the methods and attributes an object has</h4>
+<p>If we want to find out what methods or attributes an object has we can use the <code>dir()</code> function which gives us these for an object.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( <span class="bu">dir</span>(vcf_reader) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__enter__', '__eq__', '__exit__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__next__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'close', 'fetch', 'from_path', 'from_stream', 'header', 'parsed_samples', 'parser', 'path', 'record_checks', 'stream', 'tabix_file', 'tabix_iter', 'tabix_path']</code></pre>
+</div>
+</div>
+<p>So the list is really large! Some methods and attributes begin with <code>_</code> underscore characters. By convention these are things that are used internally by the object - so you don’t need to worry about those. We can filter the ones we can use, by building a list of ones that <em>don’t</em> start with ’_’</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>attrs <span class="op">=</span> <span class="bu">dir</span>(vcf_reader)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>keepers <span class="op">=</span> []</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> a <span class="kw">in</span> attrs:</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="kw">not</span> a.startswith(<span class="st">"_"</span>):</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    keepers.append(a)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( keepers )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['close', 'fetch', 'from_path', 'from_stream', 'header', 'parsed_samples', 'parser', 'path', 'record_checks', 'stream', 'tabix_file', 'tabix_iter', 'tabix_path']</code></pre>
+</div>
+</div>
+<p>This is a much shorter list. You can see the online documentation for the object here <a href="">https://vcfpy.readthedocs.io/en/stable/api_io.html#vcfpy-reader</a></p>
+<p>Pretty much all objects and packages will have some online documentation so you can <em>usually</em> find something. Sometimes it’s a bit sparse, unfortunately.</p>
+</section>
+</section>
+</section>
+<section id="quiz" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="quiz"><span class="header-section-number">6.3</span> Quiz</h2>
+<ol type="1">
+<li>Using <code>PyVCF</code>, calculate how many of the records are SNPs and how many are Indels. Use the documentation to see how you might achieve this - <a href="">https://vcfpy.readthedocs.io/en/stable/api_record.html#vcfpy-record</a></li>
+<li>For each SNP, work out whether it’s an A-G or C-T, a so-called transition. Would your method be efficient on a file of thousands of SNPS?</li>
+<li>Which record has the greatest number of alleles? Would your method be efficient on a file of thousands of SNPs/Indels?</li>
+<li>How many alternative alleles are heterozygous, for each record?</li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./06-functions.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">User Functions</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./08-scripts.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Putting code into scripts</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,0 +1,34 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Beginning Programming with Python"
+  author: "Dan MacLean"
+  date: "May 2022"
+  search: true
+  downloads: [pdf]
+  sharing: [twitter, facebook]
+  chapters:
+    - index.qmd
+    - 02-working_with_data.qmd
+    - 03-data_structures.qmd
+    - 04-conditionals.qmd
+    - 05-loops.qmd
+    - 06-functions.qmd
+    - 07-packages.qmd
+    - 08-scripts.qmd
+    - 09-final_challenge.qmd
+  appendices:
+    - appendix.qmd
+    - 10-acknowledgements.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+comments:
+  hypothesis: true

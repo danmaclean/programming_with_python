@@ -1,0 +1,12 @@
+# Putting It All Together
+
+## A Challenge in Python
+
+This file [SRR020192.fastq.gz](assets/SRR020192.fastq.gz) contains next generation sequencing reads in `fastq` format.
+
+Write a Python script that uses the BioPython package to
+
+  1. Count the reads in the `fastq` file
+  2. Filter out low-quality reads from the `fastq` file
+  3. Calculate how many reads are retained
+  4. Use at least one user-defined function

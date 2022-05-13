@@ -1,0 +1,154 @@
+# Data Structures
+
+1. Questions:
+  - How do I arrange and process lots of items of data in Python?
+2. Objectives:
+  - Create and work with `lists` and `dicts`
+3. Keypoints:
+  - A list is a collection object that is a linear collection of other objects
+  - A dict is a collection object that is a group of key objects that point to values
+
+Data structures are collection types that group lots of data into a single object and make working with lots of data easier. Python has some built in data structures we can use. In this section we'll look at using some of the most common and fundamental ones. As you gain exeperience with Python, you'll find that many other more complex data structures are made out of these.
+
+## Lists are ordered linear collections of items
+
+The simplest data structure is a `list`. We can create a list simply by enclosing our data in square brackets.
+
+```{python, highlight = TRUE}
+my_list = [1,3,5,7]
+print( my_list )
+```
+
+More often, though, we'll get a `list` as the result of a function. Recall the `random` library we used earlier, it can sample `k` items from a list. 
+
+```{python, highlight = TRUE}
+import random
+selected = random.sample(['red', 'red', 'red', 'red', 'blue', 'blue'], k=3)
+
+print( selected )
+```
+Here we get a list of integers. The point being it is now a collection of data that we can refer to as a single entity.
+
+Lists can mix up any sort of data type,
+
+```{python, highlight = TRUE}
+
+numbers_and_letters = [1,2, 'three', 'IV', 5.0 ]
+print( numbers_and_letters )
+
+```
+
+including other lists.
+
+```{python, highlight = TRUE}
+
+list_of_lists = [ [1,2,3], ["a","b","c"] ]
+
+print( list_of_lists )
+
+```
+
+### List use
+
+List elements can be accessed using indexing, like with strings.
+
+```{python, highlight = TRUE}
+print( numbers_and_letters[0] )
+print( numbers_and_letters[2:4] )
+```
+
+Indexing an element returns the whole element - so if that element happens to be a list itself - you get a whole list back
+
+```{python, highlight = TRUE}
+print( list_of_lists[1] )
+```
+
+To get at a single element in this case you must use multiple sets of square brackets, one for each list.
+
+```{python, highlight = TRUE}
+print( list_of_lists[0][1] )
+print( list_of_lists[1][0] )
+```
+
+### List methods
+
+As they're still a regular Python object, just like strings or they have lots of methods. Much of what you'll want to do with a list is accomplished with methods. Again, there are many - here's a list of useful ones [https://www.w3schools.com/python/python_ref_list.asp](https://www.w3schools.com/python/python_ref_list.asp). As a single example from the list, let's look at `.append()`, which is used to stick something on the right hand side of the list. 
+
+```{python, highlight = TRUE}
+numbers_and_letters.append("ninety")
+print( numbers_and_letters )
+```
+
+<div class="card border-info mb-3"">
+  <div class="card-header">Tip!</div>
+  <div class="card-body">
+In the example above we didn't need to save this back to a variable. Note that this isn't a mistake. This method modified the object `in-place`. Some methods will do this, and at this stage which is which is going to seem somewhat arbitrary. The documentation (or experimentation) will explain which do and don't.
+</div>
+</div>
+
+## Dictionaries are unordered collections
+
+Another very common data structure is a dictionary. A dictionary is a data structure that has many unique `keys`, each of which refers to a bit of other data called a `value`. We can construct them using the curly brackets and the `key/value` pairs
+
+
+```{python, highlight = TRUE}
+
+my_dict = {
+  "key1" : "value1",
+  "key2" : "value2"
+}
+
+print( my_dict )
+```
+
+Note the order in the dictionary isn't preserved. The information is stored according to an internal algorithm, not the order the informaion is added. We can use the square brackets to get a single value, but as a dictionary has no order and therefore no numeric index, we must use the key as the index. 
+
+```{python, highlight = TRUE}
+
+print( my_dict["key1"] )
+
+```
+Dictionaries are useful when you want to ask for a bit of data by some name, rather than by its position in a list. 
+
+Dictionaries can hold anything in their values. But keys are restricted to particular datatypes. Strings and numbers are good keys, lists are not allowed.
+
+```{python, highlight = TRUE, eval = FALSE}
+#| eval: false
+print( { ["list_key", 1, 2] : ["some data"]  } )
+
+```
+```
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unhashable type: 'list'
+```
+
+### Dictionary Methods
+
+As with lists there are methods on Python Dictionaries. Here's a useful list [https://www.w3schools.com/python/python_ref_dictionary.asp](https://www.w3schools.com/python/python_ref_dictionary.asp). These are mostly related to getting items on and off the list, we'll see some when we use dictionaries in loops later.
+
+## Quiz
+
+1. Given the list below, use slicing to access only the last 2 entries.
+
+```{python, highlight = TRUE, eval = FALSE}
+list_for_slicing = [["fluorine", "F"], 
+                    ["chlorine", "Cl"], 
+                    ["bromine", "Br"], 
+                    ["iodine", "I"], 
+                    ["astatine", "At"]]
+```
+
+2. Modify `list_for_slicing` using the `.reverse()` method. Verify that it is reversed as you expected.
+
+3. Can you work out how to correct the wrong data in the dictionary below? Try to think of a way that _doesn't_ involve re-writing the whole dictionary. Hint: can you assign straight to a key?
+
+```{python, highlight = TRUE}
+seasons = {
+  'spring' : ['mar', 'apr', 'may' ],
+  'autumn' : ['jun', 'jul', 'aug'],
+  'winter' : ['dec', 'jan', 'feb']
+}
+```
+
+4. Add in the missing season.
