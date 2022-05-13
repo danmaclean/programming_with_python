@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Dan MacLean">
-<meta name="dcterms.date" content="2022-05-01">
 
-<title>Beginning Programming with Python</title>
+<title>Beginning Programming with Python - Appendix A — Installing what you need</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -26,7 +24,8 @@ ul.task-list{list-style: none;}
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
-<link href="./02-working_with_data.html" rel="next">
+<link href="./10-acknowledgements.html" rel="next">
+<link href="./09-final_challenge.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -66,7 +65,7 @@ ul.task-list{list-style: none;}
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Beginning Programming with Python</h1>
+      <h1 class="quarto-secondary-nav-title">Appendix A — Installing what you need</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -109,7 +108,7 @@ ul.task-list{list-style: none;}
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">Motivation</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Motivation</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -162,7 +161,7 @@ ul.task-list{list-style: none;}
     <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./appendix.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Installing what you need</span></a>
+  <a href="./appendix.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Installing what you need</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -181,7 +180,21 @@ ul.task-list{list-style: none;}
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation">Motivation</a></li>
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link active" data-scroll-target="#prerequisites"> <span class="header-section-number">A.1</span> Prerequisites</a></li>
+  <li><a href="#installing-python-3-with-anaconda" id="toc-installing-python-3-with-anaconda" class="nav-link" data-scroll-target="#installing-python-3-with-anaconda"> <span class="header-section-number">A.2</span> Installing Python 3 with Anaconda</a>
+  <ul class="collapse">
+  <li><a href="#note-for-macos-users" id="toc-note-for-macos-users" class="nav-link" data-scroll-target="#note-for-macos-users"> <span class="header-section-number">A.2.1</span> Note for macOS users</a></li>
+  <li><a href="#note-for-windows-users" id="toc-note-for-windows-users" class="nav-link" data-scroll-target="#note-for-windows-users"> <span class="header-section-number">A.2.2</span> Note for Windows users</a></li>
+  <li><a href="#note-for-linux-users" id="toc-note-for-linux-users" class="nav-link" data-scroll-target="#note-for-linux-users"> <span class="header-section-number">A.2.3</span> Note for Linux Users</a></li>
+  </ul></li>
+  <li><a href="#starting-a-jupyter-notebook" id="toc-starting-a-jupyter-notebook" class="nav-link" data-scroll-target="#starting-a-jupyter-notebook"> <span class="header-section-number">A.3</span> Starting a Jupyter Notebook</a>
+  <ul class="collapse">
+  <li><a href="#macos" id="toc-macos" class="nav-link" data-scroll-target="#macos"> <span class="header-section-number">A.3.1</span> macOS</a></li>
+  <li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows"> <span class="header-section-number">A.3.2</span> Windows</a></li>
+  <li><a href="#linux" id="toc-linux" class="nav-link" data-scroll-target="#linux"> <span class="header-section-number">A.3.3</span> Linux</a></li>
+  </ul></li>
+  <li><a href="#installing-python-packages-with-conda" id="toc-installing-python-packages-with-conda" class="nav-link" data-scroll-target="#installing-python-packages-with-conda"> <span class="header-section-number">A.4</span> Installing Python Packages with <code>conda</code></a></li>
+  <li><a href="#installing-a-text-editor" id="toc-installing-a-text-editor" class="nav-link" data-scroll-target="#installing-a-text-editor"> <span class="header-section-number">A.5</span> Installing a Text Editor</a></li>
   </ul>
 </nav>
     </div>
@@ -190,7 +203,7 @@ ul.task-list{list-style: none;}
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Beginning Programming with Python</h1>
+<h1 class="title d-none d-lg-block">Appendix A — Installing what you need</h1>
 </div>
 
 
@@ -199,34 +212,94 @@ ul.task-list{list-style: none;}
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Dan MacLean </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">May 1, 2022</p>
-    </div>
-  </div>
     
   </div>
   
 
 </header>
 
-<section id="motivation" class="level1 unnumbered">
-<h1 class="unnumbered">Motivation</h1>
-<p>Programming is a pretty weird skill. It boils down to shouting at a computer to make it do stuff for you. So why would you want to learn to do it? There are plenty of reasons, some good and some bad. Some good ones that apply to working in biology and bioinformatics are time-saving, turning your computer from a limited ‘appliance’ to a general ‘power tool’ for your research and because it’s a skill that can help you develop a more precise, disciplined and abstract way of thinking.</p>
-<p>The main obstacle that most people encounter when learning to program is the surprisingly wide range of concepts and implementations of concepts that you need to know in order to achieve something. This can make it intimidating and tedious for those starting out.</p>
-<p>The aim of this course is to introduce you to just enough of these to enable you to do useful stuff with Python. The things you’ll learn here will seem quite abstract and disconnected at first but hopefully by the end of the course you’ll be able to string them together to make something useful - and understand what’s going on.</p>
-<p>In this course, we’ll use Python 3 - a widely used very powerful but (all things considered) user-friendly language that suits beginners and experts alike.</p>
-<p>We’ll use the bare-bones of Python 3. Python is a very broad language with a lot of functionality, a lot of it in optional packages that you can install whenever you need them. We’ll only touch the surface of what is possible - but what we learn will be foundation enough to build pretty much anything on.</p>
-<p>By the end of this course you’ll have seen and used enough Python to be able to go forward and be able to start to tackle any sort of programming challenge. You’ll still need your problem solving skills, tenacity and determination to do tackle your future challenges, but at least you’ll know Python.</p>
-<p>Happy Programming!</p>
+<div class="cell">
+
+</div>
+<section id="prerequisites" class="level2" data-number="A.1">
+<h2 data-number="A.1" class="anchored" data-anchor-id="prerequisites"><span class="header-section-number">A.1</span> Prerequisites</h2>
+<p>No specific Python knowledge is assumed for this book, though you do need to install some software. Most of it can be done using your computer’s graphical interface.</p>
+<ol type="1">
+<li>Python 3 via Anaconda</li>
+<li>A reasonably recent web-browser</li>
+<li>The <code>vcfpy</code> and <code>biopython</code> python packages</li>
+<li>The files <a href="assets/example.vcf">example.vcf</a> and <a href="assets/SRR020192.fastq.gz">SRR020192.fastq.gz</a></li>
+<li>A text-editor</li>
+</ol>
+</section>
+<section id="installing-python-3-with-anaconda" class="level2" data-number="A.2">
+<h2 data-number="A.2" class="anchored" data-anchor-id="installing-python-3-with-anaconda"><span class="header-section-number">A.2</span> Installing Python 3 with Anaconda</h2>
+<p>Follow this link and install Python <em>3.x</em> for your operating system. <a href="https://www.anaconda.com/distribution/">https://www.anaconda.com/distribution/</a></p>
+<section id="note-for-macos-users" class="level3" data-number="A.2.1">
+<h3 data-number="A.2.1" class="anchored" data-anchor-id="note-for-macos-users"><span class="header-section-number">A.2.1</span> Note for macOS users</h3>
+<p>Accept all of the defaults during installation</p>
+<p>Here is a video tutorial <a href="https://www.youtube.com/watch?v=TcSAln46u9U">https://www.youtube.com/watch?v=TcSAln46u9U</a></p>
+</section>
+<section id="note-for-windows-users" class="level3" data-number="A.2.2">
+<h3 data-number="A.2.2" class="anchored" data-anchor-id="note-for-windows-users"><span class="header-section-number">A.2.2</span> Note for Windows users</h3>
+<p>Install Python 3 using all of the defaults for installation except make sure to check <strong>Add Anaconda to my PATH environment variable</strong>.</p>
+<p>Here is a video tutorial <a href="https://www.youtube.com/watch?v=xxQ0mzZ8UvA">https://www.youtube.com/watch?v=xxQ0mzZ8UvA</a></p>
+</section>
+<section id="note-for-linux-users" class="level3" data-number="A.2.3">
+<h3 data-number="A.2.3" class="anchored" data-anchor-id="note-for-linux-users"><span class="header-section-number">A.2.3</span> Note for Linux Users</h3>
+<p>You’ll need to be able to use the command-line to install with Anaconda. If you aren’t comfortable with this, ask for assistance from the local support team.</p>
+<ol type="1">
+<li>Open <a href="">https://www.anaconda.com/download/#linux</a> with your web browser.</li>
+<li>Download the Python 3 installer for Linux.</li>
+<li>Open a terminal window. 4.Type <code>bash Anaconda3-</code>and then press Tab. The name of the file you just downloaded should appear. If it does not, navigate to the folder where you downloaded the file, for example with: <code>cd Downloads</code>. Then, try again.</li>
+<li>Press <code>enter</code>. You will follow the text-only prompts. To move through the text, press the <code>spacebar</code>.</li>
+<li>Type <code>yes</code> and press <code>enter</code> to approve the license.</li>
+<li>Press <code>enter</code> to approve the default location for the files.</li>
+<li>Type <code>yes</code> and press <code>enter</code> to prepend Anaconda to your <code>PATH</code> (this makes the Anaconda distribution the default Python).</li>
+<li>Close the terminal window.</li>
+</ol>
+</section>
+</section>
+<section id="starting-a-jupyter-notebook" class="level2" data-number="A.3">
+<h2 data-number="A.3" class="anchored" data-anchor-id="starting-a-jupyter-notebook"><span class="header-section-number">A.3</span> Starting a Jupyter Notebook</h2>
+<section id="macos" class="level3" data-number="A.3.1">
+<h3 data-number="A.3.1" class="anchored" data-anchor-id="macos"><span class="header-section-number">A.3.1</span> macOS</h3>
+<ol type="1">
+<li>Start the <code>Terminal</code> application in <code>Applications -&gt; Utilities</code></li>
+<li>Type <code>jupyter notebook</code>, it should start in your web browser</li>
+</ol>
+</section>
+<section id="windows" class="level3" data-number="A.3.2">
+<h3 data-number="A.3.2" class="anchored" data-anchor-id="windows"><span class="header-section-number">A.3.2</span> Windows</h3>
+<ol type="1">
+<li>From the Start menu, search for and open <code>Anaconda 3</code> or <code>Jupyter Notebook</code>. You should be able to start a notebook directly by clicking the <code>Jupyter Notebook</code> icon.</li>
+</ol>
+</section>
+<section id="linux" class="level3" data-number="A.3.3">
+<h3 data-number="A.3.3" class="anchored" data-anchor-id="linux"><span class="header-section-number">A.3.3</span> Linux</h3>
+<ol type="1">
+<li>Open the terminal application. It is <em>usually</em> in the task bar or dock</li>
+<li>Type <code>jupyter notebook</code>, it should start in your web browser</li>
+</ol>
+</section>
+</section>
+<section id="installing-python-packages-with-conda" class="level2" data-number="A.4">
+<h2 data-number="A.4" class="anchored" data-anchor-id="installing-python-packages-with-conda"><span class="header-section-number">A.4</span> Installing Python Packages with <code>conda</code></h2>
+<p>You can use <code>conda</code> to install new Python packages using the Terminal by typing <code>conda install &lt;package_name&gt;</code>.</p>
+<p>You can install the required packages with the following commands:</p>
+<pre><code>conda install vcfpy
+conda install biopython</code></pre>
+<p>Accept all defaults when the system asks a question.</p>
+</section>
+<section id="installing-a-text-editor" class="level2" data-number="A.5">
+<h2 data-number="A.5" class="anchored" data-anchor-id="installing-a-text-editor"><span class="header-section-number">A.5</span> Installing a Text Editor</h2>
+<p>A text editor is a program that deals with text in a way that is appropriate to writing programs. It is quite different to a word processor. Many such programs are available, try the options below:</p>
+<ol type="1">
+<li>TextMate (macOS) <a href="https://macromates.com/">https://macromates.com/</a></li>
+<li>Atom (macOS/Windows) <a href="https://atom.io/">https://atom.io/</a></li>
+<li>Notepad++ (Windows) <a href="https://notepad-plus-plus.org/">https://notepad-plus-plus.org/</a></li>
+</ol>
 
 
 </section>
@@ -313,10 +386,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./09-final_challenge.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Putting It All Together</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./02-working_with_data.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Working with Data</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./10-acknowledgements.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

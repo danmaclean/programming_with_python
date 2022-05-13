@@ -1,0 +1,110 @@
+# Putting code into scripts
+
+1. Questions:
+  * How do I write my code into a script that can be run again?
+2. Objectives:
+  * Learn the conventions for creating script files.
+  * Get parameters from the command line and use them in scripts.
+3. Keypoints:
+  * Scripts are files that contain programs of Python code.
+
+
+Scripts are files full of code that has been put together in order to do a particular task. The idea being that the code will get re-run many times and not just as a one off. 
+
+Building a script is usually pretty easy - just type the code in to a text file. 
+
+You'll need a text editor, a program that deals with text but not in the same way as a word processor. Many such programs are available, try the options below
+
+  1. Atom (macOS/Windows) [https://atom.io/]()
+  2. Notepad++ (Windows) [https://notepad-plus-plus.org/]()
+
+## The script header
+
+Most Python scripts have this on the first line
+
+```
+#!/usr/bin/env python
+```
+
+This is a Unix/Linux convention that affects how those systems interpret the file. Leave it in for convention's sake.
+
+## The filename extension
+
+By convention, Python script filess end in the extension, `.py`.
+
+
+So if we have the following in a file called `hello_world.py`, we have a Python script.
+
+```
+#!/usr/bin/env python
+
+print("Hello, World!")
+
+```
+
+## Running a python script from the command line
+
+Once created, the script itself is run from the `python` command on the command line. `python` is just a regular program that accepts a python script filename as its argument and runs the code in the script.
+
+Here's an example terminal session that runs a script.
+
+```
+Last login: Thu Dec  6 10:59:32 on ttys000
+~/Desktop macleand$ python hello_world.py
+
+Hello, World!
+
+~/Desktop macleand$
+```
+
+## Getting Options from the Command Line
+
+A good reason for creating scripts is because you want to be able to re-run the code in them. Sometimes you'll want to change some aspect or behaviour of the code according to settings given on the command-line. For example, you might want to work on a different input file each time. We can access the text from the command-line in the script, using the `sys.argv` attribute in the `sys` module.
+
+Imagine the command line
+
+```
+python my_script.py OPTION_1 option_2
+```
+
+We access it like this
+```{python, highlight=TRUE, eval=FALSE}
+#!/usr/bin/env python
+
+import sys
+
+print( sys.argv )
+
+```
+```
+['my_script.py', 'OPTION_1', 'option_2']
+```
+
+The `sys.argv` attribute gives us a list of the command line options. The first item in the list is the script name, the options come after that. So we can access the options by indexing the `sys.argv` list
+
+
+```
+python my_script.py OPTION_1 option_2
+```
+```{python, highlight=TRUE, eval=FALSE}
+#!/usr/bin/env python
+
+import sys
+
+first_option = sys.argv[1]
+second_option = sys.argv[2]
+
+print(second_option, first_option)
+
+```
+```
+option_2 OPTION_1
+```
+
+## Quiz
+
+1. Create a script that writes 'Hello, World!' to the screen. Run it.
+2. Create a script that takes one argument and prints that to the screen as `You said.. <argument>` - replacing `<argument>` with the value you give on the command line.
+3. Create a script that takes two numbers from the command line and adds them together and prints the result.
+
+

@@ -1,0 +1,310 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Beginning Programming with Python",
+    "section": "",
+    "text": "Programming is a pretty weird skill. It boils down to shouting at a computer to make it do stuff for you. So why would you want to learn to do it? There are plenty of reasons, some good and some bad. Some good ones that apply to working in biology and bioinformatics are time-saving, turning your computer from a limited ‘appliance’ to a general ‘power tool’ for your research and because it’s a skill that can help you develop a more precise, disciplined and abstract way of thinking.\nThe main obstacle that most people encounter when learning to program is the surprisingly wide range of concepts and implementations of concepts that you need to know in order to achieve something. This can make it intimidating and tedious for those starting out.\nThe aim of this course is to introduce you to just enough of these to enable you to do useful stuff with Python. The things you’ll learn here will seem quite abstract and disconnected at first but hopefully by the end of the course you’ll be able to string them together to make something useful - and understand what’s going on.\nIn this course, we’ll use Python 3 - a widely used very powerful but (all things considered) user-friendly language that suits beginners and experts alike.\nWe’ll use the bare-bones of Python 3. Python is a very broad language with a lot of functionality, a lot of it in optional packages that you can install whenever you need them. We’ll only touch the surface of what is possible - but what we learn will be foundation enough to build pretty much anything on.\nBy the end of this course you’ll have seen and used enough Python to be able to go forward and be able to start to tackle any sort of programming challenge. You’ll still need your problem solving skills, tenacity and determination to do tackle your future challenges, but at least you’ll know Python.\nHappy Programming!"
+  },
+  {
+    "objectID": "02-working_with_data.html",
+    "href": "02-working_with_data.html",
+    "title": "1  Working with Data",
+    "section": "",
+    "text": "Questions:\nIn any Python program we will have some data and some objective to achieve - something to do with that data. Python provides many data types and many ways of working with that data.\nManipulating data is done with functions. Data is stored in objects. In this section we’ll look at functions and objects and their interaction.\nLet’s see the simplest example of this workflow, let’s take a string (a text carrying object data type) and use it in a function.\nIn this example the string \"Hello, World!\", is being given to the print() function. Functions are bits of code that do stuff to data. The print() function just prints the data that you pass it to the screen. We pass data to functions by putting the data in the brackets after the function name."
+  },
+  {
+    "objectID": "02-working_with_data.html#using-variables-as-names-for-data",
+    "href": "02-working_with_data.html#using-variables-as-names-for-data",
+    "title": "1  Working with Data",
+    "section": "1.1 Using variables as names for data",
+    "text": "1.1 Using variables as names for data\nWe don’t usually use data directly. Instead we use a name that refers to a piece of data - a variable. Variables are just names that represent a bit of data. It’s called a variable because the data the variable is associated with can change. We assign a name to data by using the assignment symbol the = sign. The data associated with a variable can be changed by re-assignment, allowing us to reuse the name.\nWe can use variables as if they are the data they point to\n\nx = \"Hello, world!\"\nprint(x)\n\nx = 100\nprint(x)\n\nHello, world!\n100\n\n\nAnd variables are independent of one another, actions on one don’t affect another\n\nweight_kg = 65\n\nweight_pounds = 2.2 * weight_kg\n\nprint(weight_kg)\n\nprint(weight_pounds)\n\n65\n143.0"
+  },
+  {
+    "objectID": "02-working_with_data.html#python-has-three-main-types-of-function",
+    "href": "02-working_with_data.html#python-has-three-main-types-of-function",
+    "title": "1  Working with Data",
+    "section": "1.2 Python has three main types of function",
+    "text": "1.2 Python has three main types of function\nPython is full of functions. So many in fact that coming up with names can be a problem! This is a serious issue as you have to refer to functions by name. To resolve this problem Python keeps its functions in different places in its library, and the way we call the function changes depending on where the function ‘lives’. There are three basic function types:\n\nBuilt-In Functions and Operators\nPackage Functions\nObject Methods\n\n\n1.2.1 Built-In Functions and Operators\nPython has some functions that can be called directly from anywhere in a program. These are listed here https://docs.python.org/3.3/library/functions.html. We’ve already seen print() `and there are some common ones we’ll come across later. You can spot a built-in function because it has a single-word name followed by brackets.\nRelated to built-in functions are operators. The things you’ll use most are the mathematical operators that work as you would expect from your knowledge of maths. So they include things like, + , -, *, / etc.\n\nprint(1 + 1)\nprint(2 * 2)\nprint(3 - 3)\nprint(4 / 4)\n\n2\n4\n0\n1.0\n\n\nSome operators change what they do depending on the things you ask them to operate on. For instance, we can add strings?!\n\nprint( \"Hello\" + \"World!\")\n\nHelloWorld!\n\n\nThis is supposed to be a way of making the language more intuitive and readable at the user end of things. Most times you see operators, they should be pretty obvious.\n\n\n1.2.2 Functions from packages\nAnother source of functions is external packages - extensions to Python for use in particular problem domains. We can load in a package using import. Let’s import the random Python package that provides functions for generating random numbers.\n\nimport random\n\nWe can access the functions in this package by using the package name and the dot (.) syntax and the function name. Let’s call the numpy function randrange() which gives us a random number between two limits.\n\nnumber = random.randrange(1, 10)\n\nprint( number )\n\n2\n\n\n\n\n1.2.3 Object Methods\nLumps of data are represented in the computer in things called objects. An object is basically a bit of data with some functions attached. This means each piece of data comes with the code to manipulate it. These attached functions are called methods.\nWe access data’s methods using the . syntax again, so this time you have variable_name.method(), read this as you telling the object the variable points at to do method() to itself. This is simpler than it sounds.\nConsider a variable x pointing to a string object. We might use it with .capitalize() as follows\n\nx = \"hello, world!\"\n\nprint( x.capitalize() )\n\nHello, world!\n\n\nThis does mean that the methods are closely tied to the data. Look what happens when we try to use .capitalize() on a number\n\ny = 100\n\nprint( y.capitalize() )\n\nError in py_run_string_impl(code, local, convert) : \n  AttributeError: 'int' object has no attribute 'capitalize'\nPython just throws an error. Basically this error is saying that int (integer, a number object ) doesn’t have a method called capitalize.\nLoosely, methods are functions that only apply to particular object types.\nWe need to know what methods an object has before we can work on them. We can find this by reading the documentation for the object type. And Python will give us the type with the type() function\n\nprint( type(x) )\n\n<class 'str'>\n\n\nWe can see that x contains a str - a string. The easiest place to find the Python documentation is online. Googling Python 3 str shows us this page https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str, which shows us all the String methods. This works well for finding all methods for objects of other types.\n\n  Roundup\n  \nWe have discussed three types of function. The basic type is Python's built in functions, these are available anywhere in a Python program. The second, Package functions must be imported with package and accessed using the package name and dot. The third is the method which is a function tied to an object and is accessed using the variable name and the dot."
+  },
+  {
+    "objectID": "02-working_with_data.html#objects-and-types-in-python",
+    "href": "02-working_with_data.html#objects-and-types-in-python",
+    "title": "1  Working with Data",
+    "section": "1.3 Objects and types in Python",
+    "text": "1.3 Objects and types in Python\nLet’s examine some object types.\nPython knows many types of object, most things are an object of some type. Three common object types are:\n\nstrings\ninteger numbers\nfloating point numbers\n\n\n1.3.1 String Objects\nThe term ‘string’ is computer jargon for text data, usually a single lump of text data treated as a whole. To create a strings we simply have to add single or double quotes around some text, for example:\n\nweight_kg_text = 'weight in kilograms'\n\nHaving actual numbers in there doesn’t make a string a number type - the following is still a string - it just happens to be made up of number like characters. Let’s see what happens if we try and treat it like a number.\n\nphone_number = \"01818118181\"\n\nprint( phone_number * 2 )\n\n0181811818101818118181\n\n\nHere the * operator has modified itself to work on a string and repeated the string! Usually though the program will crash out, giving an operator the wrong data will confuse the program.\n\n1.3.1.1 Indexing a string (Slicing)\nWe can access a single character in a string using indexing - basically asking for a character at a position. The syntax uses the square brackets.\n\nprint( phone_number[2] )\n\n8\n\n\nNote that using the index [2] gives us the third character - computer languages tend to count from 0.\nWe can get a longer subsection of a string using indexing as well - this is a technique that accesses a part of the data given a start and end point along the string.\n\ndialling_code = phone_number[0:3]\nprint(dialling_code)\n\n018\n\n\nWe just use the square brackets to indicate the start and stop points of the slice we want to extract, literally [start:end]. The start here is 0 meaning the first character, the end here is 3, but it means up to but not including the end.\n\nprint( dialling_code )\n\n018\n\n\nThat’s why we only get the first three characters from the string and not 4 ie 0,1,2,3. The way to remember this is that the length of the resulting slice is end - start.\nThere are many string operations and methods, you can see them in the documentation at https://docs.python.org/3/library/stdtypes.html#textseq\n\n\n\n1.3.2 Number Objects\nNumbers in Python come in two types, whole numbers (called integers) and numbers with a decimal part (called floating point numbers).\nIn the example above, variable weight_kg has an integer value of 65. To create a variable with a floating point value, we can execute:\n\nweight_kg = 65.0\n\nThe difference is important in some cases. You can convert type explicitly using the int() and float() functions.\n\nprint( float(1) + 3 )\nprint( int( 10.0 / 3.0 ) )\n\n4.0\n3"
+  },
+  {
+    "objectID": "02-working_with_data.html#quiz",
+    "href": "02-working_with_data.html#quiz",
+    "title": "1  Working with Data",
+    "section": "1.4 Quiz",
+    "text": "1.4 Quiz\n\nWhat values do the variables mass and age have after each statement in the following program? Test your answers by executing the commands.\n\n\n mass = 47.5\n age = 122\n mass = mass * 2.0\n age = age - 20\n\n\nWhat does the following program print out?\n\n\n first, second = 'Grace', 'Hopper'\n third, fourth = second, first\n print(third, fourth)\n\n\nRecall that a section of a string is called a slice. Work on the slices below.\n\n\n element = 'oxygen'\n print('first three characters:', element[0:3])\n print('last three characters:', element[3:6])\n\n\nWhat is the value of element[:4]?\nWhat about element[4:]?\nOr element[:]?\nWhat is element[-1]?\nWhat is element[-2]?\nGiven those answers, explain what element[1:-1] does.\n\n\nFix the capitalisation in messy_string\n\n\nmessy_string = \"OH mY, ThESE LEtters Are ALL OVER The PLace!\"\n\nHint: Think about standardising the letters by e.g making all one case, then fixing the capitalization from there.\n\nCheck out the math package. https://docs.python.org/3/library/math.html and import it.\n\n\nWhat is the arc sine of -1, 0, 1 in radians?\nHow many degrees in \\(\\arcsin(-1)\\) radians?"
+  },
+  {
+    "objectID": "03-data_structures.html",
+    "href": "03-data_structures.html",
+    "title": "2  Data Structures",
+    "section": "",
+    "text": "Questions:\nData structures are collection types that group lots of data into a single object and make working with lots of data easier. Python has some built in data structures we can use. In this section we’ll look at using some of the most common and fundamental ones. As you gain exeperience with Python, you’ll find that many other more complex data structures are made out of these."
+  },
+  {
+    "objectID": "03-data_structures.html#lists-are-ordered-linear-collections-of-items",
+    "href": "03-data_structures.html#lists-are-ordered-linear-collections-of-items",
+    "title": "2  Data Structures",
+    "section": "2.1 Lists are ordered linear collections of items",
+    "text": "2.1 Lists are ordered linear collections of items\nThe simplest data structure is a list. We can create a list simply by enclosing our data in square brackets.\n\nmy_list = [1,3,5,7]\nprint( my_list )\n\n[1, 3, 5, 7]\n\n\nMore often, though, we’ll get a list as the result of a function. Recall the random library we used earlier, it can sample k items from a list.\n\nimport random\nselected = random.sample(['red', 'red', 'red', 'red', 'blue', 'blue'], k=3)\n\nprint( selected )\n\n['red', 'red', 'blue']\n\n\nHere we get a list of integers. The point being it is now a collection of data that we can refer to as a single entity.\nLists can mix up any sort of data type,\n\nnumbers_and_letters = [1,2, 'three', 'IV', 5.0 ]\nprint( numbers_and_letters )\n\n[1, 2, 'three', 'IV', 5.0]\n\n\nincluding other lists.\n\nlist_of_lists = [ [1,2,3], [\"a\",\"b\",\"c\"] ]\n\nprint( list_of_lists )\n\n[[1, 2, 3], ['a', 'b', 'c']]\n\n\n\n2.1.1 List use\nList elements can be accessed using indexing, like with strings.\n\nprint( numbers_and_letters[0] )\nprint( numbers_and_letters[2:4] )\n\n1\n['three', 'IV']\n\n\nIndexing an element returns the whole element - so if that element happens to be a list itself - you get a whole list back\n\nprint( list_of_lists[1] )\n\n['a', 'b', 'c']\n\n\nTo get at a single element in this case you must use multiple sets of square brackets, one for each list.\n\nprint( list_of_lists[0][1] )\nprint( list_of_lists[1][0] )\n\n2\na\n\n\n\n\n2.1.2 List methods\nAs they’re still a regular Python object, just like strings or they have lots of methods. Much of what you’ll want to do with a list is accomplished with methods. Again, there are many - here’s a list of useful ones https://www.w3schools.com/python/python_ref_list.asp. As a single example from the list, let’s look at .append(), which is used to stick something on the right hand side of the list.\n\nnumbers_and_letters.append(\"ninety\")\nprint( numbers_and_letters )\n\n[1, 2, 'three', 'IV', 5.0, 'ninety']\n\n\n\n  Tip!\n  \nIn the example above we didn't need to save this back to a variable. Note that this isn't a mistake. This method modified the object `in-place`. Some methods will do this, and at this stage which is which is going to seem somewhat arbitrary. The documentation (or experimentation) will explain which do and don't."
+  },
+  {
+    "objectID": "03-data_structures.html#dictionaries-are-unordered-collections",
+    "href": "03-data_structures.html#dictionaries-are-unordered-collections",
+    "title": "2  Data Structures",
+    "section": "2.2 Dictionaries are unordered collections",
+    "text": "2.2 Dictionaries are unordered collections\nAnother very common data structure is a dictionary. A dictionary is a data structure that has many unique keys, each of which refers to a bit of other data called a value. We can construct them using the curly brackets and the key/value pairs\n\nmy_dict = {\n  \"key1\" : \"value1\",\n  \"key2\" : \"value2\"\n}\n\nprint( my_dict )\n\n{'key1': 'value1', 'key2': 'value2'}\n\n\nNote the order in the dictionary isn’t preserved. The information is stored according to an internal algorithm, not the order the informaion is added. We can use the square brackets to get a single value, but as a dictionary has no order and therefore no numeric index, we must use the key as the index.\n\nprint( my_dict[\"key1\"] )\n\nvalue1\n\n\nDictionaries are useful when you want to ask for a bit of data by some name, rather than by its position in a list.\nDictionaries can hold anything in their values. But keys are restricted to particular datatypes. Strings and numbers are good keys, lists are not allowed.\n\nprint( { [\"list_key\", 1, 2] : [\"some data\"]  } )\n\nTraceback (most recent call last):\n  File \"<stdin>\", line 1, in <module>\nTypeError: unhashable type: 'list'\n\n2.2.1 Dictionary Methods\nAs with lists there are methods on Python Dictionaries. Here’s a useful list https://www.w3schools.com/python/python_ref_dictionary.asp. These are mostly related to getting items on and off the list, we’ll see some when we use dictionaries in loops later."
+  },
+  {
+    "objectID": "03-data_structures.html#quiz",
+    "href": "03-data_structures.html#quiz",
+    "title": "2  Data Structures",
+    "section": "2.3 Quiz",
+    "text": "2.3 Quiz\n\nGiven the list below, use slicing to access only the last 2 entries.\n\n\nlist_for_slicing = [[\"fluorine\", \"F\"], \n                    [\"chlorine\", \"Cl\"], \n                    [\"bromine\", \"Br\"], \n                    [\"iodine\", \"I\"], \n                    [\"astatine\", \"At\"]]\n\n\nModify list_for_slicing using the .reverse() method. Verify that it is reversed as you expected.\nCan you work out how to correct the wrong data in the dictionary below? Try to think of a way that doesn’t involve re-writing the whole dictionary. Hint: can you assign straight to a key?\n\n\nseasons = {\n  'spring' : ['mar', 'apr', 'may' ],\n  'autumn' : ['jun', 'jul', 'aug'],\n  'winter' : ['dec', 'jan', 'feb']\n}\n\n\nAdd in the missing season."
+  },
+  {
+    "objectID": "04-conditionals.html",
+    "href": "04-conditionals.html",
+    "title": "3  Making Choices and Controlling Program Flow",
+    "section": "",
+    "text": "Questions:\nHow can we use Python to automatically recognize differences in data such that it can change what code is run depending on the data and take a different action for each? In this chapter, we’ll learn how to write code that runs only when certain conditions are true."
+  },
+  {
+    "objectID": "04-conditionals.html#conditionals-check-values-and-adjust-which-code-is-run",
+    "href": "04-conditionals.html#conditionals-check-values-and-adjust-which-code-is-run",
+    "title": "3  Making Choices and Controlling Program Flow",
+    "section": "3.1 Conditionals check values and adjust which code is run",
+    "text": "3.1 Conditionals check values and adjust which code is run\nWe can ask Python to take different actions, depending on a condition, with an if statement:\n\nnum = 37\nif num > 100:\n    print('greater')\nelse:\n    print('not greater')\n\nnot greater\n\n\nThe second line of this code uses the keyword if to tell Python that we want to make a choice. If the test that follows the if keyword is true, the body of the if (i.e., the lines indented underneath it) are executed. If the test is false, the body of the else is executed instead. Only one or the other is ever executed:\nThe diagram below shows how this choice is being made.\n\n\n\nExecuting a Conditional"
+  },
+  {
+    "objectID": "04-conditionals.html#indentation-in-python-is-pretty-important",
+    "href": "04-conditionals.html#indentation-in-python-is-pretty-important",
+    "title": "3  Making Choices and Controlling Program Flow",
+    "section": "3.2 Indentation in Python is Pretty Important",
+    "text": "3.2 Indentation in Python is Pretty Important\nThe layout of code in Python is actually pretty important. The whitespace is structural and the amount of it tells us something about where we are in a program. Whitespace is particularly important in if . By convention the indent under each new if or else should be four spaces.\n\nif x > y:\n    do_something()\n\nAn if within an if needs further indentation - it must also be four spaces further in, so a total of eight spaces.\n\nif x > 100:\n    print(\"bigger than 100\")\n    if x  < 120:\n        print(\"but smaller than 120\")\n    else:\n        print(\"and bigger than 120\")\nelse:\n    print(\"x is too small\")\n\nThis rule propagates, so a third level would need twelve spaces etc.\nNote how the code above is structured now. Code at the same indentation is in the same group of code - at the same level. We can easily see which if and else go together as pairs. This is the point of using whitespace like this - it gives us clean and visually consistent programs which the designers of Python value.\nA common gotcha is that you always have to undo the indent at the end of the block. The first bit of the rest of the code must always be fully at the left of the page or Python will interpret the code incorrectly.\nThese indentation rules apply in other places in Python code and we’ll come across them in due course.\n\n  Tip!\n  \n    You are probably thinking that this is a bit of pain. Having to type in so many spaces is a bit tedious. For this reason, most text editors will allow you to use the `tab` key to enter four spaces instead of a genuine `tab`. They'll also show the spaces indented as little dots. Try playing about with the preferences in your text editor if you can't see this."
+  },
+  {
+    "objectID": "04-conditionals.html#more-ifs",
+    "href": "04-conditionals.html#more-ifs",
+    "title": "3  Making Choices and Controlling Program Flow",
+    "section": "3.3 More ifs",
+    "text": "3.3 More ifs\nConditional statements don’t have to include an else. If there isn’t one, Python simply does nothing if the test is false:\n\nnum = 53\nprint('before conditional...')\nif num > 100:\n    print(num,' is greater than 100')\nprint('...after conditional')\n\nbefore conditional...\n...after conditional\n\n\nWe can also chain several tests together using elif, which is short for “else if”. The following Python code uses elif to print the sign of a number.\n\nnum = -3\n\nif num > 0:\n    print(num, 'is positive')\nelif num == 0:\n    print(num, 'is zero')\nelse:\n    print(num, 'is negative')\n\n-3 is negative\n\n\nNote that the if and elif bits are mutually exclusive. Only one of them ever gets executed.\n\n3.3.1 Testing equality\nNote that to test for equality we use a double equals sign == rather than a single equals sign = which is already used to assign values."
+  },
+  {
+    "objectID": "04-conditionals.html#logical-operators-in-tests",
+    "href": "04-conditionals.html#logical-operators-in-tests",
+    "title": "3  Making Choices and Controlling Program Flow",
+    "section": "3.4 Logical operators in tests",
+    "text": "3.4 Logical operators in tests\nPython has all the standard logical operators that let us combine tests. Most commonly there is and and or. An and operator is only true if both parts are true:\n\nif (1 > 0) and (-1 > 0):\n    print('both parts are true')\nelse:\n    print('at least one part is false')\n\nat least one part is false\n\n\nwhile or is true if at least one part is true:\n\nif (1 < 0) or (-1 < 0):\n    print('at least one test is true')\n\nat least one test is true\n\n\n\n3.4.1 What is True and what is False\nTrue and False are special words in Python called booleans, which represent truth values. A statement such as 1 < 0 returns the value False, while -1 < 0 returns the value True.\nTrue and False booleans are not the only values in Python that are true and false. In fact, any value can be used in an if or elif.\n\nif '':\n    print('empty string is true')\nif 'word':\n    print('word is true')\nif []:\n    print('empty list is true')\nif [1, 2, 3]:\n    print('non-empty list is true')\nif 0:\n     print('zero is true')\nif 1:\n    print('one is true')\n\nword is true\nnon-empty list is true\none is true\n\n\nIt may seem strange to set things up this way, but in Python in practice it allows for some nice and easy to read and write constructions."
+  },
+  {
+    "objectID": "04-conditionals.html#thats-not-not-what-i-meant",
+    "href": "04-conditionals.html#thats-not-not-what-i-meant",
+    "title": "3  Making Choices and Controlling Program Flow",
+    "section": "3.5 That’s not not what I meant",
+    "text": "3.5 That’s not not what I meant\nSometimes it is useful to check whether some condition is not true. The Boolean operator not can do this explicitly.\n\nif not '':\n    print('empty string is not true')\nif not 'word':\n    print('word is not true')\nif not not True:\n    print('not not True is true')\n\nempty string is not true\nnot not True is true"
+  },
+  {
+    "objectID": "04-conditionals.html#quiz",
+    "href": "04-conditionals.html#quiz",
+    "title": "3  Making Choices and Controlling Program Flow",
+    "section": "3.6 Quiz",
+    "text": "3.6 Quiz\n\nConsider this code:\n\n\nif 4 > 5:\n    print('A')\nelif 4 == 5:\n    print('B')\nelif 4 < 5:\n    print('C')\n\nWhich of the following would be printed if you were to run this code? Why did you pick this answer?\n\nA\nB\nC\nB and C\n\n\nConsider this code:\n\n\nif 4 > 5:\n    print('A')\nif 4 <= 5:\n    print('B')\nif 4 < 5:\n    print('C')\n\nWhich of the following would be printed if you were to run this code? Why did you pick this answer?\n\nA\nB\nC\nB and C\n\n\nConsider this code:\n\n\nif 4 > 5:\n    print('A')\nelif 4 <= 5:\n    print('B')\nelif 4 < 5:\n    print('C')\n\nWhich of the following would be printed if you were to run this code? Why did you pick this answer?\n\nA\nB\nC\nB and C"
+  },
+  {
+    "objectID": "05-loops.html",
+    "href": "05-loops.html",
+    "title": "4  Repeating actions with Loops",
+    "section": "",
+    "text": "Questions:\nTo do that, we’ll have to teach the computer how to repeat things.\nAn example task that we might want to repeat is printing each character in a word on a line of its own.\nWe can access a character in a string using its index. For example, we can get the first character of the word 'lead', by using word[0]. One way to print each character is to use four print statements:\nThis is a bad approach for two reasons:"
+  },
+  {
+    "objectID": "05-loops.html#for-loops",
+    "href": "05-loops.html#for-loops",
+    "title": "4  Repeating actions with Loops",
+    "section": "4.1 For Loops",
+    "text": "4.1 For Loops\nInstead we can use a loop - a construct that moves through a collection of data taking one bit at a time. Here’s a loop in action\n\nword = 'lead'\nfor char in word:\n    print(char)\n\nl\ne\na\nd\n\n\nThis is shorter, certainly shorter than something that prints every character in a hundred-letter string and more robust as well. Note the indentation rules apply in the for loop.\nAlso, see how the same code works if we change the length of the word\n\nword = 'oxygen'\nfor char in word:\n    print(char)\n\no\nx\ny\ng\ne\nn\n\n\nThe improved version uses a for loop to repeat code in this case print(), once for each thing in a sequence. The general form of a loop is:\nUsing the oxygen example above, the loop might look like this:\n\n\n\nloop_image\n\n\nwhere each character (char) in the variable word is looped through and printed one character after another. The numbers in the diagram denote which loop cycle the character was printed in (1 being the first loop, and 6 being the final loop).\nWe can call the loop variable anything we like, but there must be a colon at the end of the line starting the loop, and we must indent anything we want to run inside the loop. Unlike many other languages, there is no command to signify the end of the loop body (e.g. end for); what is indented after the for statement belongs to the loop.\n\n4.1.1 Choosing loop variable names\nIn the example above, the loop variable was given the name char as a mnemonic; it is short for ‘character’. We can choose any name we want for variables. We might just as easily have chosen the name banana for the loop variable, as long as we use the same name when we invoke the variable inside\n\nword = 'oxygen'\nfor banana in word:\n    print(banana)\n\no\nx\ny\ng\ne\nn\n\n\nIt is a good idea to choose variable names that are meaningful, otherwise it would be more difficult to understand what the loop is doing.\nHere’s another loop that repeatedly updates a variable:\n\nlength = 0\nfor vowel in 'aeiou':\n    length = length + 1\nprint('There are', length, 'vowels')\n\nThere are 5 vowels\n\n\nIt’s worth tracing the execution of this little program step by step.Since there are five characters in 'aeiou', the statement on line 3 will be executed five times. The first time around,length is zero (the value assigned to it on line 1) and vowel is 'a'.\nThe statement adds 1 to the old value of length, producing 1, and updates length to refer to that new value.\nThe next time around,vowel is 'e' and length is 1, so length is updated to be 2. After three more updates, length is 5; since there is nothing left in 'aeiou' for Python to process, the loop finishes and the print statement on line 4 tells us our final answer.\n\n\n4.1.2 Loop variable lifespan\nNote that a loop variable is just a variable that’s being used to record progress in a loop. It still exists after the loop is over, and we can re-use variables that were previously defined as loop variables:\n\nletter = 'z'\nfor letter in 'abc':\n    print(letter)\nprint('after the loop, letter is', letter)\n\na\nb\nc\nafter the loop, letter is c\n\n\nThis means your loop variable should ideally not be something you intend to use elsewhere.\nNote also that finding the length of a string is such a common operation that Python actually has a built-in function to do it called len:\n\nprint(len('aeiou'))\n\n5\n\n\n\n\n4.1.3 Looping over a list\nLooping over a Python list is very common. The syntax is identical.\n\nnumbers_and_letters = [1,2, 'three', 'IV', 5.0 ]\n\nfor item in numbers_and_letters:\n    print(item)\n\n1\n2\nthree\nIV\n5.0\n\n\n\n\n4.1.4 Looping over a range of numbers\nWhat if we don’t want to do every item in a collection, or if we want to do something a set number of times? We can create a collection that has the things we need.\nPython has a built-in function called range() that creates a sequence of numbers. range() can accept 1, 2, or 3 parameters.\n\nIf one parameter is given, range creates an array of that length, starting at zero and incrementing by 1. For example, range(3) produces the numbers 0, 1, 2.\nIf two parameters are given, range starts at the first and ends just before the second, incrementing by one. For example, range(2, 5) produces 2, 3, 4.\nIf range is given 3 parameters, it starts at the first one, ends just before the second one, and goes up in steps of the third one. For example range(3, 10, 2) produces 3, 5, 7, 9.\n\n\n\n4.1.5 Looping over a dictionary\nYou can loop over the keys in the dictionary in the same way as for the list, explicitly accessing the value using the key.\n\nd = {'x': 1, 'y': 2, 'z': 3} \n\nfor key in d:\n    print(key, 'has value', d[key])\n\nx has value 1\ny has value 2\nz has value 3\n\n\nNote that as dicts are intrinsically disordered, unlike lists the order they will be accessed in this way is arbitrary. If you care about order you can make a list of the keys using the keys() method and loop over that instead. Here we make a list of keys and sort it, then loop over the sorted key. Note the difference in the result to that above.\n\nd = {'x': 1, 'y': 2, 'z': 3} \n\nfrozen_keys = sorted(d.keys())\n\nfor key in frozen_keys:\n    print(key, 'has value', d[key])\n\nx has value 1\ny has value 2\nz has value 3\n\n\nPython can also be made to give you the key - value pairs if you want them, so you don’t need to explicitly get the value each time. For this we use the .items() method and two loop variables. The first loop variable gets the key, the second the value.\n\nd = {'x': 1, 'y': 2, 'z': 3} \n\nfor key, value in d.items():\n    print(key, 'has value', value)\n\nx has value 1\ny has value 2\nz has value 3"
+  },
+  {
+    "objectID": "05-loops.html#while-loops",
+    "href": "05-loops.html#while-loops",
+    "title": "4  Repeating actions with Loops",
+    "section": "4.2 While Loops",
+    "text": "4.2 While Loops\nA different sort of loop is the while loop. This loop repeats while something is in some state - usually the True state.\n\ni = 1\nwhile i < 6:\n  print(i)\n  i += 1\n\n1\n2\n3\n4\n5\n\n\nThe while loop is somewhat rare in Python, but does get used from time to time."
+  },
+  {
+    "objectID": "05-loops.html#quiz",
+    "href": "05-loops.html#quiz",
+    "title": "4  Repeating actions with Loops",
+    "section": "4.3 Quiz",
+    "text": "4.3 Quiz\n\nUsing range, write a loop to print the first 3 positive integers.\nExponentiation is built into Python, \\(3 ^ 2\\) would be 3 ** 2. Write a loop that calculates the same result as 5 ** 3 using multiplication (and without exponentiation).\n\n\nprint(5 ** 3)\n\n125\n\n\n\nKnowing that two strings can be concatenated using the + operator, write a loop that takes a string and produces a new string with the characters in reverse order, so 'Newton' becomes 'notweN'.\nThe built-in function enumerate() takes a sequence (e.g. a list) and generates a new sequence of the same length. Each element of the new sequence is a pair composed of the index (0, 1, 2,…) and the value from the original sequence:\n\n\nfruits = ['apple', 'banana', 'grapes', 'pear']\nfor position, name in enumerate(fruits):\n  print(\"The \", position, \"fruit is \", name)\n\nThe  0 fruit is  apple\nThe  1 fruit is  banana\nThe  2 fruit is  grapes\nThe  3 fruit is  pear\n\n\nThe function shuffle() in the random package rearranges a list in place (meaning it changes the original object, so you don’t have to use a fresh variable name. Use the enumerate() and random.shuffle() to mix up the list below and work out where the digit 100 appears in the list.\n\nbig_numbers = list(range(1000) )"
+  },
+  {
+    "objectID": "06-functions.html",
+    "href": "06-functions.html",
+    "title": "5  User Functions",
+    "section": "",
+    "text": "Questions:\nIn order to write concise readable and bug-free programs its a good idea to do as little coding as possible in a program. To this end we follow a principle called DRY - don’t repeat yourself! Meaning that we don’t re-write code that does the same stuff in mulitple places in a program, we put it in one place and refer to it from there. This is the basis of good programming"
+  },
+  {
+    "objectID": "06-functions.html#building-your-own-function",
+    "href": "06-functions.html#building-your-own-function",
+    "title": "5  User Functions",
+    "section": "5.1 Building your own function",
+    "text": "5.1 Building your own function\nSo we’d like a way to package our code so that it is easier to reuse and Python provides for this by letting us define our own functions. In use these work just like all the other functions we’ve already seen.\nLet’s look at a user function by defining a function fahr_to_celsius that converts temperatures from Fahrenheit to Celsius:\n\ndef fahr_to_celsius(temp):\n    return ((temp - 32) * (5/9))\n\n\n\n\nThe Blueprint for a Python Function\n\n\nThe function definition opens with the keyword def followed by the name of the function (fahr_to_celsius) and a list of parameter names in brackets (temp). The parameter names are actually variables that carry the data given in the function call. The body of the function, the statements that are executed when it runs is indented below the definition line. The body concludes with a return keyword followed by the return value, the thing the function sends back to whatever called it.\nWhen we call the function, the values we pass to it are assigned to those parameter variables so that we can use them inside the function. Inside the function, we use a return statement to send a result back to the code that asked for it.\nLet’s try running our function.\n\nfahr_to_celsius(32)\n\n0.0\n\n\nThis command should call our function, using “32” as the input and return the function value.\nIn fact, calling our own function is no different from calling any other function:\n\nprint('freezing point of water:', fahr_to_celsius(32), 'C')\nprint('boiling point of water:', fahr_to_celsius(212), 'C')\n\nfreezing point of water: 0.0 C\nboiling point of water: 100.0 C\n\n\nWe’ve successfully called the function that we defined, and we have access to the value that we returned."
+  },
+  {
+    "objectID": "06-functions.html#composing-functions",
+    "href": "06-functions.html#composing-functions",
+    "title": "5  User Functions",
+    "section": "5.2 Composing functions",
+    "text": "5.2 Composing functions\nNow that we’ve seen how to turn Fahrenheit into Celsius, we can also write the function to turn Celsius into Kelvin:\n\ndef celsius_to_kelvin(temp_c):\n    return temp_c + 273.15\n\nprint('freezing point of water in Kelvin:', celsius_to_kelvin(0.))\n\nfreezing point of water in Kelvin: 273.15\n\n\nWhat about converting Fahrenheit to Kelvin? We could write out the formula, but we don’t need to. Instead, we can compose the two functions we have already created:\n\ndef fahr_to_kelvin(temp_f):\n    temp_c = fahr_to_celsius(temp_f)\n    temp_k = celsius_to_kelvin(temp_c)\n    return temp_k\n\nprint('boiling point of water in Kelvin:', fahr_to_kelvin(212.0))\n\nboiling point of water in Kelvin: 373.15\n\n\nThis is our first taste of how larger programs are built, we define basic operations, then combine them in ever-large chunks to get the effect we want."
+  },
+  {
+    "objectID": "06-functions.html#variables-inside-and-outside-functions",
+    "href": "06-functions.html#variables-inside-and-outside-functions",
+    "title": "5  User Functions",
+    "section": "5.3 Variables inside and outside Functions",
+    "text": "5.3 Variables inside and outside Functions\nThe function is insulated from the rest of the program. Things that happen in there don’t affect what goes on elsewhere. Meaning we can re-use variable names inside the function that we used elsewhere without polluting them. Look what happens when the following piece of code is run\n\nf = 0\nk = 0\n\ndef f2k(f):\n    k = ((f-32)*(5.0/9.0)) + 273.15\n    return k\n\nprint( f2k(8) )\nprint( f2k(41) )\nprint( f2k(32) )\n\nprint(k)\n\n\n259.81666666666666\n287.15\n273.15\n0\n\nk is 0 because the k inside the function f2k doesn’t know about the k defined outside the function."
+  },
+  {
+    "objectID": "06-functions.html#designing-programs-to-use-functions",
+    "href": "06-functions.html#designing-programs-to-use-functions",
+    "title": "5  User Functions",
+    "section": "5.4 Designing programs to use functions",
+    "text": "5.4 Designing programs to use functions\nIt’s a good programming strategy to think about building functions into programs. Try to look for places where you’re doing the same set of commands over again - that would be a prime target for turning into a function. Think also about places where you could just refer to an operation by name - something like: count_gc for example. If you spot places like this its a good idea to put the code into a function since it will make your program more readable. When you find you’re re-using the same functions in mulitple programs, then you’re ready to start putting them in external files and re-using them from there."
+  },
+  {
+    "objectID": "06-functions.html#quiz",
+    "href": "06-functions.html#quiz",
+    "title": "5  User Functions",
+    "section": "5.5 Quiz",
+    "text": "5.5 Quiz\n\n“Adding” two strings produces their concatenation 'a' + 'b' is 'ab'. Write a function called fence that takes two parameters called original and wrapper and returns a new string that has the wrapper character at the beginning and end of the original. A call to your function should look like this:\n\n\nprint(fence('name', '*'))\n\n\nNote that return and print are not interchangeable.print is a Python function that prints data to the screen. It enables us, users, see the data. return statement, on the other hand, makes data visible to the program.\n\nLet’s have a look at the following function:\n\ndef add(a, b):\n   print(a + b)\n\nWhat will we see if we execute the following commands?\n\nA = add(7, 3)\nprint(A)\n\n\nIf the variable s refers to a string, then s[0] is the string’s first character and s[-1] is its last. Write a function called outer that returns a string made up of just the first and last characters of its input. A call to your function should look like this:\n\n\nprint(outer('helium'))\n\n\nRescaling an Array\n\nWrite a function rescale that takes a list as input and returns a corresponding list of values scaled to lie in the range 0.0 to 1.0.\n(Hint: If L and H are the lowest and highest values in the original array, then the replacement for a value v should be (v-L) / (H-L). The max() function returns the biggest value in a list)\n\nConsider this code:\n\n\na = 3\nb = 7\n\ndef swap(a, b):\n    temp = a\n    a = b\n    b = temp\n\nswap(a, b)\n\nprint(a, b)\n\nWhich of the following would be printed if you were to run this code? Why did you pick this answer?\n\n7 3\n3 7\n3 3\n7 7"
+  },
+  {
+    "objectID": "07-packages.html",
+    "href": "07-packages.html",
+    "title": "6  Working with Python Packages",
+    "section": "",
+    "text": "Questions:\nPackages are an important part of the Python ‘ecosystem’ that let us use a wide variety of code written by other people. Good packages provide functions, objects and methods that make working in a particular problem domain a lot easier."
+  },
+  {
+    "objectID": "07-packages.html#using-and-installing-packages.",
+    "href": "07-packages.html#using-and-installing-packages.",
+    "title": "6  Working with Python Packages",
+    "section": "6.1 Using and Installing Packages.",
+    "text": "6.1 Using and Installing Packages.\nWe’ve already seen how to load in packages using the import statement. Here we load the builit-in sys package which has methods for working with the underlying system - the platform is the name of the operating system this code is running on.\n\nimport sys\nprint( sys.platform )\n\ndarwin\n\n\nSome packages, like sys come as standard when Python is installed, some come from external sources and must be installed individually. There are multiple methods of installing packages. Assuming you set up Python using Anaconda for this book then you can use conda itself. Another more general way of installing packages is from PyPI, the Python Package Index.\nNone of these are done from within Python itself, they must be done from the regular command-line. The general form is:\nconda install package_name\npip install package_name"
+  },
+  {
+    "objectID": "07-packages.html#the-vcfpy-package",
+    "href": "07-packages.html#the-vcfpy-package",
+    "title": "6  Working with Python Packages",
+    "section": "6.2 The vcfpy Package",
+    "text": "6.2 The vcfpy Package\nVCF files (variant call format) are files that describe SNPs and small indels in alignments from high-throughput sequencing data. The vcfpy package provides a lot of functionality for working with such files and the record they contain.\n\n6.2.1 VCF files - a brief introduction\nA VCF file is a column format file where each row represents a SNP/Indel record and the columns represent things describing it like Chromosome, Position, Reference Genome Allele, Alternative Genome Allele etc. Here’s what one record looks like, split over a few lines.\n\n\n\nTable continues below\n\n\n\n\n\n\n\n\n\n\n\nCHROM\nPOS\nID\nREF\nALT\nQUAL\nFILTER\n\n\n\n\n20\n14370\nrs6054257\nG\nA\n29\nPASS\n\n\n\n\nTable continues below\n\n\n\n\n\n\n\n\nINFO\nFORMAT\nNA00001\nNA00002\n\n\n\n\nNS=3;DP=14;AF=0.5;DB;H2\nGT:GQ:DP:HQ\n0|0:48:1:51,51\n1|0:48:8:51,51\n\n\n\n\n\n\n\n\n\nNA00003\n\n\n\n\n1/1:43:5:.,.\n\n\n\n\n\nThere’s a lot of information in that one record, and each file has many tens of thousands of records! We wouldn’t want to try and process tens of thousands manually. Let’s look at loading in a file and looping through each record using the vcfpy package.\nWe’ve already seen that packages have functions we can call, and that doing so can sometimes return objects of new types. We’ll use that pattern now to start processing a VCF file.\n\n\n6.2.2 The vcf.Reader object\nThe first package function we’ll need to use is vcf.Reader which opens and connects to a file but doesn’t do anything with it. It gives us a reader object we can use to access the file. We just need the file name that we wish to open.\n\nimport vcfpy\nvcf_reader = vcfpy.Reader(open('/Users/macleand/Desktop/example.vcf', 'r'))\n\n\n\n\nNow we can go ahead and extract the VCF records by using the reader object we created in a loop\n\n\nfor record in vcf_reader:\n  print( record )\n  print(type(record))\n\nRecord('20', 14370, ['rs6054257'], 'G', [Substitution(type_='SNV', value='A')], 29, ['PASS'], {'NS': 3, 'DP': 14, 'AF': [0.5], 'DB': True, 'H2': True}, ['GT', 'GQ', 'DP', 'HQ'], [Call('NA00001', {'GT': '0|0', 'GQ': 48, 'DP': 1, 'HQ': [51, 51]}), Call('NA00002', {'GT': '1|0', 'GQ': 48, 'DP': 8, 'HQ': [51, 51]}), Call('NA00003', {'GT': '1/1', 'GQ': 43, 'DP': 5, 'HQ': [None, None]})])\n<class 'vcfpy.record.Record'>\nRecord('20', 17330, [], 'T', [Substitution(type_='SNV', value='A')], 3, ['q10'], {'NS': 3, 'DP': 11, 'AF': [0.017]}, ['GT', 'GQ', 'DP', 'HQ'], [Call('NA00001', {'GT': '0|0', 'GQ': 49, 'DP': 3, 'HQ': [58, 50]}), Call('NA00002', {'GT': '0|1', 'GQ': 3, 'DP': 5, 'HQ': [65, 3]}), Call('NA00003', {'GT': '0/0', 'GQ': 41, 'DP': 3})])\n<class 'vcfpy.record.Record'>\nRecord('20', 1110696, ['rs6040355'], 'A', [Substitution(type_='SNV', value='G'), Substitution(type_='SNV', value='T')], 67, ['PASS'], {'NS': 2, 'DP': 10, 'AF': [0.333, 0.667], 'AA': 'T', 'DB': True}, ['GT', 'GQ', 'DP', 'HQ'], [Call('NA00001', {'GT': '1|2', 'GQ': 21, 'DP': 6, 'HQ': [23, 27]}), Call('NA00002', {'GT': '2|1', 'GQ': 2, 'DP': 0, 'HQ': [18, 2]}), Call('NA00003', {'GT': '2/2', 'GQ': 35, 'DP': 4})])\n<class 'vcfpy.record.Record'>\nRecord('20', 1230237, [], 'T', [], 47, ['PASS'], {'NS': 3, 'DP': 13, 'AA': 'T'}, ['GT', 'GQ', 'DP', 'HQ'], [Call('NA00001', {'GT': '0|0', 'GQ': 54, 'DP': 7, 'HQ': [56, 60]}), Call('NA00002', {'GT': '0|0', 'GQ': 48, 'DP': 4, 'HQ': [51, 51]}), Call('NA00003', {'GT': '0/0', 'GQ': 61, 'DP': 2})])\n<class 'vcfpy.record.Record'>\nRecord('20', 1234567, ['microsat1'], 'GTCT', [Substitution(type_='DEL', value='G'), Substitution(type_='INDEL', value='GTACT')], 50, ['PASS'], {'NS': 3, 'DP': 9, 'AA': 'G'}, ['GT', 'GQ', 'DP'], [Call('NA00001', {'GT': '0/1', 'GQ': 35, 'DP': 4}), Call('NA00002', {'GT': '0/2', 'GQ': 17, 'DP': 2}), Call('NA00003', {'GT': '1/1', 'GQ': 40, 'DP': 3})])\n<class 'vcfpy.record.Record'>\n\n\nThis does the code loop for every record in the file. And note how print() gives only a rough printout of the object, not every bit of information.\n\n\n6.2.3 The vcf.Record object\nEvery time we loop we get a new vcf.Record object. This is a special sort of object provided by the vcfpy package that represents the VCF record. We already saw how objects have methods - special functions that apply straight to the data in that object. PyVCF is no exception. As well as methods, objects can have properties called attributes.\n\n\n6.2.4 Object Attributes\nAs well as methods, objects have things called attributes.\nAttributes of an object are different from methods of an object in that they tend to be things that just are rather than things that are computed. So a hypothetical shape object representing a geometric shape might have an attribute called sides. This wouldn’t need recomputing as it would be the same every time.\nAttributes are easy to spot as they use the object dot . syntax, omitting the brackets at the end of the attribute name. Let’s examine that using the .POS attribute.\n\nvcf_reader = vcfpy.Reader(open('/Users/macleand/Desktop/example.vcf', 'r'))\n\nfor record in vcf_reader:\n  print( record.POS )\n\n\n\n14370\n17330\n1110696\n1230237\n1234567\n\n\nHere we can see that we get the position of each SNP/Indel in the chromosome from .POS. Note that we had to redo the vcf_reader creation - this is because the vcf.Reader object has in a sense “got to the end” of the data the first time we used it. It needs re-winding to the start and one way to do that is to recreate it and thereby reset it.\n\n6.2.4.1 Finding the methods and attributes an object has\nIf we want to find out what methods or attributes an object has we can use the dir() function which gives us these for an object.\n\nprint( dir(vcf_reader) )\n\n['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__enter__', '__eq__', '__exit__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__next__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'close', 'fetch', 'from_path', 'from_stream', 'header', 'parsed_samples', 'parser', 'path', 'record_checks', 'stream', 'tabix_file', 'tabix_iter', 'tabix_path']\n\n\nSo the list is really large! Some methods and attributes begin with _ underscore characters. By convention these are things that are used internally by the object - so you don’t need to worry about those. We can filter the ones we can use, by building a list of ones that don’t start with ’_’\n\nattrs = dir(vcf_reader)\nkeepers = []\nfor a in attrs:\n  if not a.startswith(\"_\"):\n    keepers.append(a)\nprint( keepers )\n\n['close', 'fetch', 'from_path', 'from_stream', 'header', 'parsed_samples', 'parser', 'path', 'record_checks', 'stream', 'tabix_file', 'tabix_iter', 'tabix_path']\n\n\nThis is a much shorter list. You can see the online documentation for the object here https://vcfpy.readthedocs.io/en/stable/api_io.html#vcfpy-reader\nPretty much all objects and packages will have some online documentation so you can usually find something. Sometimes it’s a bit sparse, unfortunately."
+  },
+  {
+    "objectID": "07-packages.html#quiz",
+    "href": "07-packages.html#quiz",
+    "title": "6  Working with Python Packages",
+    "section": "6.3 Quiz",
+    "text": "6.3 Quiz\n\nUsing PyVCF, calculate how many of the records are SNPs and how many are Indels. Use the documentation to see how you might achieve this - https://vcfpy.readthedocs.io/en/stable/api_record.html#vcfpy-record\nFor each SNP, work out whether it’s an A-G or C-T, a so-called transition. Would your method be efficient on a file of thousands of SNPS?\nWhich record has the greatest number of alleles? Would your method be efficient on a file of thousands of SNPs/Indels?\nHow many alternative alleles are heterozygous, for each record?"
+  },
+  {
+    "objectID": "08-scripts.html",
+    "href": "08-scripts.html",
+    "title": "7  Putting code into scripts",
+    "section": "",
+    "text": "Questions:\nScripts are files full of code that has been put together in order to do a particular task. The idea being that the code will get re-run many times and not just as a one off.\nBuilding a script is usually pretty easy - just type the code in to a text file.\nYou’ll need a text editor, a program that deals with text but not in the same way as a word processor. Many such programs are available, try the options below"
+  },
+  {
+    "objectID": "08-scripts.html#the-script-header",
+    "href": "08-scripts.html#the-script-header",
+    "title": "7  Putting code into scripts",
+    "section": "7.1 The script header",
+    "text": "7.1 The script header\nMost Python scripts have this on the first line\n#!/usr/bin/env python\nThis is a Unix/Linux convention that affects how those systems interpret the file. Leave it in for convention’s sake."
+  },
+  {
+    "objectID": "08-scripts.html#the-filename-extension",
+    "href": "08-scripts.html#the-filename-extension",
+    "title": "7  Putting code into scripts",
+    "section": "7.2 The filename extension",
+    "text": "7.2 The filename extension\nBy convention, Python script filess end in the extension, .py.\nSo if we have the following in a file called hello_world.py, we have a Python script.\n#!/usr/bin/env python\n\nprint(\"Hello, World!\")"
+  },
+  {
+    "objectID": "08-scripts.html#running-a-python-script-from-the-command-line",
+    "href": "08-scripts.html#running-a-python-script-from-the-command-line",
+    "title": "7  Putting code into scripts",
+    "section": "7.3 Running a python script from the command line",
+    "text": "7.3 Running a python script from the command line\nOnce created, the script itself is run from the python command on the command line. python is just a regular program that accepts a python script filename as its argument and runs the code in the script.\nHere’s an example terminal session that runs a script.\nLast login: Thu Dec  6 10:59:32 on ttys000\n~/Desktop macleand$ python hello_world.py\n\nHello, World!\n\n~/Desktop macleand$"
+  },
+  {
+    "objectID": "08-scripts.html#getting-options-from-the-command-line",
+    "href": "08-scripts.html#getting-options-from-the-command-line",
+    "title": "7  Putting code into scripts",
+    "section": "7.4 Getting Options from the Command Line",
+    "text": "7.4 Getting Options from the Command Line\nA good reason for creating scripts is because you want to be able to re-run the code in them. Sometimes you’ll want to change some aspect or behaviour of the code according to settings given on the command-line. For example, you might want to work on a different input file each time. We can access the text from the command-line in the script, using the sys.argv attribute in the sys module.\nImagine the command line\npython my_script.py OPTION_1 option_2\nWe access it like this\n\n#!/usr/bin/env python\n\nimport sys\n\nprint( sys.argv )\n\n['/Users/macleand/Desktop/programming_with_python/renv/python/virtualenvs/renv-python-3.8/lib/python3.8/site-packages/ipykernel_launcher.py', '-f', '/private/var/folders/22/kjdvv_k14cj1m6hq5hl527qw0006zc/T/tmpjjcmkkm3.json', '--HistoryManager.hist_file=:memory:']\n\n\n['my_script.py', 'OPTION_1', 'option_2']\nThe sys.argv attribute gives us a list of the command line options. The first item in the list is the script name, the options come after that. So we can access the options by indexing the sys.argv list\npython my_script.py OPTION_1 option_2\n\n#!/usr/bin/env python\n\nimport sys\n\nfirst_option = sys.argv[1]\nsecond_option = sys.argv[2]\n\nprint(second_option, first_option)\n\n/private/var/folders/22/kjdvv_k14cj1m6hq5hl527qw0006zc/T/tmpjjcmkkm3.json -f\n\n\noption_2 OPTION_1"
+  },
+  {
+    "objectID": "08-scripts.html#quiz",
+    "href": "08-scripts.html#quiz",
+    "title": "7  Putting code into scripts",
+    "section": "7.5 Quiz",
+    "text": "7.5 Quiz\n\nCreate a script that writes ‘Hello, World!’ to the screen. Run it.\nCreate a script that takes one argument and prints that to the screen as You said.. <argument> - replacing <argument> with the value you give on the command line.\nCreate a script that takes two numbers from the command line and adds them together and prints the result."
+  },
+  {
+    "objectID": "09-final_challenge.html",
+    "href": "09-final_challenge.html",
+    "title": "8  Putting It All Together",
+    "section": "",
+    "text": "This file SRR020192.fastq.gz contains next generation sequencing reads in fastq format.\nWrite a Python script that uses the BioPython package to\n\nCount the reads in the fastq file\nFilter out low-quality reads from the fastq file\nCalculate how many reads are retained\nUse at least one user-defined function"
+  },
+  {
+    "objectID": "appendix.html#prerequisites",
+    "href": "appendix.html#prerequisites",
+    "title": "Appendix A — Installing what you need",
+    "section": "A.1 Prerequisites",
+    "text": "A.1 Prerequisites\nNo specific Python knowledge is assumed for this book, though you do need to install some software. Most of it can be done using your computer’s graphical interface.\n\nPython 3 via Anaconda\nA reasonably recent web-browser\nThe vcfpy and biopython python packages\nThe files example.vcf and SRR020192.fastq.gz\nA text-editor"
+  },
+  {
+    "objectID": "appendix.html#installing-python-3-with-anaconda",
+    "href": "appendix.html#installing-python-3-with-anaconda",
+    "title": "Appendix A — Installing what you need",
+    "section": "A.2 Installing Python 3 with Anaconda",
+    "text": "A.2 Installing Python 3 with Anaconda\nFollow this link and install Python 3.x for your operating system. https://www.anaconda.com/distribution/\n\nA.2.1 Note for macOS users\nAccept all of the defaults during installation\nHere is a video tutorial https://www.youtube.com/watch?v=TcSAln46u9U\n\n\nA.2.2 Note for Windows users\nInstall Python 3 using all of the defaults for installation except make sure to check Add Anaconda to my PATH environment variable.\nHere is a video tutorial https://www.youtube.com/watch?v=xxQ0mzZ8UvA\n\n\nA.2.3 Note for Linux Users\nYou’ll need to be able to use the command-line to install with Anaconda. If you aren’t comfortable with this, ask for assistance from the local support team.\n\nOpen https://www.anaconda.com/download/#linux with your web browser.\nDownload the Python 3 installer for Linux.\nOpen a terminal window. 4.Type bash Anaconda3-and then press Tab. The name of the file you just downloaded should appear. If it does not, navigate to the folder where you downloaded the file, for example with: cd Downloads. Then, try again.\nPress enter. You will follow the text-only prompts. To move through the text, press the spacebar.\nType yes and press enter to approve the license.\nPress enter to approve the default location for the files.\nType yes and press enter to prepend Anaconda to your PATH (this makes the Anaconda distribution the default Python).\nClose the terminal window."
+  },
+  {
+    "objectID": "appendix.html#starting-a-jupyter-notebook",
+    "href": "appendix.html#starting-a-jupyter-notebook",
+    "title": "Appendix A — Installing what you need",
+    "section": "A.3 Starting a Jupyter Notebook",
+    "text": "A.3 Starting a Jupyter Notebook\n\nA.3.1 macOS\n\nStart the Terminal application in Applications -> Utilities\nType jupyter notebook, it should start in your web browser\n\n\n\nA.3.2 Windows\n\nFrom the Start menu, search for and open Anaconda 3 or Jupyter Notebook. You should be able to start a notebook directly by clicking the Jupyter Notebook icon.\n\n\n\nA.3.3 Linux\n\nOpen the terminal application. It is usually in the task bar or dock\nType jupyter notebook, it should start in your web browser"
+  },
+  {
+    "objectID": "appendix.html#installing-python-packages-with-conda",
+    "href": "appendix.html#installing-python-packages-with-conda",
+    "title": "Appendix A — Installing what you need",
+    "section": "A.4 Installing Python Packages with conda",
+    "text": "A.4 Installing Python Packages with conda\nYou can use conda to install new Python packages using the Terminal by typing conda install <package_name>.\nYou can install the required packages with the following commands:\nconda install vcfpy\nconda install biopython\nAccept all defaults when the system asks a question."
+  },
+  {
+    "objectID": "appendix.html#installing-a-text-editor",
+    "href": "appendix.html#installing-a-text-editor",
+    "title": "Appendix A — Installing what you need",
+    "section": "A.5 Installing a Text Editor",
+    "text": "A.5 Installing a Text Editor\nA text editor is a program that deals with text in a way that is appropriate to writing programs. It is quite different to a word processor. Many such programs are available, try the options below:\n\nTextMate (macOS) https://macromates.com/\nAtom (macOS/Windows) https://atom.io/\nNotepad++ (Windows) https://notepad-plus-plus.org/"
+  },
+  {
+    "objectID": "10-acknowledgements.html",
+    "href": "10-acknowledgements.html",
+    "title": "Appendix B — Acknowledgements",
+    "section": "",
+    "text": "The rest of the materials are licensed under Creative Commons 0."
+  }
+]

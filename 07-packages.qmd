@@ -1,0 +1,144 @@
+# Working with Python Packages
+
+1. Questions:
+  * How can I use the wide range of code that other people have already written?
+2. Objectives:
+  * Install and Import packages using package managers
+  * Use vcfpy - a genomics related package
+  * Examine objects from this package
+3. Keypoints:
+  * Packages that come from external sources need to be installed
+  * There are many, many packages
+  * Packages provide methods and objects of varying types
+  * Good package use relies on good package documentation
+
+Packages are an important part of the Python 'ecosystem' that let us use a wide variety of code written by other people. Good packages provide functions, objects and methods that make working in a particular problem domain a lot easier. 
+
+## Using and Installing Packages.
+
+We've already seen how to load in packages using the `import` statement. Here we load the builit-in `sys` package which has methods for working with the underlying system - the `platform` is the name of the operating system this code is running on.
+
+```{python}
+import sys
+print( sys.platform )
+```
+
+Some packages, like `sys` come as standard when Python is installed, some come from external sources and must be installed individually. There are multiple methods of installing packages. Assuming you set up Python using Anaconda for this book then you can use `conda` itself. Another more general way of installing packages is from PyPI, the Python Package Index.
+
+None of these are done from within Python itself, they must be done from the regular command-line. The general form is:
+
+```
+conda install package_name
+pip install package_name
+```
+
+## The vcfpy Package
+
+VCF files (variant call format) are files that describe SNPs and small indels in alignments from high-throughput sequencing data. The `vcfpy` package provides a lot of functionality for working with such files and the record they contain.
+
+### VCF files - a brief introduction
+
+A VCF file is a column format file where each row represents a SNP/Indel record and the columns represent things describing it like Chromosome, Position, Reference Genome Allele, Alternative Genome Allele etc. Here's what one record looks like, split over a few lines.
+
+```{r, echo = FALSE}
+library(pander)
+cols <- as.character(expression(CHROM, POS,  ID,  REF, ALT, QUAL,  FILTER,  INFO,  FORMAT, NA00001,  NA00002, NA00003))
+ x <- "20  14370 rs6054257 G      A       29   PASS   NS=3;DP=14;AF=0.5;DB;H2           GT:GQ:DP:HQ 0|0:48:1:51,51 1|0:48:8:51,51 1/1:43:5:.,."
+vals <- strsplit(x, "\\s+", perl = TRUE)[[1]]
+
+m <- t(matrix(vals))
+colnames(m) <- cols
+
+pander( m )
+```
+There's a lot of information in that one record, and each file has many tens of thousands of records!  We wouldn't want to try and process tens of thousands manually. Let's look at loading in a file and looping through each record using the `vcfpy` package.
+
+We've already seen that packages have functions we can call, and that doing so can sometimes return objects of new types. We'll use that pattern now to start processing a VCF file.
+
+### The `vcf.Reader` object
+
+The first package function we'll need to use is `vcf.Reader` which opens and connects to a file but doesn't do anything with it. It gives us a reader object we can use to access the file.  We just need the file name that we wish to open.
+
+```{python}
+#| eval: false
+import vcfpy
+vcf_reader = vcfpy.Reader(open('/Users/macleand/Desktop/example.vcf', 'r'))
+```
+
+```{python}
+#| echo: false
+#| eval: true
+import vcfpy
+vcf_reader = vcfpy.Reader(open("assets/example.vcf"))
+```
+
+Now we can go ahead and extract the VCF records by using the reader object we created in a loop
+
+```{python}
+for record in vcf_reader:
+  print( record )
+  print(type(record))
+```
+
+This does the code loop for every record in the file. And note how `print()` gives only a rough printout of the object, not every bit of information.
+
+### The `vcf.Record` object
+
+Every time we loop we get a new `vcf.Record` object. This is a special sort of object provided by the `vcfpy` package that represents the VCF record. We already saw how objects have methods - special functions that apply straight to the data in that object. `PyVCF` is no exception. As well as methods, objects can have properties called attributes.
+
+### Object Attributes
+
+As well as methods, objects have things called attributes.
+
+Attributes of an object are different from methods of an object in that they tend to be things that just are rather than things that are computed. So a hypothetical `shape` object representing a geometric shape might have an attribute called `sides`. This wouldn't need recomputing as it would be the same every time.
+
+Attributes are easy to spot as they use the `object` dot `.` syntax, omitting the brackets at the end of the attribute name. Let's examine that using the `.POS` attribute.
+
+```{python}
+#| eval: false
+vcf_reader = vcfpy.Reader(open('/Users/macleand/Desktop/example.vcf', 'r'))
+
+for record in vcf_reader:
+  print( record.POS )
+```
+
+```{python}
+#| echo: false
+vcf_reader = vcfpy.Reader(open('assets/example.vcf'))
+
+for record in vcf_reader:
+  print( record.POS )
+```
+
+Here we can see that we get the position of each SNP/Indel in the chromosome from `.POS`.
+Note that we had to redo the vcf_reader creation - this is because the `vcf.Reader` object has in a sense "got to the end" of the data the first time we used it. It needs re-winding to the start and one way to do that is to recreate it and thereby reset it.
+
+#### Finding the methods and attributes an object has
+
+If we want to find out what methods or attributes an object has we can use the `dir()` function which gives us these for an object.
+
+```{python}
+print( dir(vcf_reader) )
+```
+
+So the list is really large! Some methods and attributes begin with `_` underscore characters. By convention these are things that are used internally by the object - so you don't need to worry about those. We can filter the ones we can use, by building a list of ones that _don't_ start with '_'
+
+```{python}
+attrs = dir(vcf_reader)
+keepers = []
+for a in attrs:
+  if not a.startswith("_"):
+    keepers.append(a)
+print( keepers )
+```
+
+This is a much shorter list. You can see the online documentation for the object here [https://vcfpy.readthedocs.io/en/stable/api_io.html#vcfpy-reader]()
+
+Pretty much all objects and packages will have some online documentation so you can _usually_ find something. Sometimes it's a bit sparse, unfortunately. 
+
+## Quiz
+
+1. Using `PyVCF`, calculate how many of the records are SNPs and how many are Indels. Use the documentation to see how you might achieve this - [https://vcfpy.readthedocs.io/en/stable/api_record.html#vcfpy-record]()
+2. For each SNP, work out whether it's an A-G or C-T, a so-called transition. Would your method be efficient on a file of thousands of SNPS?
+3. Which record has the greatest number of alleles? Would your method be efficient on a file of thousands of SNPs/Indels?
+4. How many alternative alleles are heterozygous, for each record?
